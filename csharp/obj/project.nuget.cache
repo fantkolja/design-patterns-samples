@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "R+6R3AW5x3QMFLwUcJRwx9KC8gELaLlmFUE7t559wijETWQ9CFk1iGFLM1Nv34XTVrTYjQ4P1/Bb/WNIjVts5g==",
+  "success": true,
+  "projectFilePath": "E:\\projects\\design-patterns-samples\\csharp\\csharp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mykola\\.nuget\\packages\\pluralize.net\\1.0.2\\pluralize.net.1.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

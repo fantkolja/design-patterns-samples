@@ -1,0 +1,17 @@
+E:\projects\design-patterns-samples\csharp\obj\Debug\net7.0\csharp.csproj.AssemblyReference.cache
+E:\projects\design-patterns-samples\csharp\obj\Debug\net7.0\csharp.GeneratedMSBuildEditorConfig.editorconfig
+E:\projects\design-patterns-samples\csharp\obj\Debug\net7.0\csharp.AssemblyInfoInputs.cache
+E:\projects\design-patterns-samples\csharp\obj\Debug\net7.0\csharp.AssemblyInfo.cs
+E:\projects\design-patterns-samples\csharp\obj\Debug\net7.0\csharp.csproj.CoreCompileInputs.cache
+E:\projects\design-patterns-samples\csharp\bin\Debug\net7.0\csharp.exe
+E:\projects\design-patterns-samples\csharp\bin\Debug\net7.0\csharp.deps.json
+E:\projects\design-patterns-samples\csharp\bin\Debug\net7.0\csharp.runtimeconfig.json
+E:\projects\design-patterns-samples\csharp\bin\Debug\net7.0\csharp.dll
+E:\projects\design-patterns-samples\csharp\bin\Debug\net7.0\csharp.pdb
+E:\projects\design-patterns-samples\csharp\bin\Debug\net7.0\Pluralize.NET.dll
+E:\projects\design-patterns-samples\csharp\obj\Debug\net7.0\csharp.csproj.CopyComplete
+E:\projects\design-patterns-samples\csharp\obj\Debug\net7.0\csharp.dll
+E:\projects\design-patterns-samples\csharp\obj\Debug\net7.0\refint\csharp.dll
+E:\projects\design-patterns-samples\csharp\obj\Debug\net7.0\csharp.pdb
+E:\projects\design-patterns-samples\csharp\obj\Debug\net7.0\csharp.genruntimeconfig.cache
+E:\projects\design-patterns-samples\csharp\obj\Debug\net7.0\ref\csharp.dll
