@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\projects\\design-patterns-samples\\csharp\\csharp.csproj": {}
+    "/Users/mykolafant/Work/projects/design-patterns-samples/csharp/csharp.csproj": {}
   },
   "projects": {
-    "E:\\projects\\design-patterns-samples\\csharp\\csharp.csproj": {
+    "/Users/mykolafant/Work/projects/design-patterns-samples/csharp/csharp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\projects\\design-patterns-samples\\csharp\\csharp.csproj",
+        "projectUniqueName": "/Users/mykolafant/Work/projects/design-patterns-samples/csharp/csharp.csproj",
         "projectName": "csharp",
-        "projectPath": "E:\\projects\\design-patterns-samples\\csharp\\csharp.csproj",
-        "packagesPath": "C:\\Users\\mykola\\.nuget\\packages\\",
-        "outputPath": "E:\\projects\\design-patterns-samples\\csharp\\obj\\",
+        "projectPath": "/Users/mykolafant/Work/projects/design-patterns-samples/csharp/csharp.csproj",
+        "packagesPath": "/Users/mykolafant/.nuget/packages/",
+        "outputPath": "/Users/mykolafant/Work/projects/design-patterns-samples/csharp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mykola\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/mykolafant/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -59,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
         }
       }
     }
