@@ -1,10 +1,16 @@
 namespace ProgrammingPrinciples.SOLID
 {
-    class OCPDemo
+  class OCPDemo
+  {
+    public static void show()
     {
-        public static void show()
-        {
-           
-        }
+      Weapon sword = new Weapon.Sword("Iron Sword", 10, 3);
+      Warrior conan = new("Conan", sword);
+      conan.Attack();
+
+      Weapon bow = new Weapon.Bow("Obsidian Bow", 15, 100);
+      conan.ChangeWeapon(bow);
+      conan.Attack();
     }
+  }
 }
