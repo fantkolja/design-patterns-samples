@@ -3,7 +3,8 @@
 using ProgrammingPrinciples;
 
 // ProgrammingPrinciples.SOLID.SRPDemo.show();
-ProgrammingPrinciples.SOLID.OCPDemo.show();
+// ProgrammingPrinciples.SOLID.OCPDemo.show();
+ProgrammingPrinciples.SOLID.LSPDemo.show();
 
 Console.WriteLine("Press any key to exit...");
 Console.ReadKey();
