@@ -14,3 +14,5 @@ namespace ProgrammingPrinciples.SOLID
     }
   }
 }
+
+// @TOADD: SortCLient: if < 10 BubbleSort; if < 1000 MergeSort; else QuickSort

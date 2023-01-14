@@ -20,3 +20,5 @@ namespace ProgrammingPrinciples.SOLID
         }
     }
 }
+
+// @TOADD: API service with higher and lower methods
