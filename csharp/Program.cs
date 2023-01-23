@@ -1,12 +1,17 @@
 ﻿using System;
-
 using ProgrammingPrinciples;
+using DesignPatterns.Builder;
 
-// ProgrammingPrinciples.SOLID.SRPDemo.show();
-// ProgrammingPrinciples.SOLID.OCPDemo.show();
-// ProgrammingPrinciples.SOLID.LSPDemo.show();
-// ProgrammingPrinciples.SOLID.ISPDemo.show();
-ProgrammingPrinciples.SOLID.DIPDemo.show();
+Pizza pz = new Pizza(
+  "mukhomor",
+  "mascarpone",
+  "chicken",
+  null,
+  null,
+  null,
+  32,
+  2
+);
 
 Console.WriteLine("Press any key to exit...");
 Console.ReadKey();
