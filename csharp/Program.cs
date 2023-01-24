@@ -2,16 +2,11 @@
 using ProgrammingPrinciples;
 using DesignPatterns.Builder;
 
-Pizza pz = new Pizza(
-  "mukhomor",
-  "mascarpone",
-  "chicken",
-  null,
-  null,
-  null,
-  32,
-  2
-);
+ClassicBuilder builder = new ConcreteClassicBuilder();
+ClassicDirector director = new ClassicDirector(builder);
+
+ClassicProduct fullFeaturedProduct = director.GetFullFeaturedProduct();
+ClassicProduct mvpProduct = director.GetMvpProduct();
 
 Console.WriteLine("Press any key to exit...");
 Console.ReadKey();
