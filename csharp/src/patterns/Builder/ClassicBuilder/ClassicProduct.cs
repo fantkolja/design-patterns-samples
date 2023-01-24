@@ -2,9 +2,9 @@ namespace DesignPatterns.Builder
 {
   class ClassicProduct
   {
-    private string _feature1;
-    private string _feature2;
-    private string _feature3;
+    private string? _feature1;
+    private string? _feature2;
+    private string? _feature3;
 
     public string SetFeature1(string val)
     {

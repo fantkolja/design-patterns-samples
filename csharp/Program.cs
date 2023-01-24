@@ -2,11 +2,13 @@
 using ProgrammingPrinciples;
 using DesignPatterns.Builder;
 
-ClassicBuilder builder = new ConcreteClassicBuilder();
-ClassicDirector director = new ClassicDirector(builder);
+PizzaBuilder pizzaBuilder = new HousePizzaBuilder();
+PizzaDirector pizzaDirector = new PizzaDirector(pizzaBuilder);
 
-ClassicProduct fullFeaturedProduct = director.GetFullFeaturedProduct();
-ClassicProduct mvpProduct = director.GetMvpProduct();
+Pizza neapolitana = pizzaDirector.GetNeapolitanaPizza();
+Pizza drive = pizzaDirector.GetDrivePizza();
+
+Console.WriteLine(neapolitana);
 
 Console.WriteLine("Press any key to exit...");
 Console.ReadKey();

@@ -2,49 +2,48 @@ namespace DesignPatterns.Builder
 {
   class Pizza
   {
-    private string? _mashrooms;
-    private string? _cheese;
-    private string? _meat;
-    private bool? _corn;
-    private bool? _pepper;
-    private string? _olives;
+    private string _cheese = "No cheese";
+    private string _meat = "No meat";
+    private bool _corn = false;
+    private string _olives = "No olives";
     private int? _radius;
     private int? _thickness;
 
     // +10 more
 
-    public Pizza(
-      string? _mashrooms,
-      string? _cheese,
-      string? _meat,
-      bool? _corn,
-      bool? _pepper,
-      string? _olives,
-      int? _radius,
-      int? _thickness
-    )
+    public Pizza() {}
+    public string SetCheese(string cheese)
     {
-      this._mashrooms = _mashrooms;
-      this._cheese = _cheese;
-      this._meat = _meat;
-      this._corn = _corn;
-      this._pepper = _pepper;
-      this._olives = _olives;
-      this._radius = _radius;
-      this._thickness = _thickness;
-      // + more
-
+      return this._cheese = cheese;
     }
-        // Pizza pz = new Pizza(
-        //   "champignon",
-        //   "mascarpone",
-        //   "chicken",
-        //   null,
-        //   null,
-        //   null,
-        //   32,
-        //   2
-        // );
+    public string SetMeat(string meat)
+    {
+      return this._meat = meat;
+    }
+    public bool SetCorn()
+    {
+      return this._corn = true;
+    }
+    public string SetOlives(string olives)
+    {
+      return this._olives = olives;
+    }
+    public int SetRadius(int radius)
+    {
+      this._radius = radius;
+      return radius;
+    }
+    public int SetThickness(int thickness)
+    {
+      this._thickness = thickness;
+      return thickness;
+    }
+
+    public override string ToString()
+    {
+      string cornMsg = this._corn ? "corn" : "No corn";
+      return $"{this._radius}cm wide;\n{this._thickness}cm thick.\nWith:\n{this._cheese};\n{cornMsg};\n{this._meat}.";
+    }
   }
 }
 

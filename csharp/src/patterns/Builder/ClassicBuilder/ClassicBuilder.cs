@@ -11,17 +11,13 @@ namespace DesignPatterns.Builder
 
   class ConcreteClassicBuilder : ClassicBuilder
   {
-    private ClassicProduct _product;
+    private ClassicProduct _product = new ClassicProduct();
 
     private void _reset()
     {
       this._product = new ClassicProduct();
     }
 
-    public ConcreteClassicBuilder()
-    {
-      this._reset();
-    }
     public ClassicProduct GetProduct()
     {
       ClassicProduct product = this._product;

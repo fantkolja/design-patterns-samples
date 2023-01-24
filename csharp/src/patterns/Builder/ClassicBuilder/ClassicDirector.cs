@@ -12,7 +12,8 @@ namespace DesignPatterns.Builder
 
     public ClassicDirector(ClassicBuilder builder)
     {
-      this.SetBuilder(builder);
+      // this.SetBuilder(builder);
+      this._builder = builder;
     }
 
     public ClassicProduct GetFullFeaturedProduct()
