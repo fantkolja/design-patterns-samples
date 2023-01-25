@@ -55,6 +55,11 @@
 
 namespace DesignPatterns.Builder
 {
+  interface IPersonBuilder<T>
+  {
+    public T Called(string name);
+    public T WithEmail(string email);
+  }
   abstract class PersonBuilder
   {
     protected Person _person = new Person();
@@ -72,7 +77,8 @@ namespace DesignPatterns.Builder
   }
 
   class SignedUpProfileBuilder<T>
-   : PersonBuilder where T : SignedUpProfileBuilder<T>
+   : PersonBuilder, IPersonBuilder<T>
+   where T : SignedUpProfileBuilder<T>
   {
     public T Called(string name)
     {
