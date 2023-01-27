@@ -33,6 +33,7 @@ namespace DesignPatterns.FactoryMethod
 {
   class Point
   {
+    private const int APPOXIMITY = 1;
     private double _a;
     private double _b;
 
@@ -49,6 +50,26 @@ namespace DesignPatterns.FactoryMethod
     public static Point GetPolarPoint(double rho, double theta)
     {
       return new Point(rho * Math.Cos(theta), rho * Math.Sin(theta));
+    }
+
+    public static Point operator + (Point p1, Point p2)
+    {
+      return new Point(p1._a + p2._a, p1._b + p2._b);
+    }
+
+    public static Point operator - (Point p1, Point p2)
+    {
+      return new Point(p1._a - p2._a, p1._b - p2._b);
+    }
+
+    public static bool operator == (Point p1, Point p2)
+    {
+      return Math.Abs(p1._a - p2._a) <= APPOXIMITY && Math.Abs(p1._b - p2._b) <= APPOXIMITY;
+    }
+
+    public static bool operator != (Point p1, Point p2)
+    {
+      return Math.Abs(p1._a - p2._a) > APPOXIMITY && Math.Abs(p1._b - p2._b) > APPOXIMITY;
     }
   }
 }
