@@ -1,8 +1,13 @@
 namespace DesignPatterns.FactoryMethod
 {
-  static class ClassicFactoryMethodCreator
+  abstract class ClassicFactoryMethodCreator
   {
-    public static ClassicProduct CreateProduct(string name, int? year)
+    abstract public ClassicProduct CreateProduct(string name, int? year);
+  }
+
+  class ClassicFactoryMethodCreatorA : ClassicFactoryMethodCreator
+  {
+    public override ClassicProduct CreateProduct(string name, int? year)
     {
       ClassicProduct result;
       if (year.HasValue)
@@ -14,6 +19,15 @@ namespace DesignPatterns.FactoryMethod
         result = new ConcreteProductA(name);
       }
       return result;
+    }
+  }
+
+  class ClassicFactoryMethodCreatorB : ClassicFactoryMethodCreator
+  {
+    public override ClassicProduct CreateProduct(string name, int? year)
+    {
+      int derivedYear = year.HasValue ? (int)year : DateTime.Now.Year;
+      return new ConcreteProductB(name, derivedYear);
     }
   }
 }
