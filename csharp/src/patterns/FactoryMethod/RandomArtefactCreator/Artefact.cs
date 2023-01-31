@@ -22,7 +22,7 @@ namespace DesignPatterns.FactoryMethod
   {
     public double Price { get; set; }
     public double Weight { get; set; }
-    public bool Wear(object hero)
+    public bool Wear(string hero)
     {
       if (hero == "Woman")
       {

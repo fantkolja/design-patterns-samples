@@ -62,14 +62,14 @@ namespace DesignPatterns.FactoryMethod
       return new Point(p1._x - p2._x, p1._y - p2._y);
     }
 
-    public static bool operator == (Point p1, Point p2)
-    {
-      return Math.Abs(p1._x - p2._x) <= APPOXIMITY && Math.Abs(p1._y - p2._y) <= APPOXIMITY;
-    }
+    // public static bool operator == (Point p1, Point p2)
+    // {
+    //   return Math.Abs(p1._x - p2._x) <= APPOXIMITY && Math.Abs(p1._y - p2._y) <= APPOXIMITY;
+    // }
 
-    public static bool operator != (Point p1, Point p2)
-    {
-      return Math.Abs(p1._x - p2._x) > APPOXIMITY && Math.Abs(p1._y - p2._y) > APPOXIMITY;
-    }
+    // public static bool operator != (Point p1, Point p2)
+    // {
+    //   return Math.Abs(p1._x - p2._x) > APPOXIMITY && Math.Abs(p1._y - p2._y) > APPOXIMITY;
+    // }
   }
 }
