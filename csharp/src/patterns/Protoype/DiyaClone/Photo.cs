@@ -1,9 +1,10 @@
 namespace DesignPatterns.Prototype
 {
-  class Photo : ICloneable
+  public class Photo : ICloneable
   {
     public string Url { get; set; }
 
+    private Photo() {}
     public Photo(string url)
     {
       this.Url = url;

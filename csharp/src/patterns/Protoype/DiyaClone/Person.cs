@@ -1,3 +1,4 @@
+
 // ********************
 // VERSION 1: Shallow copy
 
@@ -33,13 +34,16 @@
 // }
 
 
+using System.Xml.Serialization;
+
 namespace DesignPatterns.Prototype
 {
-  class Person : ICloneable
+  public class Person : ICloneable
   {
     public string[] Names;
     public IDCard IDCard;
 
+    public Person() {}
     public Person(string[] names, IDCard idCard)
     {
       this.Names = names;

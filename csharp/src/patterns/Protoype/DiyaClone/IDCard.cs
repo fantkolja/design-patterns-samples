@@ -1,10 +1,11 @@
 namespace DesignPatterns.Prototype
 {
-  class IDCard : ICloneable
+  public class IDCard : ICloneable
   {
     public Guid ID { get; set; }
     public Photo Photo { get; set; }
 
+    private IDCard() {}
     public IDCard(Photo photo)
     {
       this.ID = Guid.NewGuid();
