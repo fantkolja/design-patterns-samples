@@ -1,62 +1,121 @@
+// ATTEMPT #1
+
 namespace ProgrammingPrinciples.SOLID
 {
-  interface Attacker
+  class Weapon
   {
-    public void Attack();
-  }
-
-  class Weapon: Attacker
-  {
-    public enum Type
-    {
-      MELEE,
-      RANGED,
-    }
-
-    private Type _type { get; set; }
-    private int _damage { get; set; }
-    private int _range { get; set; }
-    private string _name { get; set; }
+    public int Damage { get; set; }
+    public int Range { get; set; }
+    public string Name { get; set; }
   
-    public Weapon(string name, int damage, int range, Type type)
+    public Weapon(string name, int damage, int range)
     {
-      this._name = name;
-      this._damage = damage;
-      this._range = range;
-      this._type = type;
+      this.Name = name;
+      this.Damage = damage;
+      this.Range = range;
     }
 
-    // BREAKS THE OCP PRINCIPLE
-    // public void Attack()
-    // {
-    //   if (this._type == Weapon.Type.MELEE) {
-    //     Console.WriteLine($"Hitting with {this._name}, dealing {this._damage} damage");
-    //   } else if (this._type == Weapon.Type.RANGED) {
-    //     Console.WriteLine($"Firing with {this._name}, dealing {this._damage} damage from range {this._range}");
-    //   }
-    // }
-
-    public virtual void Attack()
+    public void Attack()
     {
-      throw new NotImplementedException();
-    }
-
-    public class Sword: Weapon
-    {
-      public Sword(string name, int damage, int range) : base(name, damage, range, Weapon.Type.MELEE) {}
-      public override void Attack()
-      {
-        Console.WriteLine($"Hitting with {this._name}, dealing {this._damage} damage");
-      }
-    }
-
-    public class Bow: Weapon
-    {
-      public Bow(string name, int damage, int range) : base(name, damage, range, Weapon.Type.RANGED) {}
-      public override void Attack()
-      {
-        Console.WriteLine($"Firing with {this._name}, dealing {this._damage} damage from range {this._range}");
-      }
+      Console.WriteLine($"Hitting with {this.Name}, dealing {this.Damage} damage");
     }
   }
 }
+
+
+// New feature => BOW
+
+
+// ATTEMPT #2
+
+// namespace ProgrammingPrinciples.SOLID
+// {
+//   class Weapon
+//   {
+//     public enum WeaponType {
+//       Melee,
+//       Ranged,
+//     }
+
+//     public WeaponType Type { get; set; }
+//     public int Damage { get; set; }
+//     public int Range { get; set; }
+//     public string Name { get; set; }
+  
+//     public Weapon(string name, int damage, int range, WeaponType type)
+//     {
+//       this.Type = type;
+//       this.Name = name;
+//       this.Damage = damage;
+//       this.Range = range;
+//     }
+
+//     public void Attack()
+//     {
+//       if (this.Type == WeaponType.Melee) {
+//         Console.WriteLine($"Hitting with {this.Name}, dealing {this.Damage} damage");
+//       } else {
+//         Console.WriteLine($"Firing with {this.Name}, from range {this.Range} dealing {this.Damage} damage");
+//       }
+//     }
+//   }
+// }
+
+
+
+
+
+// Attempt #3
+// namespace ProgrammingPrinciples.SOLID
+// {
+//     public enum WeaponType {
+//       Melee,
+//       Ranged,
+//     }
+
+//   class Weapon
+//   {
+
+//     public WeaponType Type { get; set; }
+//     public int Damage { get; set; }
+//     public int Range { get; set; }
+//     public string Name { get; set; }
+  
+//     public Weapon(string name, int damage, int range, WeaponType type)
+//     {
+//       this.Type = type;
+//       this.Name = name;
+//       this.Damage = damage;
+//       this.Range = range;
+//     }
+
+//     // simple => virtual => abstract
+//     public virtual void Attack() {
+
+//     }
+//   }
+
+//   class MeleeWeapon : Weapon
+//   {
+//     public MeleeWeapon(string name, int damage, int range) : base(name, damage, range, WeaponType.Melee)
+//     {
+//     }
+
+//     public new void Attack()
+//     {
+//        Console.WriteLine($"Hitting with {this.Name}, dealing {this.Damage} damage");
+//     }
+//   }
+
+//   class RangedWeapon : Weapon
+//   {
+//     public RangedWeapon(string name, int damage, int range) : base(name, damage, range, WeaponType.Ranged)
+//     {
+//     }
+
+//     public new void Attack()
+//     {
+//        Console.WriteLine($"Firing with {this.Name}, from range {this.Range} dealing {this.Damage} damage");
+//     }
+//   }
+// }

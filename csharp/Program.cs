@@ -1,6 +1,6 @@
 ﻿using ProgrammingPrinciples.SOLID;
 
-SRPDemo.show();
+OCPDemo.show();
 
 Console.WriteLine("\nPress any key to exit...");
 Console.ReadKey();
