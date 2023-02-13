@@ -13,10 +13,13 @@ namespace ProgrammingPrinciples.SOLID
 
 
             purchases.Remove("nuts", 1);
+            purchases.Remove("chips", 1);
 
-            purchases.Save("./tmp.txt");
+            Console.WriteLine(purchases);
 
-            Cart.Load("./tmp.txt");
+            purchases.Save("./tmp/tmp.txt");
+
+            // Cart.Load("./tmp/tmp.txt");
         }
     }
 }

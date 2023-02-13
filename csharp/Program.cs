@@ -1,8 +1,7 @@
-﻿using System;
-using ProgrammingPrinciples;
-using DesignPatterns.Prototype;
-using DesignPatterns.Protoype.ExtensionMethods;
+﻿using ProgrammingPrinciples.SOLID;
 
-Console.WriteLine("Press any key to exit...");
+SRPDemo.show();
+
+Console.WriteLine("\nPress any key to exit...");
 Console.ReadKey();
 Console.SetCursorPosition(0, Console.CursorTop);
