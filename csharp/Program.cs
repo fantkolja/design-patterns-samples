@@ -1,6 +1,7 @@
-﻿using ProgrammingPrinciples.SOLID;
+﻿using DesignPatterns.Command;
 
-OCPDemo.show();
+
+
 
 Console.WriteLine("\nPress any key to exit...");
 Console.ReadKey();
