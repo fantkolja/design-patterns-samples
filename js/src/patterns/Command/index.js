@@ -1,17 +1,5 @@
-const requestQueue = [];
-
-function request(...args) {
-  if (navigator.onLine) {
-    return fetch(...args);
-  } else {
-    return new Promise((res) => {
-      requestQueue.push(() => res(fetch(...args)));
-    });
-  }
-}
-
 function fetchUser() {
-  return request('https://dummyapi.io/data/v1/user', { headers: { 'app-id': '63ed1f61e68fff164f49f8b0' } })
+  return fetch('https://dummyapi.io/data/v1/user', { headers: { 'app-id': '63ed1f61e68fff164f49f8b0' } })
     .then(response => response.json());
 }
 
@@ -25,14 +13,7 @@ function pollUser() {
   }, 1000);
 }
 
-function addOnlineEventListener() {
-  window.addEventListener('online', () => {
-    for (let i = 0, n = requestQueue.length; i < n; i++) {
-      const fn = requestQueue.shift();
-      fn();
-    }
-  });
-}
+
 
 function main() {
   addOnlineEventListener();
@@ -40,3 +21,35 @@ function main() {
 }
 
 main();
+
+
+
+
+
+
+
+
+
+
+
+
+// const requestQueue = [];
+
+// function request(...args) {
+//   if (navigator.onLine) {
+//     return fetch(...args);
+//   } else {
+//     return new Promise((res) => {
+//       requestQueue.push(() => res(fetch(...args)));
+//     });
+//   }
+// }
+
+// function addOnlineEventListener() {
+//   window.addEventListener('online', () => {
+//     for (let i = 0, n = requestQueue.length; i < n; i++) {
+//       const fn = requestQueue.shift();
+//       fn();
+//     }
+//   });
+// }
