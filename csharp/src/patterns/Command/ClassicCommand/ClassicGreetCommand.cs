@@ -44,40 +44,40 @@ namespace DesignPatterns.Command
 
 // Attempt #2 => with an Invoker
 
-// namespace DesignPatterns.Command
-// {
-//   class ClassicConversationSequenceInvoker
-//   {
-//     private IClassicCommand _onHello;
-//     private IClassicCommand _onGreet;
+namespace DesignPatterns.Command
+{
+  class ClassicConversationSequenceInvoker
+  {
+    private IClassicCommand _onHello;
+    private IClassicCommand _onGreet;
 
-//     private void SetOnHello(IClassicCommand cmd)
-//     {
-//       this._onHello = cmd;
-//     }
-//     public void SetOnGreet(IClassicCommand cmd)
-//     {
-//       this._onGreet = cmd;
-//     }
+    private void SetOnHello(IClassicCommand cmd)
+    {
+      this._onHello = cmd;
+    }
+    public void SetOnGreet(IClassicCommand cmd)
+    {
+      this._onGreet = cmd;
+    }
 
-//     public ClassicConversationSequenceInvoker(IClassicCommand onHello, IClassicCommand onGreet)
-//     {
-//       this._onHello = onHello;
-//       this._onGreet = onGreet;
-//     }
+    public ClassicConversationSequenceInvoker(IClassicCommand onHello, IClassicCommand onGreet)
+    {
+      this._onHello = onHello;
+      this._onGreet = onGreet;
+    }
 
-//     public void TalkToPerson()
-//     {
-//       this._onHello.Execute();
-//       this._onGreet.Execute();
-//     }
-//     public void SendPersonAway()
-//     {
-//       this._onGreet.Undo();
-//       this._onHello.Undo();
-//     }
-//   }
-// }
+    public void TalkToPerson()
+    {
+      this._onHello.Execute();
+      this._onGreet.Execute();
+    }
+    public void SendPersonAway()
+    {
+      this._onGreet.Undo();
+      this._onHello.Undo();
+    }
+  }
+}
 
 
 // IClassicCommand onHello = new ClassicHelloCommand();

@@ -4,16 +4,6 @@ namespace DesignPatterns.Singleton
   {
     private static FileDatabase? _instance;
 
-    private Dictionary<string, string> _countries = new();
-
-    private Dictionary<string, string> _populateCountries()
-    {
-      return File.ReadAllLines("./tmp/data.csv").ToDictionary(
-        list => list.Split(',')[0],
-        list => list.Split(',')[1]
-      );
-    }
-
     private FileDatabase()
     {
       this._countries = this._populateCountries();
@@ -27,7 +17,20 @@ namespace DesignPatterns.Singleton
       return _instance;
     }
 
-    public string getAbbreviation(string country)
+
+
+
+    private Dictionary<string, string> _countries = new();
+
+    private Dictionary<string, string> _populateCountries()
+    {
+      return File.ReadAllLines("./tmp/data.csv").ToDictionary(
+        list => list.Split(',')[0],
+        list => list.Split(',')[1]
+      );
+    }
+
+    public string GetAbbreviation(string country)
     {
       return this._countries[country];
     }

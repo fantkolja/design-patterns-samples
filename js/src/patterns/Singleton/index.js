@@ -26,12 +26,15 @@
 
 // class Singleton {
 //   constructor() {
-    // if (!_instance) {
-    //   instance = this;
-    // }
+//     if (!_instance) {
+//       instance = this;
+//     }
 //     return instance;
 //   }
 // }
+
+// const insatnce = new Singleton();
+// const insatnce = new Singleton();
 
 
 // ###### Method 3
@@ -55,4 +58,4 @@
 //   }
 // );
 
-module.exports = { getSingleton };
+// module.exports = { getSingleton };

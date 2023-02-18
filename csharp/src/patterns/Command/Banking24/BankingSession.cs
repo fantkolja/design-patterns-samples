@@ -3,8 +3,6 @@ namespace DesignPatterns.Command
   class BankingSession
   {
     private List<IAccountCommand> _operations = new List<IAccountCommand>();
-    Account mykolasAccount = new(10);
-
     public BankingSession(List<IAccountCommand> operations)
     {
       this._operations = operations;
