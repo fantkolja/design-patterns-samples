@@ -1,4 +1,6 @@
-﻿
+﻿using DesignPatterns.State;
+
+new GymTerminal();
 
 
 Console.WriteLine("\nPress any key to exit...");
