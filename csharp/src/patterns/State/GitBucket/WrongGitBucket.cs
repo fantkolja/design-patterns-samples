@@ -1,6 +1,6 @@
 namespace DesignPatterns.State
 {
-  class PullRequest
+  class WrongPullRequest
   {
     public string State { get; set; } = "draft"; // "edit" "open" "merged" "closed"
 
@@ -26,6 +26,11 @@ namespace DesignPatterns.State
       {
 
       } 
+    }
+
+    public void OnDecline()
+    {
+      
     }
   }
 }

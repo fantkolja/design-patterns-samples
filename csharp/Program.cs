@@ -1,7 +1,6 @@
 ﻿using DesignPatterns.State;
 
-new GymTerminal();
-
+new PhoneStateMachine();
 
 Console.WriteLine("\nPress any key to exit...");
 Console.ReadKey();
