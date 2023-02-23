@@ -1,6 +1,6 @@
-﻿using DesignPatterns.State;
+﻿
 
-new PhoneStateMachine();
+
 
 Console.WriteLine("\nPress any key to exit...");
 Console.ReadKey();
