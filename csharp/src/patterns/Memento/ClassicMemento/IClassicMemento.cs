@@ -1,6 +1,6 @@
 namespace DesignPatterns.Memento
 {
-  // can be empty at all
+  // // can be empty at all
   interface IClassicMemento
   {
     Guid Id { get; }
@@ -14,5 +14,24 @@ namespace DesignPatterns.Memento
   // {
   //   Guid Id { get; } = Guid.NewGuid();
   //   DateTime Date { get; } = DateTime.Now;
+  // }
+
+
+
+
+
+
+
+
+
+
+
+
+  // Version #2: Strcit Encapsulation
+  // interface IClassicMemento
+  // {
+  //   Guid Id { get; }
+  //   DateTime Date { get; }
+  //   void Restore();
   // }
 }
