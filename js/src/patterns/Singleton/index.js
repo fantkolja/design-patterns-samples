@@ -1,3 +1,65 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Method 0
+
+// const Singleton = (() => {
+//   let instance = null;
+
+//   const createInstance = () => {
+//     return {};
+//   };
+
+//   return {
+//     getInstance() {
+//       if (!instance) {
+//         instance = createInstance();
+//       }
+//       return instance;
+//     },
+//   };
+// })();
+
+
 // ###### Method 1
 
 // class Singleton {
@@ -37,25 +99,19 @@
 // const insatnce = new Singleton();
 
 
+
+
+
 // ###### Method 3
-
-// const singltonize = (ctor) => {
-//   let instance = null;
-
-//   return () => {
-//     if (!instance) {
-//       instance = new ctor();
+// class Singleton {
+//   constructor() {
+//     if (!Singleton._instance) {
+//       Singleton._instance = this;
 //     }
-//     return instance;
-//   };
-// };
-
-// const getSingleton = singltonize(
-//   class Singleton {
-//     constructor() {
-//       console.log('Initializing Singleton');
-//     }
+//     return Singleton._instance;
 //   }
-// );
+// }
 
-// module.exports = { getSingleton };
+
+
+
