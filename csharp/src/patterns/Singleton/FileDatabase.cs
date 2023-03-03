@@ -17,9 +17,6 @@ namespace DesignPatterns.Singleton
       return _instance;
     }
 
-
-
-
     private Dictionary<string, string> _countries = new();
 
     private Dictionary<string, string> _populateCountries()
