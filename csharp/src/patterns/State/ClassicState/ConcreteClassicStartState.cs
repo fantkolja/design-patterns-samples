@@ -2,7 +2,7 @@ namespace DesignPatterns.State
 {
   class ConcreteClassicStartState : IClassicState
   {
-    private ClassicContext _context;
+    private ClassicContext? _context;
     public void Initiate()
     {
       Console.WriteLine("Starting the game");

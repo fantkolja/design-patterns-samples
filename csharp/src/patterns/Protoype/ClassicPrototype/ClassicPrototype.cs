@@ -32,7 +32,7 @@ namespace DesignPatterns.Prototype
     }
   }
 
-    class SubclassPrototype : ConcretePrototype
+  class SubclassPrototype : ConcretePrototype
   {
     private int _age;
     public SubclassPrototype(string name, int age) : base(name)
@@ -56,6 +56,22 @@ namespace DesignPatterns.Prototype
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ConcretePrototype original = new("original");
 // ConcretePrototype copy = (ConcretePrototype) original.Clone();

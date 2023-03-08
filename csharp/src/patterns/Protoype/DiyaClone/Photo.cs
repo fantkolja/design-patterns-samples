@@ -1,18 +1,50 @@
 namespace DesignPatterns.Prototype
 {
-  public class Photo : ICloneable
+  public class Photo
   {
-    public string Url { get; set; }
+    public string Url { get; private set; }
 
-    private Photo() {}
     public Photo(string url)
     {
       this.Url = url;
     }
-
-    public object Clone()
-    {
-      return this.MemberwiseClone();
-    }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Version 2
+
+// namespace DesignPatterns.Prototype
+// {
+//   public class Photo : ICloneable
+//   {
+//     public string Url { get; private set; }
+
+//     private Photo(Photo prototype)
+//     {
+//       this.Url = prototype.Url;
+//     }
+//     public Photo(string url)
+//     {
+//       this.Url = url;
+//     }
+
+//     public object Clone()
+//     {
+//       return this.MemberwiseClone();
+//     }
+//   }
+// }

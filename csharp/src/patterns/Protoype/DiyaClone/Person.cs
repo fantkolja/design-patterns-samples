@@ -1,13 +1,59 @@
+// ********************
+// VERSION 1: Bare class
+
+namespace DesignPatterns.Prototype
+{
+  class Person
+  {
+    public string[] Names { get; private set; }
+    public IDCard IDCard { get; private set; }
+
+    public Person(string[] names, IDCard idCard)
+    {
+      this.Names = names;
+      this.IDCard = idCard;
+    }
+
+    public override string ToString()
+    {
+      return $"Names: {String.Join(", ", Names)};\nID: {this.IDCard.ID};\nPhoto: {this.IDCard.Photo.Url}";
+    }
+  }
+}
+
+// New Requirement: add possibility to clone the Person
+
+// using DesignPatterns.Prototype;
+
+// var photo = new Photo("https://sdcsdc");
+// var idCard = new IDCard(photo);
+// var mykola = new Person(new[] { "Mykola", "Fant" }, idCard);
+
+// Console.WriteLine(mykola);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ********************
-// VERSION 1: Shallow copy
+// VERSION 2: Shallow copy with custom IClassicPrototype
 
 // namespace DesignPatterns.Prototype
 // {
-//   class Person : ICloneable
+//   class Person : IClassicPrototype
 //   {
-//     public string[] Names;
-//     public IDCard IDCard;
+//     public string[] Names { get; private set; }
+//     public IDCard IDCard { get; private set; }
 
 //     public Person(string[] names, IDCard idCard)
 //     {
@@ -15,7 +61,61 @@
 //       this.IDCard = idCard;
 //     }
 
-//     public Person(Person prototype)
+//     private Person(Person prototype)
+//     {
+//       this.Names = prototype.Names;
+//       this.IDCard = prototype.IDCard;
+//     }
+
+//     public IClassicPrototype Clone()
+//     {
+//       return new Person(this);
+//     }
+
+//     public override string ToString()
+//     {
+//       return $"Names: {String.Join(", ", Names)};\nID: {this.IDCard.ID};\nPhoto: {this.IDCard.Photo.Url}";
+//     }
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ********************
+// VERSION 3: Shallow copy with built-in ICloneable
+
+// namespace DesignPatterns.Prototype
+// {
+//   class Person : ICloneable
+//   {
+//     public string[] Names { get; private set; }
+//     public IDCard IDCard { get; private set; }
+
+//     public Person(string[] names, IDCard idCard)
+//     {
+//       this.Names = names;
+//       this.IDCard = idCard;
+//     }
+
+//     private Person(Person prototype)
 //     {
 //       this.Names = prototype.Names;
 //       this.IDCard = prototype.IDCard;
@@ -28,42 +128,51 @@
 
 //     public override string ToString()
 //     {
-//       return $"Names: {String.Join(",", Names)};\nID: {this.IDCard.ID};\n Photo: {this.IDCard.Photo.Url}";
+//       return $"Names: {String.Join(", ", Names)};\nID: {this.IDCard.ID};\nPhoto: {this.IDCard.Photo.Url}";
 //     }
 //   }
 // }
 
 
-using System.Xml.Serialization;
 
-namespace DesignPatterns.Prototype
-{
-  public class Person : ICloneable
-  {
-    public string[] Names;
-    public IDCard IDCard;
 
-    public Person() {}
-    public Person(string[] names, IDCard idCard)
-    {
-      this.Names = names;
-      this.IDCard = idCard;
-    }
 
-    public object Clone()
-    {
-      Person other = (Person) this.MemberwiseClone();
-      other.Names = (string[]) this.Names.Clone();
-      other.IDCard = (IDCard) this.IDCard.Clone();
-      return other;
-    }
 
-    public override string ToString()
-    {
-      return $"Names: {String.Join(",", Names)};\nID: {this.IDCard.ID};\n Photo: {this.IDCard.Photo.Url}";
-    }
-  }
-}
+
+
+
+
+
+// ********************
+// VERSION 4: Shallow copy with built-in MemberwiseClone
+
+// namespace DesignPatterns.Prototype
+// {
+//   class Person : ICloneable
+//   {
+//     public string[] Names { get; private set; }
+//     public IDCard IDCard { get; private set; }
+
+//     public Person(string[] names, IDCard idCard)
+//     {
+//       this.Names = names;
+//       this.IDCard = idCard;
+//     }
+
+//     public object Clone()
+//     {
+//       return this.MemberwiseClone();
+//     }
+
+//     public override string ToString()
+//     {
+//       return $"Names: {String.Join(", ", Names)};\nID: {this.IDCard.ID};\nPhoto: {this.IDCard.Photo.Url}";
+//     }
+//   }
+// }
+
+
+
 
 
 
