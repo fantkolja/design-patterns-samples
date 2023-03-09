@@ -1,30 +1,49 @@
-namespace DesignPatterns.Builder
-{
-  static class FluentDirector
-  {
-    public class FullBuilder : FilledProfileBuilder<FullBuilder> {}
-    public class InitialBuilder : SignedUpProfileBuilder<InitialBuilder> {}
+// namespace DesignPatterns.Builder
+// {
+//   static class FluentDirector
+//   {
+//     static public Person CreateSignedUpPerson()
+//     {
+//       return new SignedUpProfileBuilder()
+//         .Called("Mykola")
+//         .WithEmail("fantkolja@gmail.com")
+//         .GetPerson();
+//     }
 
-    static public InitialBuilder GetSignedUpProfileBuilder()
-    {
-      return new InitialBuilder();
-    }
+//     static public Person GetFilledProfilePerson()
+//     {
+//       return new FilledProfileBuilder()
+//         .Called("Mykola")
+//         .WithEmail("fantkolja@gmail.com")
+//         .WorkingAsA("Coder")
+//         .GetPerson();
+//     }
+//   }
+// }
 
-    static public FullBuilder GetFilledProfileBuilder()
-    {
-      return new FullBuilder();
-    }
-  }
-}
 
+// namespace DesignPatterns.Builder
+// {
+//   static class FluentDirector
+//   {
+//     private class InitialBuilder : SignedUpProfileBuilder<InitialBuilder> {}
+//     private class FullBuilder : FilledProfileBuilder<FullBuilder> {}
 
-// Person mykola = FluentDirector.GetSignedUpProfileBuilder()
-//   .Called("Mykola")
-//   .WithEmail("fantkolja@gmail.com")
-//   .GetPerson();
+//     static public Person CreateSignedUpPerson()
+//     {
+//       return new InitialBuilder()
+//         .Called("Mykola")
+//         .WithEmail("fantkolja@gmail.com")
+//         .GetPerson();
+//     }
 
-// Person vasya = FluentDirector.GetFilledProfileBuilder()
-//   .Called("Mykola")
-//   .WithEmail("fantkolja@gmail.com")
-//   .WorkingAsA("Coder")
-//   .GetPerson();
+//     static public Person GetFilledProfilePerson()
+//     {
+//       return new FullBuilder()
+//         .Called("Mykola")
+//         .WithEmail("fantkolja@gmail.com")
+//         .WorkingAsA("Coder")
+//         .GetPerson();
+//     }
+//   }
+// }

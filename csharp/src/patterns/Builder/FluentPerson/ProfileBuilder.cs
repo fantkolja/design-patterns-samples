@@ -1,69 +1,11 @@
 // Version 1 - not working with inheritance
 
-// namespace DesignPatterns.Builder
-// {
-//   interface ProfileBuilder
-//   {
-//     ProfileBuilder Called(String name);
-//     ProfileBuilder WithEmail(String email);
-//     public Person GetPerson();
-//   }
-
-//   class SignedUpProfileBuilder : ProfileBuilder
-//   {
-//     protected Person _person = new Person();
-//     private void _reset()
-//     {
-//       this._person = new Person();
-//     }
-
-//     public Person GetPerson()
-//     {
-//       Person person = this._person;
-//       this._reset();
-//       return person;
-//     }
-//     public ProfileBuilder WithEmail(string email)
-//     {
-//       this._person.Email = email;
-//       return this;
-//     }
-
-//     public ProfileBuilder Called(string name)
-//     {
-//       this._person.Name = name;
-//       return this;
-//     }
-//   }
-
-//   class FilledProfileBuilder : SignedUpProfileBuilder 
-//   {
-//     public ProfileBuilder WorkingAsA(string job)
-//     {
-//       this._person.Job = job;
-//       return this;
-//     }
-
-//     public ProfileBuilder Earning(string salary)
-//     {
-//       this._person.Salary = salary;
-//       return this;
-//     }
-//   }
-// }
-
-
 namespace DesignPatterns.Builder
 {
-  interface IPersonBuilder<T>
-  {
-    public T Called(string name);
-    public T WithEmail(string email);
-  }
   abstract class PersonBuilder
   {
     protected Person _person = new Person();
-    private void _reset()
+    protected void _reset()
     {
       this._person = new Person();
     }
@@ -75,39 +17,118 @@ namespace DesignPatterns.Builder
       return person;
     }
   }
-
-  class SignedUpProfileBuilder<T>
-   : PersonBuilder, IPersonBuilder<T>
-   where T : SignedUpProfileBuilder<T>
+  interface BasicProfileBuilder
   {
-    public T Called(string name)
-    {
-      this._person.Name = name;
-      return (T) this;
-    }
-
-    public T WithEmail(string email)
-    {
-      this._person.Email = email;
-      return (T) this;
-    }
-
+    BasicProfileBuilder Called(String name);
+    BasicProfileBuilder WithEmail(String email);
   }
 
-  class FilledProfileBuilder<T>
-    : SignedUpProfileBuilder<FilledProfileBuilder<T>>
-    where T : FilledProfileBuilder<T>
+  class SignedUpProfileBuilder : PersonBuilder, BasicProfileBuilder
   {
-    public T WorkingAsA(string job)
+    public BasicProfileBuilder WithEmail(string email)
     {
-      this._person.Job = job;
-      return (T) this;
+      this._person.Email = email;
+      return this;
     }
 
-    public T Earning(string salary)
+    public BasicProfileBuilder Called(string name)
+    {
+      this._person.Name = name;
+      return this;
+    }
+  }
+
+  class FilledProfileBuilder : SignedUpProfileBuilder 
+  {
+    public BasicProfileBuilder WorkingAsA(string job)
+    {
+      this._person.Job = job;
+      return this;
+    }
+
+    public BasicProfileBuilder Earning(string salary)
     {
       this._person.Salary = salary;
-      return (T) this;
+      return this;
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// namespace DesignPatterns.Builder
+// {
+//   abstract class PersonBuilder
+//   {
+//     protected Person _person = new Person();
+//     protected void _reset()
+//     {
+//       this._person = new Person();
+//     }
+
+//     public Person GetPerson()
+//     {
+//       Person person = this._person;
+//       this._reset();
+//       return person;
+//     }
+//   }
+//   interface BasicProfileBuilder<T> where T : BasicProfileBuilder<T>
+//   {
+//     T Called(String name);
+//     T WithEmail(String email);
+//   }
+
+//   class SignedUpProfileBuilder<T> : PersonBuilder, BasicProfileBuilder<T> where T : SignedUpProfileBuilder<T>
+//   {
+//     public T WithEmail(string email)
+//     {
+//       this._person.Email = email;
+//       return (T) this;
+//     }
+
+//     public T Called(string name)
+//     {
+//       this._person.Name = name;
+//       return (T) this;
+//     }
+//   }
+
+//   class FilledProfileBuilder<T> : SignedUpProfileBuilder<T> where T : FilledProfileBuilder<T>
+//   {
+//     public T WorkingAsA(string job)
+//     {
+//       this._person.Job = job;
+//       return (T) this;
+//     }
+
+//     public T Earning(string salary)
+//     {
+//       this._person.Salary = salary;
+//       return (T) this;
+//     }
+//   }
+// }
