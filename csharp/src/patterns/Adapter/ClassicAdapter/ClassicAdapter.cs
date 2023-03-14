@@ -1,6 +1,6 @@
 namespace DesignPatterns.Adapter
 {
-  class ClassicAdaptor : ClassicTarget
+  class ClassicAdapter : ClassicTarget
   {
     private ClassicAdaptee _adaptee;
     public override int DoSomething()
@@ -8,7 +8,7 @@ namespace DesignPatterns.Adapter
       return this._adaptee.DoSomethingInAnotherWay(3);
     }
 
-    public ClassicAdaptor(ClassicAdaptee adaptee)
+    public ClassicAdapter(ClassicAdaptee adaptee)
     {
       this._adaptee = adaptee;
     }

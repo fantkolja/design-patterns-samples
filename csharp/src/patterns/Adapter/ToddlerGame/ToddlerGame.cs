@@ -4,9 +4,9 @@ namespace DesignPatterns.Adapter
 {
   class Cylinder
   {
-    public int Radius { get; }
+    public double Radius { get; }
 
-    public Cylinder(int radius)
+    public Cylinder(double radius)
     {
       this.Radius = radius;
     }
@@ -14,9 +14,9 @@ namespace DesignPatterns.Adapter
 
   class RoundHole
   {
-    private int _radius;
+    private double _radius;
 
-    public RoundHole(int radius)
+    public RoundHole(double radius)
     {
       this._radius = radius;
     }
@@ -37,9 +37,51 @@ namespace DesignPatterns.Adapter
 
   // class Cuboid
   // {
-  //   public int Width { get; }
-  //   public Cuboid(int width)
+  //   public double Width { get; }
+  //   public Cuboid(double width)
   //   {
   //     this.Width = width;
   //   }
   // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// namespace DesignPatterns.Adapter
+// {
+//   class Cuboid
+//   {
+//     public double Width { get; }
+//     public Cuboid(double width)
+//     {
+//       this.Width = width;
+//     }
+//   }
+
+//   class CuboidAdapter : Cylinder
+//   {
+//     private Cuboid _cuboid;
+//     public CuboidAdapter(Cuboid cuboid) : base(cuboid.Width * Math.Sqrt(2) / 2)
+//     {
+//       this._cuboid = cuboid;
+//     }
+//   }
+// }
