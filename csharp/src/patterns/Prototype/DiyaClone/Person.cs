@@ -176,6 +176,63 @@ namespace DesignPatterns.Prototype
 
 
 
+
+
+
+// Version 5: Serialization
+
+// using System.Xml.Serialization;
+
+// namespace DesignPatterns.Prototype
+// {
+//   class Person
+//   {
+//     public string[] Names { get; private set; }
+//     public IDCard IDCard { get; private set; }
+
+//     public Person(string[] names, IDCard idCard)
+//     {
+//       this.Names = names;
+//       this.IDCard = idCard;
+//     }
+
+//     public object Clone()
+//     {
+//       var serializer = new XmlSerializer(typeof(Person));
+//       var memoryStream = new MemoryStream();
+
+//       serializer.Serialize(memoryStream, this);
+//       memoryStream.Seek(0, SeekOrigin.Begin);
+//       Person? clonedPerson = (Person?) serializer.Deserialize(memoryStream);
+//       memoryStream.Close();
+
+//       if (clonedPerson == null) 
+//       {
+//         throw new Exception("Could not deserialize person");
+//       }
+
+//       return clonedPerson;
+//     }
+
+//     public override string ToString()
+//     {
+//       return $"Names: {String.Join(", ", Names)};\nID: {this.IDCard.ID};\nPhoto: {this.IDCard.Photo.Url}";
+//     }
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
 // var photo = new Photo("photo-of-vasya.jpg");
 // var idCard = new IDCard(photo);
 // var vasya = new Person(new[] { "Vasyl", "Petrovych", "Petrenko" }, idCard);
