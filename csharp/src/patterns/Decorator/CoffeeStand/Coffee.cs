@@ -38,7 +38,10 @@ namespace DesignPatterns.Decorator
 
 
 // Feature Request: add Coffee with Milk, DoubleAmount, Sugar
+
+
 // Possible approaches: 
+//
 //  - via existing class change (similiar to Builder, but
 //                               1. There are no predefined products
 //                               2. You can add sugar AFTER object creation)
@@ -91,10 +94,10 @@ namespace DesignPatterns.Decorator
 
 //   namespace DesignPatterns.Decorator
 //   {
-//     abstract class BaseCoffeeExtra : Coffee
+//     abstract class CoffeeExtra : Coffee
 //     {
 //       protected Coffee _coffee;
-//       public BaseCoffeeExtra(Coffee coffee) : base()
+//       public CoffeeExtra(Coffee coffee) : base()
 //       {
 //         this._coffee = coffee;
 //       }
@@ -102,7 +105,7 @@ namespace DesignPatterns.Decorator
 //       abstract public override double GetCalories();
 //     }
 
-//   class WithMilk : BaseCoffeeExtra
+//   class WithMilk : CoffeeExtra
 //   {
 //     public WithMilk(Coffee coffee) : base(coffee)
 //     {
@@ -116,7 +119,7 @@ namespace DesignPatterns.Decorator
 //     }
 //   }
 
-//   class Doubled : BaseCoffeeExtra
+//   class Doubled : CoffeeExtra
 //   {
 //     public Doubled(Coffee coffee) : base(coffee)
 //     {
@@ -130,7 +133,7 @@ namespace DesignPatterns.Decorator
 //     }
 //   }
 
-//   class WithSugar : BaseCoffeeExtra
+//   class WithSugar : CoffeeExtra
 //   {
 //     private int _sticksCount;
 //     public WithSugar(Coffee coffee, int sticksCount) : base(coffee)
