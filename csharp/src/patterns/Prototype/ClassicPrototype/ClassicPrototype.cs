@@ -16,7 +16,7 @@ namespace DesignPatterns.Prototype
     {
       this._name = prototype._name;
     }
-    public IClassicPrototype Clone()
+    public virtual IClassicPrototype Clone()
     {
       return new ConcretePrototype(this);
     }
@@ -45,7 +45,7 @@ namespace DesignPatterns.Prototype
       this._age = this._age = prototype._age;
     }
 
-    public new IClassicPrototype Clone()
+    public override IClassicPrototype Clone()
     {
       return new SubclassPrototype(this);
     }
