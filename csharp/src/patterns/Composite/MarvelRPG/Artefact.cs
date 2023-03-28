@@ -22,6 +22,11 @@ namespace DesignPatterns.Composite
     {
       return this._powerBuf;
     }
+
+    public virtual int GetCount()
+    {
+      return 1;
+    }
   }
 }
 
