@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace DesignPatterns.Builder
 {
   class SimplePizza
@@ -6,8 +8,8 @@ namespace DesignPatterns.Builder
     private string _meat = "No meat";
     private bool _corn = false;
     private string _olives = "No olives";
-    private int? _radius;
-    private int? _thickness;
+    private int? _radius = 10;
+    private int? _thickness = 5;
 
     // +10 more
 
@@ -16,7 +18,14 @@ namespace DesignPatterns.Builder
     public override string ToString()
     {
       string cornMsg = this._corn ? "corn" : "No corn";
-      return $"{this._radius}cm wide;\n{this._thickness}cm thick.\nWith:\n{this._cheese};\n{cornMsg};\n{this._meat}.";
+      return new StringBuilder()
+        .Append($"{this._radius}cm wide;")
+        .Append($"\n{this._thickness}cm thick;")
+        .Append($"\nWith:\n{this._cheese};")
+        .Append($"\n{cornMsg};")
+        .Append($"\n{this._olives};")
+        .Append($"\n{this._meat}.")
+        .ToString();
     }
   }
 }

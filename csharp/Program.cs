@@ -1,21 +1,16 @@
-﻿using DesignPatterns.Composite;
+﻿using DesignPatterns.Flyweight;
 
-var hero = new MarvelHero("BlackWidow", 1);
-var ring = new Artefact("PowerRing", 5, 50);
-var necklace = new Artefact("PerlNecklace", 10, 100);
+var ctx1 = new Context("a", "b", 1, 2);
+var ctx2 = new Context("c", "d", 1, 2);
+var ctx3 = new Context("e", "f", 1, 2);
+var ctx4 = new Context("g", "h", 3, 4);
+var ctx5 = new Context("i", "j", 3, 4);
 
-hero.AddArtefact(ring);
-hero.AddArtefact(necklace);
-
-hero.CountArtefacts();
-hero.CalculateArtefactsWeight();
-hero.Strike();
-
-hero.RemoveArtefact(ring);
-hero.CountArtefacts();
-hero.CalculateArtefactsWeight();
-hero.Strike();
-
+ctx1.DoSomething();
+ctx2.DoSomething();
+ctx3.DoSomething();
+ctx4.DoSomething();
+ctx5.DoSomething();
 
 Console.WriteLine("\nPress any key to exit...");
 Console.ReadKey();
