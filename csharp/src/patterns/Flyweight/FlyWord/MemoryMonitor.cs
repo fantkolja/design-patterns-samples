@@ -2,13 +2,13 @@ using System.Diagnostics;
 
 namespace DesignPatterns.Flyweight
 {
-  class DocumentParser
+  static class MemoryMonitor
   {
-    public DocumentParser()
+    public static void CheckCUrrentProcess()
     {
       Process proc = Process.GetCurrentProcess();
       Console.WriteLine($"Allocated Private Memory: {proc.PrivateMemorySize64.ToSmallestFullSize()}");
-      Console.WriteLine($"Physical memory usage: {proc.WorkingSet64.ToSmallestFullSize()}");
+      Console.WriteLine($"Physical Memory Usage: {proc.WorkingSet64.ToSmallestFullSize()}");
     }
   }
 }
