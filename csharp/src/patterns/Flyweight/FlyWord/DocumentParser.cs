@@ -28,8 +28,6 @@ namespace DesignPatterns.Flyweight
       Console.WriteLine("Checking memory BEFORE document load...");
       MemoryMonitor.CheckCUrrentProcess();
       this._readFile("./tmp/little_women.txt");
-      Console.WriteLine(this._text[1500].FontWeight);
-      Console.WriteLine(this._text[1500].CurrentPosition);
       Console.WriteLine("Checking memory AFTER document load...");
       MemoryMonitor.CheckCUrrentProcess();
     }
