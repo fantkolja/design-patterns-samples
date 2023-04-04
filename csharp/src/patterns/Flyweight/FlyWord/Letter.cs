@@ -10,10 +10,10 @@ namespace DesignPatterns.Flyweight
     public string FromAlphabet { get; private set; } = "latin";
     public string CharType { get; private set; } = "Alphabetic";
     public int CharCode { get; private set; }
-    public (long, int) CurrentPosition { get; private set; }
-    public (long, int) OriginalPosition { get; private set; }
+    public (ulong, ulong) CurrentPosition { get; private set; }
+    public (ulong, ulong) OriginalPosition { get; private set; }
     public string FontFamily { get; private set; }
-    public Letter(string fontFamily, int charCode, (long, int) position)
+    public Letter(string fontFamily, int charCode, (ulong, ulong) position)
     {
       this.FontFamily = fontFamily;
       this.CharCode = charCode;
@@ -68,9 +68,9 @@ namespace DesignPatterns.Flyweight
 //     public int FontWeight { get; private set; } = 400;
 //     public string FontColor { get; private set; } = "#000";
 //     public string TextDecoration { get; private set; } = "normal";
-//     public (long, int) CurrentPosition { get; private set; }
+//     public (ulong, ulong) CurrentPosition { get; private set; }
 //     public string FontFamily { get; private set; }
-//     public Letter(string fontFamily, int charCode, (long, int) position)
+//     public Letter(string fontFamily, int charCode, (ulong, ulong) position)
 //     {
 //       this.FontFamily = fontFamily;
 //       this.CurrentPosition = position;
@@ -83,9 +83,9 @@ namespace DesignPatterns.Flyweight
 //     public string FromAlphabet { get; private set; } = "latin";
 //     public string CharType { get; private set; } = "Alphabetic";
 //     public int CharCode { get; private set; }
-//     public (long, int) OriginalPosition { get; private set; }
+//     public (ulong, ulong) OriginalPosition { get; private set; }
 
-//     public LetterType(int charCode, (long, int) position)
+//     public LetterType(int charCode, (ulong, ulong) position)
 //     {
 //       this.CharCode = charCode;
 //       this.OriginalPosition = position;
@@ -95,7 +95,7 @@ namespace DesignPatterns.Flyweight
 //   static class LetterTypeFabric
 //   {
 //     private static Dictionary<int, LetterType> _letterTypesPool = new Dictionary<int, LetterType>();
-//     public static LetterType GetLetterType(int charCode, (long, int) position)
+//     public static LetterType GetLetterType(int charCode, (ulong, ulong) position)
 //     {
 //       LetterType? letterType = LetterTypeFabric._letterTypesPool.GetValueOrDefault(charCode);
 //       if (letterType == null)
