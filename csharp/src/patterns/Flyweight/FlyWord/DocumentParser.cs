@@ -6,13 +6,13 @@ namespace DesignPatterns.Flyweight
     private void _readFile(string src)
     {
       using(StreamReader file = new StreamReader(src)) {
-        int lineNumber = 0;
+        ulong lineNumber = 0;
         string? nextLine;
 
         while((nextLine = file.ReadLine()) != null)
         {
           lineNumber++;
-          int carretPosition = 0;
+          ulong carretPosition = 0;
           nextLine.ToList().ForEach((char c) => {
             this._text.Add(new Letter("Times New Roman", c, (lineNumber, carretPosition), "Little Women"));
             carretPosition++;

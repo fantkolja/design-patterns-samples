@@ -11,11 +11,11 @@ namespace DesignPatterns.Flyweight
     public string Type { get; private set; } = "Alphabetic";
     public int CharCode { get; private set; }
     public string DisplayName { get; private set; }
-    public (long, int) CurrentPosition { get; private set; }
-    public (long, int) OriginalPosition { get; private set; }
+    public (ulong, ulong) CurrentPosition { get; private set; }
+    public (ulong, ulong) OriginalPosition { get; private set; }
     public string OriginalDocument { get; private set; }
     public string FontFamily { get; private set; }
-    public Letter(string fontFamily, char character, (long, int) position, string originalDocument)
+    public Letter(string fontFamily, char character, (ulong, ulong) position, string originalDocument)
     {
       this.FontFamily = fontFamily;
       this.CharCode = (int) character;
@@ -72,10 +72,10 @@ namespace DesignPatterns.Flyweight
 //     public int FontWeight { get; private set; } = 400;
 //     public string FontColor { get; private set; } = "#000";
 //     public string TextDecoration { get; private set; } = "normal";
-//     public (long, int) CurrentPosition { get; private set; }
-//     public (long, int) OriginalPosition { get; private set; }
+//     public (ulong, ulong) CurrentPosition { get; private set; }
+//     public (ulong, ulong) OriginalPosition { get; private set; }
 //     public string FontFamily { get; private set; }
-//     public Letter(string fontFamily, char character, (long, int) position, string originalDocument)
+//     public Letter(string fontFamily, char character, (ulong, ulong) position, string originalDocument)
 //     {
 //       this.FontFamily = fontFamily;
 //       this.CurrentPosition = position;
@@ -91,6 +91,7 @@ namespace DesignPatterns.Flyweight
 //     public int CharCode { get; private set; }
 //     public string DisplayName { get; private set; }
 //     public string OriginalDocument { get; private set; }
+//     public (ulong, ulong) OriginalPosition { get; private set; }
 
 //     public LetterType(char character, string originalDocument)
 //     {
