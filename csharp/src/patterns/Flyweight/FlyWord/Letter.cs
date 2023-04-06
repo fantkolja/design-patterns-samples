@@ -8,17 +8,21 @@ namespace DesignPatterns.Flyweight
     public string FontColor { get; private set; } = "#000";
     public string TextDecoration { get; private set; } = "normal";
     public string FromAlphabet { get; private set; } = "latin";
-    public string CharType { get; private set; } = "Alphabetic";
+    public string Type { get; private set; } = "Alphabetic";
     public int CharCode { get; private set; }
+    public string DisplayName { get; private set; }
     public (long, int) CurrentPosition { get; private set; }
     public (long, int) OriginalPosition { get; private set; }
+    public string OriginalDocument { get; private set; }
     public string FontFamily { get; private set; }
-    public Letter(string fontFamily, int charCode, (long, int) position)
+    public Letter(string fontFamily, char character, (long, int) position, string originalDocument)
     {
       this.FontFamily = fontFamily;
-      this.CharCode = charCode;
+      this.CharCode = (int) character;
+      this.DisplayName = character.ToString();
       this.OriginalPosition = position;
       this.CurrentPosition = position;
+      this.OriginalDocument = originalDocument;
     }
   }
 }
@@ -69,39 +73,44 @@ namespace DesignPatterns.Flyweight
 //     public string FontColor { get; private set; } = "#000";
 //     public string TextDecoration { get; private set; } = "normal";
 //     public (long, int) CurrentPosition { get; private set; }
+//     public (long, int) OriginalPosition { get; private set; }
 //     public string FontFamily { get; private set; }
-//     public Letter(string fontFamily, int charCode, (long, int) position)
+//     public Letter(string fontFamily, char character, (long, int) position, string originalDocument)
 //     {
 //       this.FontFamily = fontFamily;
 //       this.CurrentPosition = position;
-//       this._letterType = LetterTypeFabric.GetLetterType(charCode, position);
+//       this.OriginalPosition = position;
+//       this._letterType = LetterTypeFabric.GetLetterType(character, originalDocument);
 //     }
 //   }
 
 //   class LetterType
 //   {
 //     public string FromAlphabet { get; private set; } = "latin";
-//     public string CharType { get; private set; } = "Alphabetic";
+//     public string Type { get; private set; } = "Alphabetic";
 //     public int CharCode { get; private set; }
-//     public (long, int) OriginalPosition { get; private set; }
+//     public string DisplayName { get; private set; }
+//     public string OriginalDocument { get; private set; }
 
-//     public LetterType(int charCode, (long, int) position)
+//     public LetterType(char character, string originalDocument)
 //     {
-//       this.CharCode = charCode;
-//       this.OriginalPosition = position;
+//       this.CharCode = (int)character;
+//       this.OriginalDocument = originalDocument;
+//       this.DisplayName = character.ToString();
 //     }
 //   }
 
 //   static class LetterTypeFabric
 //   {
 //     private static Dictionary<int, LetterType> _letterTypesPool = new Dictionary<int, LetterType>();
-//     public static LetterType GetLetterType(int charCode, (long, int) position)
+//     public static LetterType GetLetterType(char character, string originalDocument)
 //     {
-//       LetterType? letterType = LetterTypeFabric._letterTypesPool.GetValueOrDefault(charCode);
+//       int id = (int) character;
+//       LetterType? letterType = LetterTypeFabric._letterTypesPool.GetValueOrDefault(id);
 //       if (letterType == null)
 //       {
-//         letterType = new LetterType(charCode, position);
-//         LetterTypeFabric._letterTypesPool[charCode] = letterType;
+//         letterType = new LetterType(character, originalDocument);
+//         LetterTypeFabric._letterTypesPool[id] = letterType;
 //       }
 //       return letterType;
 //     }

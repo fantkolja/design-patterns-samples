@@ -14,7 +14,7 @@ namespace DesignPatterns.Flyweight
           lineNumber++;
           int carretPosition = 0;
           nextLine.ToList().ForEach((char c) => {
-            this._text.Add(new Letter("Times New Roman", (int)c, (lineNumber, carretPosition)));
+            this._text.Add(new Letter("Times New Roman", c, (lineNumber, carretPosition), "Little Women"));
             carretPosition++;
           });
         };
