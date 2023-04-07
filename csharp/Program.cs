@@ -1,13 +1,9 @@
 ﻿using DesignPatterns.CoR;
 
-var handler1 = new ConcreteHandler1();
-var handler2 = new ConcreteHandler2();
+var client = new SmartHttpClient();
+var user = new User(User.Role.Admin);
 
-handler1.SetNextHandler(handler2);
-
-handler1.Handle(8);
-handler1.Handle(2);
-handler1.Handle(5);
+client.Fetch("https://dummyjson.com/products/1", user);
 
 Console.WriteLine("\nPress any key to exit...");
 Console.ReadKey();
