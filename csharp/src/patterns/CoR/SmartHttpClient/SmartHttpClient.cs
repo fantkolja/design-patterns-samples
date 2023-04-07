@@ -1,31 +1,61 @@
-// namespace DesignPatterns.CoR
+using System.Web;
+
+namespace DesignPatterns.CoR
+{
+  class SmartHttpClient
+  {
+    private HttpClient _client = new HttpClient();
+    public Task<string> Fetch(string requestUri, User user)
+    {
+      string uriString = requestUri;
+      if (String.IsNullOrWhiteSpace(requestUri))
+      {
+        throw new ArgumentException("URL cannot be empty");
+      }
+      Uri uri = new Uri(uriString);
+      if (uri.GetLeftPart(UriPartial.Scheme) != "https://")
+      {
+        throw new ArgumentException("Only HTTPS requests are allowed");
+      }
+      
+      var uriQuery = HttpUtility.ParseQueryString(uri.Query);
+      if (uriQuery.Get("role") == null)
+      {
+        uriQuery.Set("role", user.UserRole.ToString());
+        uriString = uri.GetLeftPart(UriPartial.Path) + "?" + uriQuery;
+      }
+      if (user.UserRole != User.Role.Admin)
+      {
+        throw new AccessViolationException("Only Admins can make requests");
+      }
+      // ...
+
+      Console.WriteLine("Sending a GET request to " + uriString);
+      return _client.GetStringAsync(uriString);
+    }
+  }
+}
+
+
+
+// using DesignPatterns.CoR;
+
+// var client = new SmartHttpClient();
+// var wrongUser = new User(User.Role.User);
+// var rightUser = new User(User.Role.Admin);
+
+// try 
 // {
-//   class SmartHttpClient
-//   {
-//     private HttpClient _client = new HttpClient();
-//     public Task<string> Fetch(string requestUri, User user)
-//     {
-//       string url = requestUri;
-//       if (String.IsNullOrWhiteSpace(requestUri))
-//       {
-//         throw new ArgumentException("URL cannot be empty");
-//       }
-//       if (!requestUri.StartsWith("https"))
-//       {
-//         throw new ArgumentException("Only HTTPS requests are allowed");
-//       }
-//       if (!requestUri.Contains("role="))
-//       {
-//         url += $"?role={user.UserRole}";
-//       }
-//       if (user.UserRole != User.Role.Admin)
-//       {
-//         throw new AccessViolationException("Only Admins can make requests");
-//       }
-//       // ...
-//       return _client.GetStringAsync(url);
-//     }
-//   }
+//   // client.Fetch("", wrongUser);
+//   // client.Fetch("http://dummyjson.com/products/1", rightUser);
+//   // client.Fetch("https://dummyjson.com/products/1", wrongUser);
+//   // client.Fetch("https://dummyjson.com/products/1", wrongUser);
+//   client.Fetch("https://dummyjson.com/products/1", rightUser);
+// }
+// catch (Exception error)
+// {
+//   Console.WriteLine("An error has occured...");
+//   Console.WriteLine(error.Message);
 // }
 
 
@@ -61,75 +91,106 @@
 
 
 
-using System.Web;
+// using System.Web;
 
-namespace DesignPatterns.CoR
-{
-  interface IHttpClientInterceptor
-  {
-    public string Handle(string requestUri, User user);
-  }
-  abstract class HttpClientInterceptor : IHttpClientInterceptor
-  {
-    private IHttpClientInterceptor? _next;
+// namespace DesignPatterns.CoR
+// {
+//   interface IHttpClientInterceptor
+//   {
+//     public string Handle(string requestUri, User user);
+//   }
+//   abstract class HttpClientInterceptor : IHttpClientInterceptor
+//   {
+//     private IHttpClientInterceptor? _next;
 
-    public HttpClientInterceptor SetNext(HttpClientInterceptor next)
-    {
-      this._next = next;
-      return next;
-    }
-    public virtual string Handle(string requestUri, User user)
-    {
-      if (this._next == null)
-      {
-        return requestUri;
-      }
-      else
-      {
-        return this._next.Handle(requestUri, user);
-      }
-    }
-  }
+//     public HttpClientInterceptor SetNext(HttpClientInterceptor next)
+//     {
+//       this._next = next;
+//       return next;
+//     }
+//     public virtual string Handle(string requestUri, User user)
+//     {
+//       if (this._next == null)
+//       {
+//         return requestUri;
+//       }
+//       else
+//       {
+//         return this._next.Handle(requestUri, user);
+//       }
+//     }
+//   }
 
-  class EmptyStringInterceptor : HttpClientInterceptor
-  {
-    public override string Handle(string requestUri, User user)
-    {
+//   class EmptyStringInterceptor : HttpClientInterceptor
+//   {
+//     public override string Handle(string requestUri, User user)
+//     {
+//       if (String.IsNullOrWhiteSpace(requestUri))
+//       {
+//         throw new ArgumentException("URL cannot be empty");
+//       }
+//       return base.Handle(requestUri, user);
+//     }
+//   }
+//   class SchemeInterceptor : HttpClientInterceptor
+//   {
+//     public override string Handle(string requestUri, User user)
+//     {
+//       Uri uri = new Uri(requestUri);
+//       if (uri.GetLeftPart(UriPartial.Scheme) != "https://")
+//       {
+//         throw new ArgumentException("Only HTTPS requests are allowed");
+//       }
+//       return base.Handle(requestUri, user);
+//     }
+//   }
+//   class QueryInterceptor : HttpClientInterceptor
+//   {
+//     public override string Handle(string requestUri, User user)
+//     {
+//       string uriString = requestUri;
+//       Uri uri = new Uri(uriString);
+//       var uriQuery = HttpUtility.ParseQueryString(uri.Query);
+//       if (uriQuery.Get("role") == null)
+//       {
+//         uriQuery.Set("role", user.UserRole.ToString());
+//         uriString = uri.GetLeftPart(UriPartial.Path) + "?" + uriQuery;
+//       }
+//       return base.Handle(uriString, user);
+//     }
+//   }
 
-      return base.Handle(requestUri, user);
-    }
-  }
+//   class UserRoleInterceptor : HttpClientInterceptor
+//   {
+//     public override string Handle(string requestUri, User user)
+//     {
+//       if (user.UserRole != User.Role.Admin)
+//       {
+//         throw new AccessViolationException("Only Admins can make requests");
+//       }
+//       return base.Handle(requestUri, user);
+//     }
+//   }
 
-  class SmartHttpClient
-  {
-    private HttpClient _client = new HttpClient();
-    public Task<string> Fetch(string requestUri, User user)
-    {
-      string uriString = requestUri;
-      if (String.IsNullOrWhiteSpace(requestUri))
-      {
-        throw new ArgumentException("URL cannot be empty");
-      }
-      Uri uri = new Uri(uriString);
-      if (uri.GetLeftPart(UriPartial.Scheme) != "https://")
-      {
-        throw new ArgumentException("Only HTTPS requests are allowed");
-      }
+//   class SmartHttpClient
+//   {
+//     private HttpClient _client = new HttpClient();
+//     public Task<string> Fetch(string requestUri, User user)
+//     {
+//       var emptyStringInterceptor = new EmptyStringInterceptor();
+//       var schemeInterceptor = new SchemeInterceptor();
+//       var queryInterceptor = new QueryInterceptor();
+//       var userRoleinterceptor = new UserRoleInterceptor();
       
-      var uriQuery = HttpUtility.ParseQueryString(uri.Query);
-      if (uriQuery.Get("role") == null)
-      {
-        uriQuery.Set("role", user.UserRole.ToString());
-        uriString = uri.GetLeftPart(UriPartial.Path) + "?" + uriQuery;
-      }
-      if (user.UserRole != User.Role.Admin)
-      {
-        throw new AccessViolationException("Only Admins can make requests");
-      }
-      // ...
+//       emptyStringInterceptor
+//         .SetNext(schemeInterceptor)
+//         .SetNext(queryInterceptor)
+//         .SetNext(userRoleinterceptor);
 
-      Console.WriteLine("Sending a GET request to " + uriString);
-      return _client.GetStringAsync(uriString);
-    }
-  }
-}
+//       string uriString = emptyStringInterceptor.Handle(requestUri, user);
+   
+//       Console.WriteLine("Sending a GET request to " + uriString);
+//       return _client.GetStringAsync(uriString);
+//     }
+//   }
+// }
