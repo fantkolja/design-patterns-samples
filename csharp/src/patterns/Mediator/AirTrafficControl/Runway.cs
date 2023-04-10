@@ -14,5 +14,15 @@ namespace DesignPatterns.Mediator
       }
       return result;
     }
+
+    public void HighLightRed()
+    {
+      Console.WriteLine($"Runway {this.Id} is busy!");
+    }
+
+    public void HighLightGreen()
+    {
+      Console.WriteLine($"Runway {this.Id} is free!");
+    }
   }
 }

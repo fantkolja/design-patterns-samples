@@ -17,6 +17,7 @@ namespace DesignPatterns.Mediator
       {
         Console.WriteLine($"Aircraft {this.Name} has landed.");
         runway.IsBusyWithAircraft = this;
+        runway.HighLightRed();
         this.CurrentRunway = runway;
       }
       else
@@ -27,10 +28,9 @@ namespace DesignPatterns.Mediator
     public void TakeOff(Runway runway)
     {
       Console.WriteLine($"Aircraft {this.Name} is taking off.");
-      // @TODO: check conflicting
-      Console.WriteLine("Checking conflicting runways");
       runway.IsBusyWithAircraft = null;
       this.CurrentRunway = null;
+      runway.HighLightGreen();
       Console.WriteLine($"Aircraft {this.Name} has took off.");
     }
   }
