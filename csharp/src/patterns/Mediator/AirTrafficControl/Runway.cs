@@ -2,7 +2,17 @@ namespace DesignPatterns.Mediator
 {
   class Runway
   {
-    public ushort Capacity = 3;
-    public List<IAircraft> PresentAircrafts = new List<IAircraft>();
+    public readonly Guid Id = Guid.NewGuid();
+    public Aircraft? IsBusyWithAircraft;
+
+    public bool CheckIsActive()
+    {
+      bool result = false;
+      if (this.IsBusyWithAircraft != null)
+      {
+        result = this.IsBusyWithAircraft.IsTakingOff;
+      }
+      return result;
+    }
   }
 }
