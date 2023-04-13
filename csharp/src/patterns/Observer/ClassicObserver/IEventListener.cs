@@ -5,3 +5,6 @@ namespace DesignPatterns.Observer
     public void Update(int arg);
   }
 }
+
+// use generics for ARGS
+// use events
