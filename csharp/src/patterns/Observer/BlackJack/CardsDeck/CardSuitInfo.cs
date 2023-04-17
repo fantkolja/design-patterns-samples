@@ -12,7 +12,7 @@ namespace DesignPatterns.Observer
       this.Name = name;
       this.Icon = icon;
     }
-    public Dictionary<CardSuit, CardSuitInfo> SuitMap = new Dictionary<CardSuit, CardSuitInfo>(){
+    public static Dictionary<CardSuit, CardSuitInfo> SuitMap = new Dictionary<CardSuit, CardSuitInfo>(){
       { CardSuit.Diamonds, new CardSuitInfo(CardSuit.Diamonds, "Diamonds", '♦') },
       { CardSuit.Clubs, new CardSuitInfo(CardSuit.Clubs, "Clubs", '♣') },
       { CardSuit.Hearts, new CardSuitInfo(CardSuit.Hearts, "Hearts", '♥') },
