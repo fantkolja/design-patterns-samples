@@ -4,7 +4,7 @@ namespace DesignPatterns.Observer
   {
     private Queue<Card> _cardsIn = new Queue<Card>();
     private List<Card> _cardsOut = new List<Card>();
-    private List<Card> _createDeck()
+    private static List<Card> _createDeck()
     {
       List<Card> cards = new List<Card>();
       foreach(CardSuit suit in Enum.GetValues(typeof(CardSuit)))
@@ -19,12 +19,11 @@ namespace DesignPatterns.Observer
     }
     public CardsDeck()
     {
-      List<Card> cards = CardsDeck.Shuffle<Card>(this._createDeck());
-      this._cardsIn = new Queue<Card>(cards);
+      this.Shaffle();
     }
-    public static List<T> Shuffle<T>(List<T> list)
+    private static List<T> _randomizeOrder<T>(List<T> list)
     {
-      List<T> shuffledList = new List<T>().Concat(list).ToList();
+      List<T> shuffledList = new List<T>(list);
       Random rng = new Random();
       int n = shuffledList.Count;
       while (n > 1) {  
@@ -34,9 +33,14 @@ namespace DesignPatterns.Observer
           shuffledList[k] = shuffledList[n];  
           shuffledList[n] = value;  
       }
-      return list;
+      return shuffledList;
     }
-    // add custom iterator?
+    public void Shaffle()
+    {
+      List<Card> cards = CardsDeck._randomizeOrder<Card>(CardsDeck._createDeck());
+      this._cardsIn = new Queue<Card>(cards);
+      this._cardsOut = new List<Card>();
+    }
     public Card Draw()
     {
       Card card = this._cardsIn.Dequeue();

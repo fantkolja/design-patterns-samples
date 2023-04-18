@@ -1,6 +1,6 @@
 namespace DesignPatterns.Observer
 {
-  record Card
+  class Card
   {
     public CardSuitInfo Suit { get; }
     public CardName Name { get; }
@@ -8,7 +8,7 @@ namespace DesignPatterns.Observer
     public Card(CardSuitInfo suit, CardName name)
     {
       this.Suit = suit;
-      this.Name = Name;
+      this.Name = name;
     }
   }
 }
