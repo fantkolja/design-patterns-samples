@@ -1,7 +1,4 @@
-﻿using DesignPatterns.Observer;
-
-var game = new Game();
-game.Start();
+﻿
 
 Console.WriteLine("\nPress any key to exit...");
 Console.ReadKey();
