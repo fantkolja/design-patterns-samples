@@ -26,10 +26,10 @@ namespace DesignPatterns.Flyweight
     public DocumentParser()
     {
       Console.WriteLine("Checking memory BEFORE document load...");
-      MemoryMonitor.CheckCUrrentProcess();
+      MemoryMonitor.CheckCurrentProcess();
       this._readFile("./tmp/little_women.txt");
       Console.WriteLine("Checking memory AFTER document load...");
-      MemoryMonitor.CheckCUrrentProcess();
+      MemoryMonitor.CheckCurrentProcess();
     }
   }
 }
