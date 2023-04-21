@@ -8,7 +8,6 @@ namespace DesignPatterns.Iterator
     {
       using (StreamWriter writer = new StreamWriter(src))  
       {
-        dictionary.Sort();  
         foreach(string word in dictionary)
         {
           await writer.WriteLineAsync(word);

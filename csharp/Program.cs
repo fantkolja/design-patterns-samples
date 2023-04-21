@@ -1,21 +1,19 @@
 ﻿using DesignPatterns.Iterator;
-using DesignPatterns.Flyweight;
 
-Console.WriteLine("===Before dictionary creation===");
-MemoryMonitor.CheckCurrentProcess();
-
-var dictionary = TextParser.GetWordList("./tmp/little_women.txt");
+Trie dictionary = TextParser.GetWordTrie("./tmp/little_women.txt");
 
 Console.WriteLine("");
 Console.WriteLine("*******************");
-Console.WriteLine($"Dictionary size: {dictionary.Count}");
+// Console.WriteLine($"Dictionary size: {dictionary.Count}");
+var checks = new List<string>(){ "absurd", "absurdities", "absurditiessdfcfasdc" };
+// should be true, true, false
+checks.ForEach((word) => Console.WriteLine(dictionary.Contains(word)));
+Console.WriteLine("*******************");
+Console.WriteLine(dictionary.Links.Count);
 Console.WriteLine("*******************");
 Console.WriteLine("");
 
-Console.WriteLine("===After dictionary creation===");
-MemoryMonitor.CheckCurrentProcess();
-
-await DictionaryWriter.WriteToFileAsync(dictionary, "./tmp/little_women.dict.txt");
+// await DictionaryWriter.WriteToFileAsync(dictionary.Values.ToList(), "./tmp/little_women.dict.txt");
 
 Console.WriteLine("\nPress any key to exit...");
 Console.ReadKey();
