@@ -5,6 +5,13 @@ namespace DesignPatterns.Iterator
     // root node \0
     // end of word \n
     public char Char { get; set; }
+    public int Count
+    {
+      get
+      {
+        throw new NotImplementedException();
+      }
+    }
     public SortedDictionary<char, Trie> Links = new SortedDictionary<char, Trie>();
     public Trie(char content)
     {
@@ -27,6 +34,7 @@ namespace DesignPatterns.Iterator
     }
     public void Add(string word)
     {
+      // handle end of the word
       if (word.Length == 0)
       {
         char firstChar = '\n';
@@ -47,6 +55,42 @@ namespace DesignPatterns.Iterator
         {
           existingTrie.Add(rest);
         }
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    class TrieIterator
+    {
+      private string _currentWord = "\n";
+      private Trie _trie;
+      public TrieIterator(Trie trie)
+      {
+        this._trie = trie;
+      }
+      public string? Next()
+      {
+        char[] chars = this._currentWord.ToCharArray();
+        
       }
     }
   }

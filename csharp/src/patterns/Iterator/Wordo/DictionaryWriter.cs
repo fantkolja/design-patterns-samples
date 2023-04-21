@@ -4,7 +4,7 @@ namespace DesignPatterns.Iterator
 {
   static class DictionaryWriter
   {
-    public static async Task WriteToFileAsync(List<string> dictionary, string src)
+    public static async Task WriteToFileAsync(IEnumerable<string> dictionary, string src)
     {
       using (StreamWriter writer = new StreamWriter(src))  
       {

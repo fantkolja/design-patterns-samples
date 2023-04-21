@@ -5,7 +5,7 @@ namespace DesignPatterns.Iterator
   static class TextParser
   {
     // @TODO: return IEnumerator
-    public static SortedDictionary<string, string> GetWordList(string src)
+    public static SortedDictionary<string, string> GetWordDictionary(string src)
     {
       using(StreamReader file = new StreamReader(src))
       {
@@ -31,17 +31,37 @@ namespace DesignPatterns.Iterator
       }
     }
 
-    // using DesignPatterns.Iterator;
+// using DesignPatterns.Iterator;
 
-    // var dictionary = TextParser.GetWordList("./tmp/little_women.txt");
+// SortedDictionary<string, string> wordDictionary = TextParser.GetWordDictionary("./tmp/little_women.txt");
 
-    // Console.WriteLine("");
-    // Console.WriteLine("*******************");
-    // Console.WriteLine($"Dictionary size: {dictionary.Count}");
-    // Console.WriteLine("*******************");
-    // Console.WriteLine("");
+// Console.WriteLine("");
+// Console.WriteLine("*******************");
+// Console.WriteLine("======Checking Words=========");
+// new List<string>(){ "absurd", "absurdities", "absurditiessdfcfasdc" }
+// // should be true, true, false
+//   .ForEach((word) => Console.WriteLine(wordDictionary.GetValueOrDefault(word) != null));
+// Console.WriteLine($"Dictionary size: {wordDictionary.Count}");
+// Console.WriteLine("*******************");
+// Console.WriteLine("");
 
-    // await DictionaryWriter.WriteToFileAsync(dictionary, "./tmp/little_women.dict.txt");
+// await DictionaryWriter.WriteToFileAsync(wordDictionary.Values, "./tmp/little_women.dict.txt");
+
+// Trie wordTrie = TextParser.GetWordTrie("./tmp/little_women.txt");
+
+// Console.WriteLine("");
+// Console.WriteLine("*******************");
+// Console.WriteLine("======Checking Words=========");
+// // Console.WriteLine($"Dictionary size: {dictionary.Count}");
+// new List<string>(){ "absurd", "absurdities", "absurditiessdfcfasdc" }
+// // should be true, true, false
+//   .ForEach((word) => Console.WriteLine(wordTrie.Contains(word)));
+// Console.WriteLine("*******************");
+// Console.WriteLine(wordTrie.Links.Count);
+// Console.WriteLine("*******************");
+// Console.WriteLine("");
+
+// // await DictionaryWriter.WriteToFileAsync(wordTrie.Values.ToList(), "./tmp/little_women.dict.txt");
 
 
 
