@@ -57,7 +57,7 @@ namespace DesignPatterns.Iterator
 // // should be true, true, false
 //   .ForEach((word) => Console.WriteLine(wordTrie.Contains(word)));
 // Console.WriteLine("*******************");
-// Console.WriteLine(wordTrie.Links.Count);
+// Console.WriteLine(wordTrie.Count);
 // Console.WriteLine("*******************");
 // Console.WriteLine("");
 
