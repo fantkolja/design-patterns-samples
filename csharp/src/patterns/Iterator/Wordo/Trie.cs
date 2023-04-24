@@ -99,11 +99,11 @@ namespace DesignPatterns.Iterator
 // controlWords.ForEach((word) => Console.WriteLine(wordTrie.Contains(word)));
 
 // Console.WriteLine("*******************");
-// Console.WriteLine($"WordTrie size: {wordTrie.Count}");
+// // Console.WriteLine($"WordTrie size: {wordTrie.Count}");
 // Console.WriteLine("*******************");
 // Console.WriteLine("");
 
-// await DictionaryWriter.WriteToFileAsync(wordTrie.ToWordList(), "./tmp/little_women.trie.txt");
+// // await DictionaryWriter.WriteToFileAsync(wordTrie.ToWordList(), "./tmp/little_women.trie.txt");
 
 
 
