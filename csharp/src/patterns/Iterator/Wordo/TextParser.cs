@@ -89,7 +89,7 @@ namespace DesignPatterns.Iterator
     {
       using(StreamReader file = new StreamReader(src))
       {
-        Trie dictionary = new Trie('\0');
+        Trie dictionary = new Trie('\n');
         string? line = null;
         while((line = file.ReadLine()) != null)
         {
