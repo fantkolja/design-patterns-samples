@@ -38,3 +38,42 @@ namespace DesignPatterns.Iterator
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // @todo: replace with IEnumerable 
+    // public async IAsyncEnumerable<string> GetProps()
+    // {
+    //   yield return this.A;
+    //   yield return this.B;
+    //   await Task.Delay(3000);
+    //   yield return this.C;
+    //   yield return this.F;
+    //   yield return this.Fak;
+    //   yield return this.X;
+    // }
