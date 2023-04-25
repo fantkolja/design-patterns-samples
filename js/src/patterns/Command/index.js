@@ -13,7 +13,26 @@ function pollUser() {
   }, 1000);
 }
 
+const requestQueue = [];
 
+function request(...args) {
+  if (navigator.onLine) {
+    return fetch(...args);
+  } else {
+    return new Promise((res) => {
+      requestQueue.push(() => res(fetch(...args)));
+    });
+  }
+}
+
+function addOnlineEventListener() {
+  window.addEventListener('online', () => {
+    for (let i = 0, n = requestQueue.length; i < n; i++) {
+      const fn = requestQueue.shift();
+      fn();
+    }
+  });
+}
 
 function main() {
   addOnlineEventListener();
@@ -21,35 +40,3 @@ function main() {
 }
 
 main();
-
-
-
-
-
-
-
-
-
-
-
-
-// const requestQueue = [];
-
-// function request(...args) {
-//   if (navigator.onLine) {
-//     return fetch(...args);
-//   } else {
-//     return new Promise((res) => {
-//       requestQueue.push(() => res(fetch(...args)));
-//     });
-//   }
-// }
-
-// function addOnlineEventListener() {
-//   window.addEventListener('online', () => {
-//     for (let i = 0, n = requestQueue.length; i < n; i++) {
-//       const fn = requestQueue.shift();
-//       fn();
-//     }
-//   });
-// }
