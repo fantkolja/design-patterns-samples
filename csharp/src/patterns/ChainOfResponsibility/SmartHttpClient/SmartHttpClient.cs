@@ -1,6 +1,6 @@
 using System.Web;
 
-namespace DesignPatterns.CoR
+namespace DesignPatterns.ChainOfResponsibility
 {
   class SmartHttpClient
   {
@@ -38,7 +38,7 @@ namespace DesignPatterns.CoR
 
 
 
-// using DesignPatterns.CoR;
+// using DesignPatterns.ChainOfResponsibility;
 
 // var client = new SmartHttpClient();
 // var wrongUser = new User(User.Role.User);
@@ -107,7 +107,7 @@ namespace DesignPatterns.CoR
 
 // using System.Web;
 
-// namespace DesignPatterns.CoR
+// namespace DesignPatterns.ChainOfResponsibility
 // {
 //   interface IHttpClientInterceptor
 //   {

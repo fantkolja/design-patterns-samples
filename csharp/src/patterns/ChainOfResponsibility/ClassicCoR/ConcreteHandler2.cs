@@ -1,4 +1,4 @@
-namespace DesignPatterns.CoR
+namespace DesignPatterns.ChainOfResponsibility
 {
   class ConcreteHandler2 : BaseHandler
   {

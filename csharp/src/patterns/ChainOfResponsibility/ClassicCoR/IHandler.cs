@@ -1,4 +1,4 @@
-namespace DesignPatterns.CoR
+namespace DesignPatterns.ChainOfResponsibility
 {
   interface IHandler
   {
@@ -22,7 +22,7 @@ namespace DesignPatterns.CoR
 
 
 
-// using DesignPatterns.CoR;
+// using DesignPatterns.ChainOfResponsibility;
 
 // var handler1 = new ConcreteHandler1();
 // var handler2 = new ConcreteHandler2();
