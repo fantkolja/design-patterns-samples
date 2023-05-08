@@ -1,11 +1,11 @@
 namespace DesignPatterns.Memento
 {
   // can be empty at all
-  interface IClassicMemento
-  {
-    public Guid Id { get; }
-    public DateTime Date { get; }
-  }
+  // interface IClassicMemento
+  // {
+  //   public Guid Id { get; }
+  //   public DateTime Date { get; }
+  // }
 
 
 
@@ -19,10 +19,10 @@ namespace DesignPatterns.Memento
 
 
   // Version #2: Strict Encapsulation
-  // interface IClassicMemento
-  // {
-  //   public Guid Id { get; }
-  //   public DateTime Date { get; }
-  //   public void Restore();
-  // }
+  interface IClassicMemento
+  {
+    public Guid Id { get; }
+    public DateTime Date { get; }
+    public void Restore();
+  }
 }
