@@ -1,6 +1,6 @@
 namespace DesignPatterns.Memento
 {
-  // // can be empty at all
+  // can be empty at all
   interface IClassicMemento
   {
     Guid Id { get; }
@@ -27,7 +27,7 @@ namespace DesignPatterns.Memento
 
 
 
-  // Version #2: Strcit Encapsulation
+  // Version #2: Strict Encapsulation
   // interface IClassicMemento
   // {
   //   Guid Id { get; }

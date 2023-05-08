@@ -1,6 +1,6 @@
 namespace DesignPatterns.Memento
 {
-  class ClassicConcreteMemento : IClassicMemento
+  class ClassicMemento : IClassicMemento
   {
     // immutable as the rule
     private int _state;
@@ -8,7 +8,7 @@ namespace DesignPatterns.Memento
     public Guid Id { get; } = Guid.NewGuid();
     public DateTime Date { get; } = DateTime.Now;
 
-    public ClassicConcreteMemento(int state)
+    public ClassicMemento(int state)
     {
       this._state = state;
     }
@@ -49,7 +49,7 @@ namespace DesignPatterns.Memento
 // Version #2: Strict Encapsulation
 // namespace DesignPatterns.Memento
 // {
-//   class ClassicConcreteMemento : IClassicMemento
+//   class ClassicMemento : IClassicMemento
 //   {
 //     // immutable as the rule
 //     private int _state;
@@ -58,7 +58,7 @@ namespace DesignPatterns.Memento
 //     public Guid Id { get; } = Guid.NewGuid();
 //     public DateTime Date { get; } = DateTime.Now;
 
-//     public ClassicConcreteMemento(ClassicOriginator originator, int state)
+//     public ClassicMemento(ClassicOriginator originator, int state)
 //     {
 //       this._originator = originator;
 //       this._state = state;

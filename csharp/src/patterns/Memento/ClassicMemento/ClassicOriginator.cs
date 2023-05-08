@@ -27,16 +27,16 @@ namespace DesignPatterns.Memento
 
     public IClassicMemento Save()
     {
-      return new ClassicConcreteMemento(this._state);
+      return new ClassicMemento(this._state);
     }
 
     public void Restore(IClassicMemento snapshot)
     {
-      if (snapshot is ClassicConcreteMemento) {
-        var memento = (ClassicConcreteMemento)snapshot;
+      if (snapshot is ClassicMemento) {
+        var memento = (ClassicMemento)snapshot;
         this._state = memento.GetState();
       } else {
-        throw new ArgumentException("The snapshot is not of type ClassicConcreteMemento");
+        throw new ArgumentException("The snapshot is not of type ClassicMemento");
       }
     }
   }
@@ -93,16 +93,16 @@ namespace DesignPatterns.Memento
 
 //     public IClassicMemento Save()
 //     {
-//       return new ClassicConcreteMemento(this, this._state);
+//       return new ClassicMemento(this, this._state);
 //     }
 
 //     public void Restore(IClassicMemento snapshot)
 //     {
-//       if (snapshot is ClassicConcreteMemento) {
-//         var memento = (ClassicConcreteMemento)snapshot;
+//       if (snapshot is ClassicMemento) {
+//         var memento = (ClassicMemento)snapshot;
 //         this._state = memento.GetState();
 //       } else {
-//         throw new ArgumentException("The snapshot is not of type ClassicConcreteMemento");
+//         throw new ArgumentException("The snapshot is not of type ClassicMemento");
 //       }
 //     }
 //   }
