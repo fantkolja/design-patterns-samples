@@ -60,8 +60,29 @@ namespace DesignPatterns.Memento
   }
 }
 
+// using DesignPatterns.Memento;
+
+// var myAccount = new BankAccount(100, "UAH");
+
+// myAccount.Deposit(100);
+// myAccount.Deposit(200);
+// myAccount.Deposit(-30);
+// myAccount.ChangeCurrency("USD");
+// myAccount.Deposit(20);
+
+// Console.WriteLine($"Current account: {myAccount}");
+
+// myAccount.Restore(3);
+// Console.WriteLine($"Restored account: {myAccount}");
+
+
+// Problems:
+// #1 Breaks SRP
+// #2 Stores big instances of itself 
+
 // Possible improvements: 
-//  - decouple History-related logic
+// - decouple History-related logic
+// - ?
 
 
 
@@ -75,55 +96,3 @@ namespace DesignPatterns.Memento
 
 
 
-// Attempt #2: with decoupled logic
-// namespace DesignPatterns.Memento
-// {
-//   class BankAccount
-//   {
-//     private BankAccountHistory _history = new BankAccountHistory();
-//     private double _amount;
-
-//     public Account(double initialAmount)
-//     {
-//       this._amount = initialAmount;
-//       this._history.Save(initialAmount);
-//     }
-
-//     public double Deposit(double amountChange)
-//     {
-//       if (amountChange == 0)
-//       {
-//         throw new ArgumentException("Transactions with 0 sum are not allowed!");
-//       }
-//       this._amount += amountChange;
-//       this._history.Save(this._amount);
-//       if (amountChange > 0) {
-//         Console.WriteLine($"Deposited {amountChange}$; balance is now {this._amount}$");  
-//       } else {
-//         Console.WriteLine($"Withdrew {amountChange * -1}$; balance is now {this._amount}$");
-//       }
-//       return this._amount;
-//     }
-
-//     public void Restore(int index)
-//     {
-//       var prevAmount = this._history.Restore(index);
-//       this._amount = prevAmount;
-//     }
-//   }
-
-//   class BankAccountHistory
-//   {
-//     private List<double> _history = new List<double>();
-//     public double Save(double currentAmount)
-//     {
-//       this._history.Add(currentAmount);
-//       return this._history.Count - 1;
-//     }
-//     public double Restore(double index)
-//     {
-//       return this._history[index];
-//     }
-//     // Problem #1: state is exposed to another class "BankAccountHistory"
-//   }
-// }
