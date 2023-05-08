@@ -8,15 +8,6 @@ namespace DesignPatterns.Memento
   }
 
 
-  // can be a class
-  // but without a constructor because cannot be public
-  // class ClassicMemento
-  // {
-  //   public Guid Id { get; } = Guid.NewGuid();
-  //   public DateTime Date { get; } = DateTime.Now;
-  // }
-
-
 
 
 
