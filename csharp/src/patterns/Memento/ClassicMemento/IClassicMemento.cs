@@ -3,17 +3,17 @@ namespace DesignPatterns.Memento
   // can be empty at all
   interface IClassicMemento
   {
-    Guid Id { get; }
-    DateTime Date { get; }
+    public Guid Id { get; }
+    public DateTime Date { get; }
   }
 
 
   // can be a class
-  // but withput a constructor because cannot be public
+  // but without a constructor because cannot be public
   // class ClassicMemento
   // {
-  //   Guid Id { get; } = Guid.NewGuid();
-  //   DateTime Date { get; } = DateTime.Now;
+  //   public Guid Id { get; } = Guid.NewGuid();
+  //   public DateTime Date { get; } = DateTime.Now;
   // }
 
 
@@ -30,8 +30,8 @@ namespace DesignPatterns.Memento
   // Version #2: Strict Encapsulation
   // interface IClassicMemento
   // {
-  //   Guid Id { get; }
-  //   DateTime Date { get; }
-  //   void Restore();
+  //   public Guid Id { get; }
+  //   public DateTime Date { get; }
+  //   public void Restore();
   // }
 }
