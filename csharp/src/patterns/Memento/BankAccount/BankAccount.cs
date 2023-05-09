@@ -15,6 +15,7 @@ namespace DesignPatterns.Memento
       this._amount = initialAmount;
       this._currency = currency;
       this._history.Add((BankAccount)this.MemberwiseClone());
+      Console.WriteLine($"Account created with initial amount {initialAmount}{currency}");
     }
 
     public double Deposit(double amountChange)
@@ -48,6 +49,7 @@ namespace DesignPatterns.Memento
     public void Restore(int index)
     {
       BankAccount snapshot = this._history[index];
+      this._history.RemoveRange(index, this._history.Count - index);
       this._amount = snapshot._amount;
       this._currency = snapshot._currency;
     }
