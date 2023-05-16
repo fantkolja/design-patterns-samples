@@ -35,8 +35,10 @@ namespace DesignPatterns.State
       {
         var possibleStates = PhoneStateMachine._rules[this._currentState];
 
+        Console.WriteLine("");
         Console.WriteLine($"The phone is now {this._currentState}");
         Console.WriteLine("Select next trigger");
+        Console.WriteLine("");
 
         for(var i = 0; i < possibleStates.Count; i++)
         {
@@ -53,3 +55,9 @@ namespace DesignPatterns.State
     }
   }
 }
+
+
+
+// using DesignPatterns.State;
+
+// new PhoneStateMachine();
