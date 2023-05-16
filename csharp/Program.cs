@@ -1,17 +1,11 @@
-﻿using DesignPatterns.Memento;
+﻿using DesignPatterns.State;
 
-var myAccount = new BankAccount("Mykola", 100, "UAH");
+var switcher = new LightSwitcher();
 
-myAccount.Deposit(100);
-myAccount.Deposit(200);
-myAccount.Deposit(-30);
-myAccount.ChangeCurrency("USD");
-myAccount.Deposit(20);
-
-Console.WriteLine($"Current account: {myAccount}");
-
-myAccount.Restore(3);
-Console.WriteLine($"Restored account: {myAccount}");
+switcher.On();
+switcher.On();
+switcher.Off();
+switcher.Off();
 
 Console.WriteLine("");
 Console.WriteLine("Press any key to exit...");

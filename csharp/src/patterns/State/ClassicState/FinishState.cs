@@ -1,6 +1,6 @@
 namespace DesignPatterns.State
 {
-  class ConcreteClassicFinishState : IClassicState
+  class FinishState : IState
   {
     public void Initiate()
     {

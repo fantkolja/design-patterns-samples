@@ -1,8 +1,8 @@
 namespace DesignPatterns.State
 {
-  class ConcreteClassicStartState : IClassicState
+  class StartState : IState
   {
-    private ClassicContext? _context;
+    private Context? _context;
     public void Initiate()
     {
       Console.WriteLine("Starting the game");
@@ -14,11 +14,11 @@ namespace DesignPatterns.State
       if (this._context == null) {
         throw new Exception("No state context provided!");
       } else {
-        this._context.ChangeState(new ConcreteClassicFinishState());
+        this._context.ChangeState(new FinishState());
       }
     }
 
-    public void SetContext(ClassicContext ctx)
+    public void SetContext(Context ctx)
     {
       this._context = ctx;
     }
@@ -38,14 +38,14 @@ namespace DesignPatterns.State
 
 // namespace DesignPatterns.State
 // {
-//   class ConcreteClassicStartState : IClassicState
+//   class StartState : IState
 //   {
 //     public void Initiate()
 //     {
 //       Console.WriteLine("Starting the game");
 //     }
 
-//     public void End(ClassicContext ctx)
+//     public void End(Context ctx)
 //     {
 //       Console.WriteLine("Switching to the FINISH state");
 //       ctx.ChangeState(new ConcreteClassicFinishState());

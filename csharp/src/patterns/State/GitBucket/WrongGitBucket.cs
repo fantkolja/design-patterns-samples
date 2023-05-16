@@ -43,19 +43,6 @@ namespace DesignPatterns.State
 
 
 /**
-* Elevator state matrix
-* 
-* | State             | CalledFromOutside           | FloorButtonPressed          | CloseDoorsButtonPressed | OpenDoorsButtonPressed |
-* | :---:             | :---:                       | :---:                       | :---:                   | :---:                  |
-* | StayingClosed     | => StayingOpen || => Moving | => Moving || => StayingOpen | GOTO Open               | GOTO WaitingFaceRecord |
-* | StayingOpen       | noop || =>                  | n/a                         | n/a                     | n/a                    |
-* | Moving            | n/a                         | n/a                         | n/a                     | n/a                    |
-* | Emergency         | n/a                         | n/a                         | n/a                     | n/a                    |
-*
-*/
-
-
-/**
 * GymTerminal state matrix
 * 
 * | State   \   Event | BraceletIdentified          | BraceletRejected            | FaceIdentified          | FaceRejected           |
@@ -67,30 +54,107 @@ namespace DesignPatterns.State
 */
 
 
-  // class Elevator
-  // {
-  //   public enum State
-  //   {
-  //     MovingUp,
-  //     MovingDown,
-  //     Standing,
-  //   }
-  //   public State CurrentState { get; set; } = State.Standing;
-  //   public int CurrentFloor { get; set; } = 1;
-  //   public int CurrentDestination { get; set; } = 1;
 
-  //   public void OnUpButtonPress(int floor)
-  //   {
-  //     if (this.CurrentState == State.MovingUp)
-  //     {
-  //       if (floor > this.CurrentFloor && floor < this.CurrentDestination) 
-  //       {
-  //         Console.WriteLine($"Stop on floor {floor} then on {this.CurrentDestination}");
-  //       }
-  //     }
-  //   }
-  //   public void OnDownButtonPress(int floor)
-  //   {
-      
-  //   }
-  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// namespace DesignPatterns.State
+// {
+//   class WrongPullRequest
+//   {
+//     public IGitBucketState State { get; set; } = new OpenGitBucketState();
+
+//     public void OnCreated()
+//     {
+//       this.State.OnCreated();
+//     }
+
+//     public void OnSubmit()
+//     {
+//       this.State.OnSubmit();
+//     }
+
+//     public void OnDecline()
+//     {
+//       this.State.OnDecline();
+//     }
+//   }
+
+//   class OpenGitBucketState : IGitBucketState
+//   {
+//     public void OnCreated()
+//     {
+//       throw new NotImplementedException();
+//     }
+
+//     public void OnDecline()
+//     {
+//       throw new NotImplementedException();
+//     }
+
+//     public void OnSubmit()
+//     {
+//       throw new NotImplementedException();
+//     }
+//   }
+
+//   class DraftGitBucketState : IGitBucketState
+//   {
+//     public void OnCreated()
+//     {
+//       throw new NotImplementedException();
+//     }
+
+//     public void OnDecline()
+//     {
+//       throw new NotImplementedException();
+//     }
+
+//     public void OnSubmit()
+//     {
+//       throw new NotImplementedException();
+//     }
+//   }
+//   class DeclineGitBucketState : IGitBucketState
+//   {
+//     public void OnCreated()
+//     {
+//       throw new NotImplementedException();
+//     }
+
+//     public void OnDecline()
+//     {
+//       // no-op
+//     }
+
+//     public void OnSubmit()
+//     {
+//       throw new NotImplementedException();
+//     }
+//   }
+// }

@@ -1,6 +1,6 @@
 namespace DesignPatterns.State
 {
-  interface IClassicState
+  interface IState
   {
     void Initiate();
     void End();
@@ -14,7 +14,7 @@ namespace DesignPatterns.State
 // Version #2 with Context passed as an arg
 // namespace DesignPatterns.State
 // {
-//   interface IClassicState
+//   interface IState
 //   {
 //     void Initiate();
 //     void End(ClassicContext ctx);

@@ -1,10 +1,10 @@
 namespace DesignPatterns.State
 {
-  class ClassicContext : IClassicState
+  class Context : IState
   {
-    private IClassicState _state;
+    private IState _state;
 
-    public void ChangeState(IClassicState state)
+    public void ChangeState(IState state)
     {
       this._state = state;
     }
@@ -19,7 +19,7 @@ namespace DesignPatterns.State
       this._state.End();
     }
 
-    public ClassicContext(IClassicState initialState)
+    public Context(IState initialState)
     {
       this._state = initialState;
     }
@@ -29,8 +29,8 @@ namespace DesignPatterns.State
 
 // using DesignPatterns.State;
 
-// var initialState = new ConcreteClassicStartState();
-// ClassicContext ctx = new(initialState);
+// var initialState = new StartState();
+// var ctx = new Context(initialState);
 // initialState.SetContext(ctx);
 
 // ctx.Initiate();

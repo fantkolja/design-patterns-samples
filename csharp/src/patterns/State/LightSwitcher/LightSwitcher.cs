@@ -11,7 +11,7 @@ namespace DesignPatterns.State
 {
   class LightSwitcher
   {
-    public ILightSwitcherState State;
+    public ILightSwitcherState State { get; set; }
 
     public LightSwitcher()
     {
