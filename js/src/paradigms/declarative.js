@@ -3,27 +3,28 @@
  * a new array after doubling each item
  */
 
-Array.prototype.customMap = function customMapHandler(cb) {
-  const results = [];
-  for (let i = 0, n = this.length; i < n; i++) {
-    results.push(cb(this[i], i, this));
-  }
-  return results;
-};
-
-Array.prototype.customMap = function customMapHandler(cb) {
-  const results = [];
-  for (let i = 0, n = this.length; i < n; i++) {
-    results.push(cb(this[i], i, this));
-  }
-  return results;
-};
-
-
-const double = (arr) => arr.customMap(item => item * 2);
+const double = (arr) => arr.map(item => item * 2);
 
 console.log(double([1, 2, 3]));
 console.log(double([22, 44, 11]));
+
+
+
+/**
+ * Reimplement Array.prototype.map
+ * to show relation between imperative and declarative programming
+ */
+
+Array.prototype.customMap = function customMapHandler(cb) {
+  const results = [];
+  for (let i = 0, n = this.length; i < n; i++) {
+    results.push(cb(this[i], i, this));
+  }
+  return results;
+};
+
+
+const customDouble = (arr) => arr.customMap(item => item * 2);
 
 /**
  * Function `sum` takes number array and returns
@@ -40,12 +41,5 @@ console.log(sum([22, 44, 11]));
  * "highlight" class and the text from "Add highlight" to "Remove highlight"
  */
 
-function addHighlightListener(el) {
-  el.addEventListener('click', () => {
-    el.classList.toggle('highlight');
-    el.innerText === 'Add highlight' ? 
-      el.innerText = 'Remove highlight' :
-      el.innerText = 'Add highlight';
-  });
-}
+// [React](https://legacy.reactjs.org/docs/handling-events.html)
 
