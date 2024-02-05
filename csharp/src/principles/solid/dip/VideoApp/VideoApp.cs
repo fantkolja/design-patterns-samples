@@ -1,42 +1,42 @@
 // Attempt #1
 
-// namespace ProgrammingPrinciples.SOLID
-// {
-//   class YouTubeAPI
-//   {
-//     public bool Open(string url)
-//     {
-//       return true;
-//     }
+namespace ProgrammingPrinciples.SOLID
+{
+  class YouTubeAPI
+  {
+    public bool Open(string url)
+    {
+      return true;
+    }
 
-//     public bool Upload(string buffer)
-//     {
-//       return true;
-//     }
-//   }
+    public bool Upload(string buffer)
+    {
+      return true;
+    }
+  }
 
-//   class VideoApp
-//   {
-//     private YouTubeAPI _api;
+  class VideoApp
+  {
+    private YouTubeAPI _api;
 
-//     public VideoApp()
-//     {
-//       this._api = new YouTubeAPI();
-//     }
+    public VideoApp()
+    {
+      this._api = new YouTubeAPI();
+    }
 
-//     public bool PlayVideo(string id)
-//     {
-//       this._api.Open(id);
-//       return true;
-//     }
+    public bool PlayVideo(string id)
+    {
+      this._api.Open(id);
+      return true;
+    }
 
-//     public bool AddVideo(string buffer)
-//     {
-//       this._api.Upload(buffer);
-//       return true;
-//     }
-//   }
-// }
+    public bool AddVideo(string buffer)
+    {
+      this._api.Upload(buffer);
+      return true;
+    }
+  }
+}
 
 // New Requirement: add MegogoService
   // class MegogoAPI
@@ -112,3 +112,7 @@
 //     }
 //   }
 // }
+
+
+// Attempt #3
+// @todo: create a common interface or an adapter class for both APIs
