@@ -1,42 +1,42 @@
 // Attempt #1
 
-namespace ProgrammingPrinciples.SOLID
-{
-  class YouTubeAPI
-  {
-    public bool Open(string url)
-    {
-      return true;
-    }
+// namespace ProgrammingPrinciples.SOLID
+// {
+//   class YouTubeAPI
+//   {
+//     public bool Open(string url)
+//     {
+//       return true;
+//     }
 
-    public bool Upload(string buffer)
-    {
-      return true;
-    }
-  }
+//     public bool Upload(string buffer)
+//     {
+//       return true;
+//     }
+//   }
 
-  class VideoApp
-  {
-    private YouTubeAPI _api;
+//   class VideoApp
+//   {
+//     private YouTubeAPI _api;
 
-    public VideoApp()
-    {
-      this._api = new YouTubeAPI();
-    }
+//     public VideoApp()
+//     {
+//       this._api = new YouTubeAPI();
+//     }
 
-    public bool PlayVideo(string id)
-    {
-      this._api.Open(id);
-      return true;
-    }
+//     public bool PlayVideo(string id)
+//     {
+//       this._api.Open(id);
+//       return true;
+//     }
 
-    public bool AddVideo(string buffer)
-    {
-      this._api.Upload(buffer);
-      return true;
-    }
-  }
-}
+//     public bool AddVideo(string buffer)
+//     {
+//       this._api.Upload(buffer);
+//       return true;
+//     }
+//   }
+// }
 
 // New Requirement: add MegogoService
   // class MegogoAPI
@@ -92,7 +92,6 @@ namespace ProgrammingPrinciples.SOLID
 
 //   class VideoApp
 //   {
-//     private Dictionary<string, string> _videos = new Dictionary<string, string>();
 //     private YouTubeAPI _api;
 
 //     public VideoApp(YouTubeAPI api)
@@ -113,6 +112,3 @@ namespace ProgrammingPrinciples.SOLID
 //     }
 //   }
 // }
-
-// 1 stage => create a common interface
-// 2 stage => create a VideoClient
