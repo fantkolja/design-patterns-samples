@@ -11,7 +11,7 @@ namespace DesignPatterns.FactoryMethod
 
     public string GetName()
     {
-      return $"This is model {this._model}";
+      return $"This is Product B with the model {this._model}";
     }
   }
 }
