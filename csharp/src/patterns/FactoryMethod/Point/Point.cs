@@ -41,13 +41,8 @@ namespace DesignPatterns.FactoryMethod
 
 
 
-
-
-
-
-
-
-//Attempt 2 with overload and type
+// Attempt 2 with type and if
+// ANTI-SAMPLE!!!
 
 // namespace DesignPatterns.FactoryMethod
 // {
@@ -61,21 +56,24 @@ namespace DesignPatterns.FactoryMethod
 
 //     private double _x;
 //     private double _y;
-//     private CoordinatesSystem _type;
 
 
-//     public Point(double x, double y)
+//     public Point(double x, double y, CoordinatesSystem type)
 //     {
-//       this._x = x;
-//       this._y = y;
-//       this._type = CoordinatesSystem.Cartesian;
-//     }
-
-//     public Point(double rho, double theta, CoordinatesSystem type)
-//     {
-//       this._x = rho * Math.Sin(theta);
-//       this._y = rho * Math.Sin(theta);
-//       this._type = type;
+//       if (type == CoordinatesSystem.Cartesian)
+//       {
+//         this._x = x;
+//         this._y = y;
+//       }
+//       else
+//       {
+//         // in this case `x` and `y` mean something different => `rho` and `theta`
+//         // it looks weird
+//         double rho = x;
+//         double theta = y;
+//         this._x = rho * Math.Cos(theta);
+//         this._y = rho * Math.Sin(theta);
+//       }
 //     }
 //   }
 // }
@@ -83,6 +81,41 @@ namespace DesignPatterns.FactoryMethod
 
 
 
+
+
+
+
+
+// Attempt 3 with constructor overload
+// ANTI-SAMPLE!!!
+
+// namespace DesignPatterns.FactoryMethod
+// {
+//   class Point
+//   {
+//     public enum CoordinatesSystem
+//     {
+//       Cartesian,
+//       Polar,
+//     }
+
+//     private double _x;
+//     private double _y;
+
+
+//     public Point(double x, double y, CoordinatesSystem type)
+//     {
+//       this._x = x;
+//       this._y = y;
+//     }
+
+//     public Point(double rho, double theta, CoordinatesSystem type)
+//     {
+//       this._x = rho * Math.Cos(theta);
+//       this._y = rho * Math.Sin(theta);
+//     }
+//   }
+// }
 
 
 
@@ -99,6 +132,8 @@ namespace DesignPatterns.FactoryMethod
 //     private double _x;
 //     private double _y;
 
+//     // constructor can be private to descrease usage complexity
+//     // calling the variables `a` and `b` to make them polysemic
 //     private Point(double a, double b)
 //     {
 //       this._x = a;
@@ -114,14 +149,33 @@ namespace DesignPatterns.FactoryMethod
 //       return new Point(rho * Math.Cos(theta), rho * Math.Sin(theta));
 //     }
 
-//     public static Point operator + (Point p1, Point p2)
+
+
+
+
+//     // we can still use private constructor internally
+//     public Point Plus(Point anotherPoint)
 //     {
-//       return new Point(p1._x + p2._x, p1._y + p2._y);
+//       return new Point(this._x + anotherPoint._x, this._y + anotherPoint._y);
 //     }
 
-//     public static Point operator - (Point p1, Point p2)
+//     public Point Minus(Point anotherPoint)
 //     {
-//       return new Point(p1._x - p2._x, p1._y - p2._y);
+//       return new Point(this._x - anotherPoint._x, this._y - anotherPoint._y);
 //     }
 //   }
 // }
+
+
+
+
+
+// using DesignPatterns.FactoryMethod;
+
+// // Point cartesianPoint = new Point(1, 2);
+// // Point polarPoint = new Point(1, 2, Point.CoordinatesSystem.Polar);
+
+// Point cartesianPoint = Point.GetCartesianPoint(1, 2);
+// Point polarPoint = Point.GetPolarPoint(1, 2);
+
+// Point newPoint = cartesianPoint.Plus(polarPoint);
