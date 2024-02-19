@@ -21,20 +21,6 @@ namespace DesignPatterns.FactoryMethod
 
 // new request randomly distribute artefacts
 
-// RandomArtefactCreator creator = new();
-// const int N = 100;
-// IArtefact[] artefactPool = new IArtefact[N];
-
-// for(int i = 0; i < N; i++)
-// {
-//   artefactPool.SetValue(creator.CreateArtefact(HeroType.Mage), i);
-// }
-
-// IArtefact[] swords = artefactPool.Where(artefact => artefact.GetType() == typeof(Sword)).ToArray();
-// IArtefact[] gloves = artefactPool.Where(artefact => artefact.GetType() == typeof(Gloves)).ToArray();
-// IArtefact[] rings = artefactPool.Where(artefact => artefact.GetType() == typeof(Ring)).ToArray();
-
-// Console.WriteLine($"Swords count: {swords.Length};\nGloves count: {gloves.Length};\nRings count: {rings.Length};\n");
 
 
 
@@ -114,3 +100,6 @@ namespace DesignPatterns.FactoryMethod
 //   }
 // }
 
+
+
+// @TODO: add samples with hierarchies: CartesianPoint => CartesianPointCreator
