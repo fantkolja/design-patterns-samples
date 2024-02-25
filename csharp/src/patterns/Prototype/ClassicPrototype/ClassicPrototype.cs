@@ -28,7 +28,7 @@ namespace DesignPatterns.Prototype
 
     public override string ToString()
     {
-      return $"[ConcretePrototype] with a name {_name}";
+      return $"[{this.GetType().Name}] with a name \"{_name}\"";
     }
   }
 
@@ -42,12 +42,17 @@ namespace DesignPatterns.Prototype
 
     public SubclassPrototype(SubclassPrototype prototype) : base(prototype)
     {
-      this._age = this._age = prototype._age;
+      this._age = prototype._age;
     }
 
     public override IClassicPrototype Clone()
     {
       return new SubclassPrototype(this);
+    }
+
+    public int SetAge(int age)
+    {
+      return this._age = age;
     }
 
     public override string ToString()
@@ -57,33 +62,21 @@ namespace DesignPatterns.Prototype
   }
 }
 
+// using DesignPatterns.Prototype;
 
+// IClassicPrototype original = new ConcretePrototype("original");
+// var copy = (ConcretePrototype) original.Clone();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ConcretePrototype original = new("original");
-// ConcretePrototype copy = (ConcretePrototype) original.Clone();
-
-// SubclassPrototype originalSub = new("originalSub", 23);
-// SubclassPrototype copySub = (SubclassPrototype) originalSub.Clone();
+// IClassicPrototype originalSub = new SubclassPrototype("originalSub", 23);
+// var copySub = (SubclassPrototype) originalSub.Clone();
 
 // copy.SetName("copy");
 // copySub.SetName("copySub");
+// copySub.SetAge(21);
 
 // Console.WriteLine(original);
 // Console.WriteLine(copy);
+// Console.WriteLine();
 
 // Console.WriteLine(originalSub);
 // Console.WriteLine(copySub);

@@ -25,7 +25,7 @@ namespace DesignPatterns.Prototype
 
 // using DesignPatterns.Prototype;
 
-// var photo = new Photo("https://sdcsdc");
+// var photo = new Photo("https://cool-photo");
 // var idCard = new IDCard(photo);
 // var mykola = new Person(new[] { "Mykola", "Fant" }, idCard);
 
