@@ -34,8 +34,8 @@ namespace ProgrammingPrinciples.KISS
 
     public class Player
     {
-      public bool IsOnline;
-      public string? CurrentGame;
+      public bool IsOnline = false;
+      public string? CurrentGame = null;
 
       public List<string> PendingInvitations = new List<string>();
     }

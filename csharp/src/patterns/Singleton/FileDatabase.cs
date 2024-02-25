@@ -1,8 +1,9 @@
 namespace DesignPatterns.Singleton
 {
-  class FileDatabase
+  sealed class FileDatabase
   {
     private static FileDatabase? _instance;
+    private static object _lockObj = new object();
 
     private FileDatabase()
     {
@@ -12,7 +13,12 @@ namespace DesignPatterns.Singleton
     public static FileDatabase GetInstance()
     {
       if (_instance == null) {
-        _instance = new FileDatabase();
+        lock(FileDatabase._lockObj)
+        {
+          if (_instance == null) {
+            _instance = new FileDatabase();
+          }
+        }
       }
       return _instance;
     }
