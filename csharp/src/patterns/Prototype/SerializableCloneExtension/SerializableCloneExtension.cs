@@ -17,7 +17,7 @@ namespace DesignPatterns.Prototype.ExtensionMethods
 
       if (clonedObj == null)
       {
-        throw new Exception("Could not deserialize Person");
+        throw new Exception("Could not deserialize object");
       }
       return clonedObj;
     }
