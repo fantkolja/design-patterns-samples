@@ -169,18 +169,11 @@ namespace DesignPatterns.Prototype
 //       return $"Names: {String.Join(", ", Names)};\nID: {this.IDCard.ID};\nPhoto: {this.IDCard.Photo.Url}\n";
 //     }
 
-//     private void _copyNames(Person prototype)
-//     {
-//       string[] names = new string[prototype.Names.Length];
-//       prototype.Names.CopyTo(names, 0);
-//       prototype.Names = names;
-//     }
-
 //     public object Clone()
 //     {
 //       Person other = (Person) this.MemberwiseClone();
-//       other.IDCard = (IDCard) other.IDCard.Clone();
-//       this._copyNames(other);
+//       other.IDCard = (IDCard) this.IDCard.Clone();
+//       other.Names = (string[]) this.Names.Clone();
 //       return other;
 //     }
 //   }
