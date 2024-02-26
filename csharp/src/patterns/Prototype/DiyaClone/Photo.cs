@@ -33,10 +33,6 @@ namespace DesignPatterns.Prototype
 //   {
 //     public string Url { get; private set; }
 
-//     private Photo(Photo prototype)
-//     {
-//       this.Url = prototype.Url;
-//     }
 //     public Photo(string url)
 //     {
 //       this.Url = url;

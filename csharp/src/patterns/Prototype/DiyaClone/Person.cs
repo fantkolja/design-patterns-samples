@@ -3,7 +3,7 @@
 
 namespace DesignPatterns.Prototype
 {
-  class Person
+  class Person : IClassicPrototype
   {
     public string[] Names { get; private set; }
     public IDCard IDCard { get; private set; }
@@ -14,9 +14,20 @@ namespace DesignPatterns.Prototype
       this.IDCard = idCard;
     }
 
+    public Person(Person prototype)
+    {
+      this.Names = prototype.Names;
+      this.IDCard = prototype.IDCard;
+    }
+
     public override string ToString()
     {
-      return $"Names: {String.Join(", ", Names)};\nID: {this.IDCard.ID};\nPhoto: {this.IDCard.Photo.Url}";
+      return $"Names: {String.Join(", ", Names)};\nID: {this.IDCard.ID};\nPhoto: {this.IDCard.Photo.Url}\n";
+    }
+
+    public IClassicPrototype Clone()
+    {
+      return new Person(this);
     }
   }
 }
@@ -29,6 +40,14 @@ namespace DesignPatterns.Prototype
 // var idCard = new IDCard(photo);
 // var mykola = new Person(new[] { "Mykola", "Fant" }, idCard);
 
+// Console.WriteLine(mykola);
+
+// var clonoKolya = (Person) mykola.Clone();
+// clonoKolya.Names[0] = "Kolya";
+
+// Console.WriteLine(clonoKolya);
+
+// // The copy is shallow
 // Console.WriteLine(mykola);
 
 
@@ -61,26 +80,27 @@ namespace DesignPatterns.Prototype
 //       this.IDCard = idCard;
 //     }
 
-//     private Person(Person prototype)
+//     public Person(Person prototype)
 //     {
 //       this.Names = prototype.Names;
 //       this.IDCard = prototype.IDCard;
+//     }
+
+//     public override string ToString()
+//     {
+//       return $"Names: {String.Join(", ", Names)};\nID: {this.IDCard.ID};\nPhoto: {this.IDCard.Photo.Url}\n";
 //     }
 
 //     public IClassicPrototype Clone()
 //     {
 //       return new Person(this);
 //     }
-
-//     public override string ToString()
-//     {
-//       return $"Names: {String.Join(", ", Names)};\nID: {this.IDCard.ID};\nPhoto: {this.IDCard.Photo.Url}";
-//     }
 //   }
 // }
 
 
-
+// New Requirement
+// Rewrite using C# built-in possibilities
 
 
 
@@ -100,7 +120,7 @@ namespace DesignPatterns.Prototype
 
 
 // ********************
-// VERSION 3: Shallow copy with built-in ICloneable
+// VERSION 3: Shallow copy with built-in ICloneable, MemberwiseClone
 
 // namespace DesignPatterns.Prototype
 // {
@@ -113,79 +133,27 @@ namespace DesignPatterns.Prototype
 //     {
 //       this.Names = names;
 //       this.IDCard = idCard;
-//     }
-
-//     private Person(Person prototype)
-//     {
-//       this.Names = prototype.Names;
-//       this.IDCard = prototype.IDCard;
-//     }
-
-//     public object Clone()
-//     {
-//       return new Person(this);
 //     }
 
 //     public override string ToString()
 //     {
-//       return $"Names: {String.Join(", ", Names)};\nID: {this.IDCard.ID};\nPhoto: {this.IDCard.Photo.Url}";
-//     }
-//   }
-// }
-
-
-
-
-
-
-
-
-
-
-
-// ********************
-// VERSION 4: Shallow copy with built-in MemberwiseClone
-
-// namespace DesignPatterns.Prototype
-// {
-//   class Person : ICloneable
-//   {
-//     public string[] Names { get; private set; }
-//     public IDCard IDCard { get; private set; }
-
-//     public Person(string[] names, IDCard idCard)
-//     {
-//       this.Names = names;
-//       this.IDCard = idCard;
+//       return $"Names: {String.Join(", ", Names)};\nID: {this.IDCard.ID};\nPhoto: {this.IDCard.Photo.Url}\n";
 //     }
 
 //     public object Clone()
 //     {
 //       return this.MemberwiseClone();
 //     }
-
-//     public override string ToString()
-//     {
-//       return $"Names: {String.Join(", ", Names)};\nID: {this.IDCard.ID};\nPhoto: {this.IDCard.Photo.Url}";
-//     }
 //   }
 // }
 
 
 
 
-
-
-
-
-
-// Version 5: Serialization
-
-// using System.Xml.Serialization;
-
+// Version 4: Deep step-wise clone
 // namespace DesignPatterns.Prototype
 // {
-//   class Person
+//   class Person : ICloneable
 //   {
 //     public string[] Names { get; private set; }
 //     public IDCard IDCard { get; private set; }
@@ -196,54 +164,25 @@ namespace DesignPatterns.Prototype
 //       this.IDCard = idCard;
 //     }
 
-//     public object Clone()
-//     {
-//       var serializer = new XmlSerializer(typeof(Person));
-//       var memoryStream = new MemoryStream();
-
-//       serializer.Serialize(memoryStream, this);
-//       memoryStream.Seek(0, SeekOrigin.Begin);
-//       Person? clonedPerson = (Person?) serializer.Deserialize(memoryStream);
-//       memoryStream.Close();
-
-//       if (clonedPerson == null) 
-//       {
-//         throw new Exception("Could not deserialize person");
-//       }
-
-//       return clonedPerson;
-//     }
-
 //     public override string ToString()
 //     {
-//       return $"Names: {String.Join(", ", Names)};\nID: {this.IDCard.ID};\nPhoto: {this.IDCard.Photo.Url}";
+//       return $"Names: {String.Join(", ", Names)};\nID: {this.IDCard.ID};\nPhoto: {this.IDCard.Photo.Url}\n";
+//     }
+
+//     private void _copyNames(Person prototype)
+//     {
+//       string[] names = new string[prototype.Names.Length];
+//       prototype.Names.CopyTo(names, 0);
+//       prototype.Names = names;
+//     }
+
+//     public object Clone()
+//     {
+//       Person other = (Person) this.MemberwiseClone();
+//       other.IDCard = (IDCard) other.IDCard.Clone();
+//       this._copyNames(other);
+//       return other;
 //     }
 //   }
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var photo = new Photo("photo-of-vasya.jpg");
-// var idCard = new IDCard(photo);
-// var vasya = new Person(new[] { "Vasyl", "Petrovych", "Petrenko" }, idCard);
-
-// var kolya = (Person) vasya.DeepClone();
-// // kolya.Names = new[] { "Mykola", "Mykolajovych", "Mykolenko" };
-// kolya.Names.SetValue("Mykola", 0);
-// kolya.Names.SetValue("Mykolajovych", 1);
-// kolya.Names.SetValue("Mykolenko", 2);
-// kolya.IDCard.ID = Guid.NewGuid();
-// kolya.IDCard.Photo.Url = "photo-of-kolya.jpg";
-
-// Console.WriteLine(vasya);
-// Console.WriteLine(kolya);
+ 
