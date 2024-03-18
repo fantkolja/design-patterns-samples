@@ -1,4 +1,5 @@
 *bin/
 csharp/obj/
 *.cache
+.idea
 design-patterns-samples.sln
