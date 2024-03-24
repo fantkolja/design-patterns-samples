@@ -33,3 +33,8 @@ namespace DesignPatterns.Flyweight
     }
   }
 }
+
+
+// using DesignPatterns.Flyweight;
+
+// new DocumentParser();
