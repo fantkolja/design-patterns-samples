@@ -30,25 +30,54 @@ namespace DesignPatterns.Adapter
 
 
 
+// using DesignPatterns.Adapter;
+
+// var smallShape = new Cylinder(5);
+// var bigShape = new Cylinder(8);
+// var hole = new RoundHole(6);
+
+// Console.WriteLine(hole.Fits(smallShape));
+// Console.WriteLine(hole.Fits(bigShape));
+
 
 
 
 // Feature Request: support Cuboids
 
-  // class Cuboid
-  // {
-  //   public double Width { get; }
-  //   public Cuboid(double width)
-  //   {
-  //     this.Width = width;
-  //   }
-  // }
+namespace DesignPatterns.Adapter
+{
+  class Cuboid
+  {
+    public double Width { get; }
+    public Cuboid(double width)
+    {
+      this.Width = width;
+    }
+  }
+}
 
 
 
 
+// Attempt #1
+// use method overloading
 
+// Drawbacks:
+// 1. RoundHole knows too much about new objects
+// 2. Breaks OCP
+// 3. Complicates rollback in case a new object is removed in the future
 
+// namespace DesignPatterns.Adapter
+// {
+//   class RoundHole
+//   {
+//     // ...
+//     public bool Fits(Cuboid shape)
+//     {
+//       return shape.Width * Math.Sqrt(2) / 2 <= this._radius;
+//     }
+//   }
+// }
 
 
 
@@ -67,15 +96,6 @@ namespace DesignPatterns.Adapter
 
 // namespace DesignPatterns.Adapter
 // {
-//   class Cuboid
-//   {
-//     public double Width { get; }
-//     public Cuboid(double width)
-//     {
-//       this.Width = width;
-//     }
-//   }
-
 //   class CuboidAdapter : Cylinder
 //   {
 //     private Cuboid _cuboid;
