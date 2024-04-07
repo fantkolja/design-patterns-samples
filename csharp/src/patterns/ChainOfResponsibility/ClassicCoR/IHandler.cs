@@ -2,6 +2,7 @@ namespace DesignPatterns.ChainOfResponsibility
 {
   interface IHandler
   {
+    IHandler SetNextHandler(IHandler handler);
     public void Handle(int arg);
   }
 }

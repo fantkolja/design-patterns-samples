@@ -25,3 +25,13 @@ namespace DesignPatterns.ChainOfResponsibility
     }
   }
 }
+
+// using DesignPatterns.ChainOfResponsibility;
+
+
+// var handler1 = new ConcreteHandler1();
+// var handler2 = new ConcreteHandler2();
+
+// handler1.SetNextHandler(handler2);
+
+// handler2.Handle(4);
