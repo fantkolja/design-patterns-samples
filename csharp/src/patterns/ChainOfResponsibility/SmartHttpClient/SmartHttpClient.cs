@@ -109,13 +109,9 @@ namespace DesignPatterns.ChainOfResponsibility
 
 // namespace DesignPatterns.ChainOfResponsibility
 // {
-//   interface IHttpClientInterceptor
+//   abstract class HttpClientInterceptor
 //   {
-//     public string Handle(string requestUri, User user);
-//   }
-//   abstract class HttpClientInterceptor : IHttpClientInterceptor
-//   {
-//     private IHttpClientInterceptor? _next;
+//     private HttpClientInterceptor? _next;
 
 //     public HttpClientInterceptor SetNext(HttpClientInterceptor next)
 //     {
