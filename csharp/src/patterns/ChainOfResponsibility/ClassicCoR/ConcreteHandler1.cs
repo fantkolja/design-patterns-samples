@@ -10,7 +10,7 @@ namespace DesignPatterns.ChainOfResponsibility
       }
       else
       {
-        base.Handle(arg);
+        base.HandleNext(arg);
       }
     }
   }

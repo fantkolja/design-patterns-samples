@@ -13,15 +13,17 @@ namespace DesignPatterns.ChainOfResponsibility
       return next;
     }
 
-    public virtual void Handle(int arg)
+    public abstract void Handle(int arg);
+
+    protected void HandleNext(int arg)
     {
-      if (this._next != null)
+      if (this._next == null)
       {
-        this._next.Handle(arg);
+        Console.WriteLine("Default Handler Implementation");
       }
       else 
       {
-        Console.WriteLine("Default Handler Implementation");
+        this._next.Handle(arg);
       }
     }
   }
