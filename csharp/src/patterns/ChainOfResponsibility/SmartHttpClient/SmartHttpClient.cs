@@ -28,6 +28,7 @@ namespace DesignPatterns.ChainOfResponsibility
       {
         throw new AccessViolationException("Only Admins can make requests");
       }
+      
       // ...
 
       Console.WriteLine("Sending a GET request to " + uriString);
@@ -118,7 +119,7 @@ namespace DesignPatterns.ChainOfResponsibility
 //       this._next = next;
 //       return next;
 //     }
-//     public virtual string Handle(string requestUri, User user)
+//     protected string HandleNext(string requestUri, User user)
 //     {
 //       if (this._next == null)
 //       {
@@ -129,6 +130,7 @@ namespace DesignPatterns.ChainOfResponsibility
 //         return this._next.Handle(requestUri, user);
 //       }
 //     }
+//     public abstract string Handle(string requestUri, User user);
 //   }
 
 //   class EmptyStringInterceptor : HttpClientInterceptor
@@ -139,7 +141,7 @@ namespace DesignPatterns.ChainOfResponsibility
 //       {
 //         throw new ArgumentException("URL cannot be empty");
 //       }
-//       return base.Handle(requestUri, user);
+//       return base.HandleNext(requestUri, user);
 //     }
 //   }
 //   class SchemeInterceptor : HttpClientInterceptor
@@ -151,7 +153,7 @@ namespace DesignPatterns.ChainOfResponsibility
 //       {
 //         throw new ArgumentException("Only HTTPS requests are allowed");
 //       }
-//       return base.Handle(requestUri, user);
+//       return base.HandleNext(requestUri, user);
 //     }
 //   }
 //   class QueryInterceptor : HttpClientInterceptor
@@ -166,7 +168,7 @@ namespace DesignPatterns.ChainOfResponsibility
 //         uriQuery.Set("role", user.UserRole.ToString());
 //         uriString = uri.GetLeftPart(UriPartial.Path) + "?" + uriQuery;
 //       }
-//       return base.Handle(uriString, user);
+//       return base.HandleNext(uriString, user);
 //     }
 //   }
 
@@ -178,14 +180,15 @@ namespace DesignPatterns.ChainOfResponsibility
 //       {
 //         throw new AccessViolationException("Only Admins can make requests");
 //       }
-//       return base.Handle(requestUri, user);
+//       return base.HandleNext(requestUri, user);
 //     }
 //   }
 
 //   class SmartHttpClient
 //   {
 //     private HttpClient _client = new HttpClient();
-//     public Task<string> Fetch(string requestUri, User user)
+
+//     private HttpClientInterceptor _getInterceptors()
 //     {
 //       var emptyStringInterceptor = new EmptyStringInterceptor();
 //       var schemeInterceptor = new SchemeInterceptor();
@@ -197,7 +200,13 @@ namespace DesignPatterns.ChainOfResponsibility
 //         .SetNext(queryInterceptor)
 //         .SetNext(userRoleinterceptor);
 
-//       string uriString = emptyStringInterceptor.Handle(requestUri, user);
+//       return emptyStringInterceptor;
+//     }
+//     public Task<string> Fetch(string requestUri, User user)
+//     {
+//       var interceptors = _getInterceptors();
+
+//       string uriString = interceptors.Handle(requestUri, user);
    
 //       Console.WriteLine("Sending a GET request to " + uriString);
 //       return _client.GetStringAsync(uriString);
