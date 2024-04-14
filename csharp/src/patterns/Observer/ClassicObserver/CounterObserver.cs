@@ -5,8 +5,8 @@ namespace DesignPatterns.Observer
     private int _state = 0;
     public void Update(int arg)
     {
-      Console.WriteLine("counter update");
       this._state++;
+      Console.WriteLine($"counter update: {this._state}");
     }
 
     public void DisplayInfo()

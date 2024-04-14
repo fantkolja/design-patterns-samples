@@ -33,7 +33,7 @@ namespace DesignPatterns.Observer
 
 
 
-// Version 1: with Observer pattern
+// Versions 1, 2: with Observer pattern
 // namespace DesignPatterns.Observer
 // {
 //   interface Subscriber
@@ -71,7 +71,10 @@ namespace DesignPatterns.Observer
 // }
 
 
-// Version 2: with lambdas
+
+
+
+// Version 3: with lambdas
 // namespace DesignPatterns.Observer
 // {
 //   class Publisher
@@ -89,7 +92,7 @@ namespace DesignPatterns.Observer
 //     }
 //     protected void _notify()
 //     {
-//       this._subscribers.ForEach(sub => sub());
+//       this._subscribers.ForEach(subscriber => subscriber());
 //     }
 //   }
 
@@ -105,21 +108,17 @@ namespace DesignPatterns.Observer
 
 
 
-// Version 3: with built-in events 
+// Version 4: with built-in events 
 // namespace DesignPatterns.Observer
 // {
 //   class SubmitButton
 //   {
 //     public void Click()
 //     {
-//       this.Submitted.Invoke(this, EventArgs.Empty);
+//       Console.WriteLine("Submit");
+//       this.Submitted?.Invoke(this, EventArgs.Empty);
 //     }
 
-//     public event EventHandler<EventArgs> Submitted;
-
-//     public SubmitButton()
-//     {
-//       this.Submitted += (object? sender, EventArgs e) => Console.WriteLine("Submit");
-//     }
+//     public event EventHandler<EventArgs>? Submitted;
 //   }
 // }

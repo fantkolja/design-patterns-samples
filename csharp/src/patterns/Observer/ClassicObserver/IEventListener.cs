@@ -29,8 +29,5 @@ namespace DesignPatterns.Observer
 
 // subject.InvokeEvent(5);
 
-// counter.DisplayInfo();
-// cache.DisplayInfo();
-
-// use generics for ARGS
-// use events
+// counter.DisplayInfo(); // ???
+// cache.DisplayInfo(); // ???
