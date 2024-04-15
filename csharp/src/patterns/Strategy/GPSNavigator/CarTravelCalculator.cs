@@ -1,10 +1,10 @@
 namespace DesignPatterns.Strategy
 {
-  class CartravelCalculator : ITravelCalculator
+  class CarTravelCalculator : ITravelCalculator
   {
     public int GetDuration(int from, int to)
     {
-      return from + to / 2;
+      return from + to / 20;
     }
   }
 }
