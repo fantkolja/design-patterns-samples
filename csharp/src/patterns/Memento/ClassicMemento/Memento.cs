@@ -51,7 +51,7 @@ namespace DesignPatterns.Memento
 //   class Memento : IMemento
 //   {
 //     // immutable as the rule
-//     private int _state;
+//     private readonly int _state;
 //     private Originator _originator;
 
 //     public Guid Id { get; } = Guid.NewGuid();

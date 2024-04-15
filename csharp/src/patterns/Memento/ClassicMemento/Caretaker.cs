@@ -18,6 +18,7 @@ namespace DesignPatterns.Memento
     public void Undo()
     {
       var snapshot = this._snapshots.Last();
+      Console.WriteLine($"Undo {snapshot.Id}");
       this._originator.Restore(snapshot);
       this._snapshots.Remove(snapshot);
     }
@@ -129,7 +130,7 @@ namespace DesignPatterns.Memento
 
 // using DesignPatterns.Memento;
 
-// var originator = new Originator(0);
+// IOriginator originator = new Originator(0);
 // var caretaker = new Caretaker();
 
 // for(int i = 0; i < 3; i++)
