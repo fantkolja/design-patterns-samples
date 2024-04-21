@@ -1,28 +1,18 @@
 namespace DesignPatterns.Mediator
 {
-  class Runway
-  {
-    public readonly Guid Id = Guid.NewGuid();
-    public Aircraft? IsBusyWithAircraft;
-
-    public bool CheckIsActive()
+    class Runway
     {
-      bool result = false;
-      if (this.IsBusyWithAircraft != null)
-      {
-        result = this.IsBusyWithAircraft.IsTakingOff;
-      }
-      return result;
-    }
+        public bool IsAvailable { get; set; }
+        public readonly Guid Id = Guid.NewGuid();
 
-    public void HighLightRed()
-    {
-      Console.WriteLine($"Runway {this.Id} is busy!");
+        public void HighLightRed()
+        {
+            Console.WriteLine($"Now runway {this.Id} is busy!");
+        }
+        
+        public void HighLightGreen()
+        {
+            Console.WriteLine($"Now runway {this.Id} is free!");
+        }
     }
-
-    public void HighLightGreen()
-    {
-      Console.WriteLine($"Runway {this.Id} is free!");
-    }
-  }
 }
