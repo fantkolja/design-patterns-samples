@@ -4,16 +4,24 @@ namespace DesignPatterns.Builder
 {
   class SimplePizza
   {
-    private string _cheese = "No cheese";
-    private string _meat = "No meat";
-    private bool _corn = false;
-    private string _olives = "No olives";
-    private int? _radius = 10;
-    private int? _thickness = 5;
+    private string _cheese;
+    private string _meat;
+    private bool _corn;
+    private string _olives;
+    private int? _radius;
+    private int? _thickness;
 
     // +10 more
 
-    public SimplePizza() {}
+    public SimplePizza(string cheese, string meat, bool corn, string olives, int radius, int thickness)
+    {
+        _cheese = cheese;
+        _meat = meat;
+        _corn = corn;
+        _olives = olives;
+        _radius = radius;
+        _thickness = thickness;
+    }
 
     public override string ToString()
     {
@@ -29,6 +37,19 @@ namespace DesignPatterns.Builder
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
