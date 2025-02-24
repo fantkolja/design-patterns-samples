@@ -26,7 +26,7 @@ namespace DesignPatterns.Builder
     public override string ToString()
     {
       string cornMsg = this._corn ? "corn" : "No corn";
-      return $"{this._radius}cm wide;\n{this._thickness}cm thick.\nWith:\n{this._cheese};\n{cornMsg};\n{this._meat}.";
+      return $"{this._radius}cm wide;\n{this._thickness}cm thick.\nWith:\n{this._cheese};\n{cornMsg};\n{this._olives};\n{this._meat}.";
     }
   }
 }
