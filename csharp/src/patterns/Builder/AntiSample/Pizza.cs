@@ -26,14 +26,7 @@ namespace DesignPatterns.Builder
     public override string ToString()
     {
       string cornMsg = this._corn ? "corn" : "No corn";
-      return new StringBuilder()
-        .Append($"{this._radius}cm wide;")
-        .Append($"\n{this._thickness}cm thick;")
-        .Append($"\nWith:\n{this._cheese};")
-        .Append($"\n{cornMsg};")
-        .Append($"\n{this._olives};")
-        .Append($"\n{this._meat}.")
-        .ToString();
+      return $"{this._radius}cm wide;\n{this._thickness}cm thick.\nWith:\n{this._cheese};\n{cornMsg};\n{this._meat}.";
     }
   }
 }
@@ -103,7 +96,14 @@ namespace DesignPatterns.Builder
     public override string ToString()
     {
       string cornMsg = this._corn ? "corn" : "No corn";
-      return $"{this._radius}cm wide;\n{this._thickness}cm thick.\nWith:\n{this._cheese};\n{cornMsg};\n{this._meat}.";
+        return new StringBuilder()
+          .Append($"{this._radius}cm wide;")
+          .Append($"\n{this._thickness}cm thick;")
+          .Append($"\nWith:\n{this._cheese};")
+          .Append($"\n{cornMsg};")
+          .Append($"\n{this._olives};")
+          .Append($"\n{this._meat}.")
+          .ToString();
     }
   }
 }
