@@ -15,12 +15,12 @@ namespace DesignPatterns.Builder
 
     public SimplePizza(string cheese, string meat, bool corn, string olives, int radius, int thickness)
     {
-        _cheese = cheese;
-        _meat = meat;
-        _corn = corn;
-        _olives = olives;
-        _radius = radius;
-        _thickness = thickness;
+      _cheese = cheese;
+      _meat = meat;
+      _corn = corn;
+      _olives = olives;
+      _radius = radius;
+      _thickness = thickness;
     }
 
     public override string ToString()
