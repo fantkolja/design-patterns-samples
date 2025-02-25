@@ -2,9 +2,6 @@ namespace DesignPatterns.Bridge
 {
   class Lizard : HeroTransport
   {
-    public Lizard(string name) : base(name)
-    {
-      this.Speed = 3;
-    }
+    public Lizard(string name) : base(name, 3, 2) {}
   }
 }

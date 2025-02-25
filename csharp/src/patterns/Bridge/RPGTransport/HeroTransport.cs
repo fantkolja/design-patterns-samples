@@ -1,24 +1,32 @@
 namespace DesignPatterns.Bridge
 {
-  abstract class HeroTransport
+  abstract class Transport
   {
-    public int Capacity { get; set; } = 1;
     public int Speed { get; set; } = 1;
     public string Name { get; set; }
 
-    public HeroTransport(string name, int speed, int capacity)
-    : this(name, speed)
+    public Transport(string name)
     {
-      this.Capacity = capacity;
+      this.Name = name;
     }
-    public HeroTransport(string name, int speed)
-    : this(name)
+  }
+
+  class MobTransport : Transport
+  {
+    public MobTransport(string name, int speed) : base(name)
     {
       this.Speed = speed;
     }
-    public HeroTransport(string name)
+  }
+
+  class HeroTransport : Transport
+  {
+    public int Capacity { get; set; } = 1;
+
+    public HeroTransport(string name, int speed, int capacity) : base(name)
     {
-      this.Name = name;
+      this.Speed = speed;
+      this.Capacity = capacity;
     }
 
     public void Move()
@@ -60,57 +68,6 @@ namespace DesignPatterns.Bridge
 
 
 
-
-
-// namespace DesignPatterns.Bridge
-// {
-//   interface IWayOfTransportation
-//   {
-//     public void Move();
-//   }
-
-//   class LandTransportation : IWayOfTransportation
-//   {
-//     public void Move()
-//     {
-//       throw new NotImplementedException();
-//     }
-//   }
-
-//   class AirTransportation : IWayOfTransportation
-//   {
-//     public void Move()
-//     {
-//       throw new NotImplementedException();
-//     }
-//   }
-
-//   class WaterTransportation : IWayOfTransportation
-//   {
-//     public void Move()
-//     {
-//       throw new NotImplementedException();
-//     }
-//   }
-
-//   abstract class HeroTransport
-//   {
-//     protected IWayOfTransportation _wayOfTransportation;
-//     public int Capacity { get; set; } = 1;
-//     public int Speed { get; set; } = 1;
-//     public string Name { get; set; }
-//     public HeroTransport(string name, IWayOfTransportation wayOfTransportation)
-//     {
-//       this.Name = name;
-//       this._wayOfTransportation = wayOfTransportation;
-//     }
-
-//     public void Move()
-//     {
-//       this._wayOfTransportation.Move();
-//     }
-//   }
-// }
 
 
 // using DesignPatterns.Bridge;
