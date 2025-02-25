@@ -2,6 +2,6 @@ namespace DesignPatterns.Bridge
 {
   interface ITransportationKind
   {
-    public void ChangePlace();
+    public void ChangePlace(int speed);
   }
 }
