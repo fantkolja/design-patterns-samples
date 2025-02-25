@@ -1,6 +1,6 @@
 namespace DesignPatterns.Builder
 {
-    interface ICarBuilder
+  interface ICarBuilder
   {
     ICarBuilder WithEngine(string engine);
     ICarBuilder WithTransmission(string transmission);
@@ -51,7 +51,13 @@ namespace DesignPatterns.Builder
 }
 
 
+// Feature request: first we should choose engine, then other features.
+// using DesignPatterns.Builder;
 
+// var builder = new CarBuilder();
+// builder
+//   .WithTransmission("ZF")
+//   .WithEngine("1.6L");
 
 
 
@@ -80,13 +86,33 @@ namespace DesignPatterns.Builder
 
 // namespace DesignPatterns.Builder
 // {
+//   #1 Program to interface
+//
+//   interface IEngineBuilder
+//   {
+//     ICarWithEngineBuilder WithEngine(string engine);
+//   }
+
+//   interface ICarWithEngineBuilder
+//   {
+//     ICarWithEngineBuilder WithTransmission(string transmission);
+//     ICarWithEngineBuilder HavingWheelSize(short size);
+//     ICarWithEngineBuilder InColor(string color);
+//     Car Build();
+//   }
+  
 //   class CarBuilder
 //   {
+//     #2 Element of Singleton
+//
+//     private CarBuilder(){}
+//
 //     public static IEngineBuilder Create()
 //     {
 //       return new Impl();
 //     }
-
+//
+//     ISP
 //     private class Impl : IEngineBuilder, ICarWithEngineBuilder
 //     {
 //       private Car _car = new Car();

@@ -1,17 +1,17 @@
 namespace DesignPatterns.Builder
 {
-  interface PizzaBuilder
+  interface IPizzaBuilder
   {
     Pizza GetPizza();
-    PizzaBuilder SetRadius(int radius);
-    PizzaBuilder AddCheese(string cheese);
-    PizzaBuilder AddMeat(string meat);
-    PizzaBuilder AddCorn();
-    PizzaBuilder AddOlives(string olives);
+    IPizzaBuilder SetRadius(int radius);
+    IPizzaBuilder AddCheese(string cheese);
+    IPizzaBuilder AddMeat(string meat);
+    IPizzaBuilder AddCorn();
+    IPizzaBuilder AddOlives(string olives);
 
   }
 
-  class HousePizzaBuilder : PizzaBuilder
+  class HousePizzaBuilder : IPizzaBuilder
   {
     private Pizza _pizza = new Pizza();
     private void _reset()
@@ -25,25 +25,25 @@ namespace DesignPatterns.Builder
       this._reset();
     }
 
-    public PizzaBuilder AddCheese(string cheese)
+    public IPizzaBuilder AddCheese(string cheese)
     {
       this._pizza.SetCheese(cheese);
       return this;
     }
 
-    public PizzaBuilder AddCorn()
+    public IPizzaBuilder AddCorn()
     {
       this._pizza.SetCorn();
       return this;
     }
 
-    public PizzaBuilder AddMeat(string meat)
+    public IPizzaBuilder AddMeat(string meat)
     {
       this._pizza.SetMeat(meat);
       return this;
     }
 
-    public PizzaBuilder AddOlives(string olives)
+    public IPizzaBuilder AddOlives(string olives)
     {
       this._pizza.SetOlives(olives);
       return this;
@@ -56,7 +56,7 @@ namespace DesignPatterns.Builder
       return pizza;
     }
 
-    public PizzaBuilder SetRadius(int radius)
+    public IPizzaBuilder SetRadius(int radius)
     {
       this._pizza.SetRadius(radius);
       return this;
