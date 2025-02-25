@@ -2,15 +2,15 @@ namespace DesignPatterns.Builder
 {
   class PizzaDirector
   {
-    private PizzaBuilder _builder;
+    private IPizzaBuilder _builder;
 
-    public PizzaDirector SetBuilder(PizzaBuilder builder)
+    public PizzaDirector SetBuilder(IPizzaBuilder builder)
     {
       this._builder = builder;
       return this;
     }
 
-    public PizzaDirector(PizzaBuilder builder)
+    public PizzaDirector(IPizzaBuilder builder)
     {
       this._builder = builder;
     }
