@@ -2,14 +2,12 @@ namespace DesignPatterns.Decorator
 {
   class SqrtDecorator : BaseDecorator
   {
-    public SqrtDecorator(IWrappee wrappee) : base(wrappee)
-    {
-    }
+    public SqrtDecorator(IWrappee wrappee) : base(wrappee) {}
 
     public override int Operation()
     {
       Console.WriteLine("[SqrtDecorator] Calculation");
-      return (int)Math.Sqrt(this._wrappee.Operation());
+      return (int)Math.Sqrt(base.Operation());
     }
   }
 }

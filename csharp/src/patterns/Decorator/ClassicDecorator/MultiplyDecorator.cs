@@ -11,7 +11,7 @@ namespace DesignPatterns.Decorator
     public override int Operation()
     {
       Console.WriteLine("[MultiplyDecorator] Calculation");
-      return this._wrappee.Operation() * this._factor;
+      return base.Operation() * this._factor;
     }
   }
 }

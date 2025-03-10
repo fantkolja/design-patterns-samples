@@ -9,7 +9,10 @@ namespace DesignPatterns.Decorator
       this._wrappee = wrappee;
     }
 
-    abstract public int Operation();
+    public virtual int Operation()
+    {
+      return this._wrappee.Operation();
+    }
   }
 }
 
