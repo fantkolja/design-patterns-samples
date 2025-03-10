@@ -2,8 +2,8 @@ namespace DesignPatterns.Decorator
 {
   abstract class Coffee
   {
-    public int Amount { get; set; }
-    public int Price { get; set; }
+    public virtual int Amount { get; set; }
+    public virtual int Price { get; set; }
     abstract public double GetCalories();
   }
 
@@ -96,26 +96,39 @@ namespace DesignPatterns.Decorator
   {
     abstract class CoffeeExtra : Coffee
     {
-      protected Coffee _coffee;
+      private Coffee _coffee;
+      public override int Amount
+      {
+        get { return this._coffee.Amount; }
+        set { this._coffee.Amount = value; }
+      }
+      public override int Price
+      {
+        get { return this._coffee.Price; }
+        set { this._coffee.Price = value; }
+      }
       public CoffeeExtra(Coffee coffee) : base()
       {
         this._coffee = coffee;
       }
 
-      abstract public override double GetCalories();
+      public override double GetCalories()
+      {
+        return this._coffee.GetCalories();
+      }
     }
 
   class WithMilk : CoffeeExtra
   {
     public WithMilk(Coffee coffee) : base(coffee)
     {
-      this._coffee.Amount += 3;
-      this._coffee.Price += 5;
+      base.Amount += 3;
+      base.Price += 5;
     }
 
     public override double GetCalories()
     {
-      return this._coffee.GetCalories() * 100;
+      return base.GetCalories() * 100;
     }
   }
 
@@ -123,13 +136,13 @@ namespace DesignPatterns.Decorator
   {
     public Doubled(Coffee coffee) : base(coffee)
     {
-      this._coffee.Amount *= 2;
-      this._coffee.Price += 10;
+      base.Amount *= 2;
+      base.Price += 10;
     }
 
     public override double GetCalories()
     {
-      return this._coffee.GetCalories() * 2;
+      return base.GetCalories() * 2;
     }
   }
 
@@ -139,12 +152,12 @@ namespace DesignPatterns.Decorator
     public WithSugar(Coffee coffee, int sticksCount) : base(coffee)
     {
       this._sticksCount = sticksCount;
-      this._coffee.Amount += sticksCount * 1;
+      base.Amount += sticksCount * 1;
     }
 
     public override double GetCalories()
     {
-      return this._coffee.GetCalories() + this._sticksCount * 100;
+      return base.GetCalories() + this._sticksCount * 100;
     }
   }
 }
