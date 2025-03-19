@@ -1,13 +1,13 @@
 namespace DesignPatterns.Composite
 {
-  class MarvelHero
+  class Hero
   {
     private ContainerArtefact _artefacts = new ContainerArtefact("Hero's artefacts");
     public string Name { get; private set; }
 
     private int _power;
 
-    public MarvelHero(string name, int power)
+    public Hero(string name, int power)
     {
       this.Name = name;
       this._power = power;
@@ -47,7 +47,7 @@ namespace DesignPatterns.Composite
 
 // using DesignPatterns.Composite;
 
-// var hero = new MarvelHero("BlackWidow", 1);
+// var hero = new Hero("BlackWidow", 1);
 // var ring = new Artefact("PowerRing", 5, 50);
 // var necklace = new Artefact("PerlNecklace", 10, 100);
 
@@ -97,14 +97,14 @@ namespace DesignPatterns.Composite
 // Version 1: without Hero refactoring
 // namespace DesignPatterns.Composite
 // {
-//   class MarvelHero
+//   class Hero
 //   {
 //     private List<Artefact> _artefacts = new List<Artefact>();
 //     public string Name { get; private set; }
 
 //     private int _power;
 
-//     public MarvelHero(string name, int power)
+//     public Hero(string name, int power)
 //     {
 //       this.Name = name;
 //       this._power = power;
@@ -143,7 +143,7 @@ namespace DesignPatterns.Composite
 
 // using DesignPatterns.Composite;
 
-// var hero = new MarvelHero("BlackWidow", 1);
+// var hero = new Hero("BlackWidow", 1);
 // var ring = new Artefact("PowerRing", 5, 50);
 // var necklace = new Artefact("PerlNecklace", 10, 100);
 
@@ -185,14 +185,14 @@ namespace DesignPatterns.Composite
 // Version 2: with Hero refactoring
 // namespace DesignPatterns.Composite
 // {
-//   class MarvelHero
+//   class Hero
 //   {
 //     private ContainerArtefact _artefacts = new ContainerArtefact("Hero's artefacts");
 //     public string Name { get; private set; }
 
 //     private int _power;
 
-//     public MarvelHero(string name, int power)
+//     public Hero(string name, int power)
 //     {
 //       this.Name = name;
 //       this._power = power;
@@ -233,7 +233,7 @@ namespace DesignPatterns.Composite
 
 // using DesignPatterns.Composite;
 
-// var hero = new MarvelHero("BlackWidow", 1);
+// var hero = new Hero("BlackWidow", 1);
 // var ring = new Artefact("PowerRing", 5, 50);
 // var necklace = new Artefact("PerlNecklace", 10, 100);
 
