@@ -2,45 +2,45 @@ namespace DesignPatterns.Composite
 {
   class Hero
   {
-    private ContainerArtefact _artefacts = new ContainerArtefact("Hero's artefacts");
+    private List<Artefact> _artefacts = new List<Artefact>();
     public string Name { get; private set; }
 
     private int _power;
 
     public Hero(string name, int power)
     {
-      this.Name = name;
-      this._power = power;
+    this.Name = name;
+    this._power = power;
     }
 
     public void AddArtefact(Artefact artefact)
     {
-      this._artefacts.AddArtefact(artefact);
+    this._artefacts.Add(artefact);
     }
 
     public void RemoveArtefact(Artefact artefact)
     {
-      this._artefacts.RemoveArtefact(artefact);
+    this._artefacts.Remove(artefact);
     }
 
     public void Strike()
     {
-      int totalPower = this._power + this._artefacts.GetPowerBuf();
-      Console.WriteLine($"{this.Name} hits with power {totalPower}");
+    int totalPower = this._artefacts.Aggregate(this._power, (sum, next) => sum += next.GetPowerBuf());
+    Console.WriteLine($"{this.Name} hits with power {totalPower}");
     }
 
     public void CalculateArtefactsWeight()
     {
-      int totalArtefactsWeight = this._artefacts.GetWeight();
-      Console.WriteLine($"Total artefacts weight: {totalArtefactsWeight}");
+    int totalArtefactsWeight = this._artefacts.Aggregate(0, (sum, next) => sum += next.GetWeight());
+    Console.WriteLine($"Total artefacts weight: {totalArtefactsWeight}");
     }
 
     public void CountArtefacts()
     {
-      int totalArtefactCount = this._artefacts.GetCount();
-      Console.WriteLine($"{this.Name} has {totalArtefactCount} artefacts");
+    int totalArtefactCount = this._artefacts.Count;
+    Console.WriteLine($"{this.Name} has {totalArtefactCount} artefacts");
     }
-  }
+    }
 }
 
 
@@ -148,11 +148,13 @@ namespace DesignPatterns.Composite
 // var necklace = new Artefact("PerlNecklace", 10, 100);
 
 // var gloveOfPower = new ArtefactWithArtefacts("Glove Of Power", 500, 1000);
-// var sword = new Artefact("Sword", 50, 500);
-// var pants = new Artefact("Pants", 10, 100);
+// var mindGem = new Artefact("Mind Gem", 50, 500);
+// var powerGem = new Artefact("Power Gem", 10, 100);
+// var soulGem = new Artefact("Soul Gem", 10, 100);
 
-// gloveOfPower.AddArtefact(sword);
-// gloveOfPower.AddArtefact(pants);
+// gloveOfPower.AddArtefact(mindGem);
+// gloveOfPower.AddArtefact(powerGem);
+// gloveOfPower.AddArtefact(soulGem);
 
 // hero.AddArtefact(ring);
 // hero.AddArtefact(necklace);
@@ -187,7 +189,7 @@ namespace DesignPatterns.Composite
 // {
 //   class Hero
 //   {
-//     private ContainerArtefact _artefacts = new ContainerArtefact("Hero's artefacts");
+//     private ArtefactContainer _artefacts = new ArtefactContainer("Hero's artefacts");
 //     public string Name { get; private set; }
 
 //     private int _power;
@@ -238,11 +240,13 @@ namespace DesignPatterns.Composite
 // var necklace = new Artefact("PerlNecklace", 10, 100);
 
 // var gloveOfPower = new ArtefactWithArtefacts("Glove Of Power", 500, 1000);
-// var sword = new Artefact("Sword", 50, 500);
-// var pants = new Artefact("Pants", 10, 100);
+// var mindGem = new Artefact("Mind Gem", 50, 500);
+// var powerGem = new Artefact("Power Gem", 10, 100);
+// var soulGem = new Artefact("Soul Gem", 10, 100);
 
-// gloveOfPower.AddArtefact(sword);
-// gloveOfPower.AddArtefact(pants);
+// gloveOfPower.AddArtefact(mindGem);
+// gloveOfPower.AddArtefact(powerGem);
+// gloveOfPower.AddArtefact(soulGem);
 
 // hero.AddArtefact(ring);
 // hero.AddArtefact(necklace);
@@ -264,11 +268,13 @@ namespace DesignPatterns.Composite
 // using DesignPatterns.Composite;
 
 // var gloveOfPower = new ArtefactWithArtefacts("Glove Of Power", 500, 1000);
-// var sword = new Artefact("Sword", 50, 500);
-// var pants = new Artefact("Pants", 10, 100);
+// var mindGem = new Artefact("Mind Gem", 50, 500);
+// var powerGem = new Artefact("Power Gem", 10, 100);
+// var soulGem = new Artefact("Soul Gem", 10, 100);
 
-// gloveOfPower.AddArtefact(sword);
-// gloveOfPower.AddArtefact(pants);
+// gloveOfPower.AddArtefact(mindGem);
+// gloveOfPower.AddArtefact(powerGem);
+// gloveOfPower.AddArtefact(soulGem);
 
 // Console.WriteLine(gloveOfPower.GetWeight());
 // Console.WriteLine(gloveOfPower.GetCount());
