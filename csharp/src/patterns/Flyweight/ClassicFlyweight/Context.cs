@@ -20,7 +20,7 @@ namespace DesignPatterns.Flyweight
     {
       string result = new StringBuilder()
         .AppendLine($"Extrinsic props: {this._extrinsicProp1} and {this._extrinsicProp2}")
-        .AppendLine($"Intrinsic operation: {this._flyweight.DoSomething()}")
+        .AppendLine($"Intrinsic props: {this._flyweight.IntrinsicProp1} and {this._flyweight.IntrinsicProp2}")
         .ToString();
       Console.WriteLine(result);
     }
