@@ -2,23 +2,23 @@ namespace DesignPatterns.Flyweight
 {
   class Letter
   {
-    public string FontStyle { get; private set; } = "normal";
-    public int FontSize { get; private set; } = 12;
-    public int FontWeight { get; private set; } = 400;
-    public string FontColor { get; private set; } = "#000";
-    public string TextDecoration { get; private set; } = "normal";
-    public string FromAlphabet { get; private set; } = "latin";
-    public string Type { get; private set; } = "Alphabetic";
-    public int CharCode { get; private set; }
-    public string DisplayName { get; private set; }
-    public (ulong, ulong) CurrentPosition { get; private set; }
-    public (ulong, ulong) OriginalPosition { get; private set; }
-    public string OriginalDocument { get; private set; }
-    public string FontFamily { get; private set; }
-    public Letter(string fontFamily, char character, (ulong, ulong) position, string originalDocument)
+    public string FontStyle { get; set; } = "normal";
+    public int FontSize { get; set; } = 12;
+    public int FontWeight { get; set; } = 400;
+    public string FontFamily { get; set; }
+    public string FontColor { get; set; } = "#000";
+    public string TextDecoration { get; set; } = "normal";
+    public string FromAlphabet { get; } = "latin";
+    public string Type { get; } = "Alphabetic";
+    public int CharCode { get; }
+    public string DisplayName { get; }
+    public (int, int) CurrentPosition { get; set; }
+    public (int, int) OriginalPosition { get; }
+    public string OriginalDocument { get; }
+    public Letter(string fontFamily, char character, (int, int) position, string originalDocument)
     {
       this.FontFamily = fontFamily;
-      this.CharCode = (int) character;
+      this.CharCode = (int)character;
       this.DisplayName = character.ToString();
       this.OriginalPosition = position;
       this.CurrentPosition = position;
@@ -66,21 +66,21 @@ namespace DesignPatterns.Flyweight
 //   class Letter
 //   {
 //     private UniqueLetter _uniqueLetter;
-//     public string FontStyle { get; private set; } = "normal";
-//     public int FontSize { get; private set; } = 12;
-//     public int FontWeight { get; private set; } = 400;
-//     public string FontColor { get; private set; } = "#000";
-//     public string TextDecoration { get; private set; } = "normal";
-//     public (ulong, ulong) CurrentPosition { get; private set; }
-    
+//     public string FontStyle { get; set; } = "normal";
+//     public int FontSize { get; set; } = 12;
+//     public int FontWeight { get; set; } = 400;
+//     public string FontColor { get; set; } = "#000";
+//     public string FontFamily { get; set; }
+//     public string TextDecoration { get; set; } = "normal";
+//     public (int, int) CurrentPosition { get; set; }
+
 //     // intrinsic!
-//     public (ulong, ulong) OriginalPosition { get; private set; }
-    
+//     public (int, int) OriginalPosition { get; }
+
 //     // intrinsic!
-//     public string OriginalDocument { get; private set; }
-    
-//     public string FontFamily { get; private set; }
-//     public Letter(string fontFamily, char character, (ulong, ulong) position, string originalDocument)
+//     public string OriginalDocument { get; }
+
+//     public Letter(string fontFamily, char character, (int, int) position, string originalDocument)
 //     {
 //       this.FontFamily = fontFamily;
 //       this.CurrentPosition = position;
@@ -108,10 +108,10 @@ namespace DesignPatterns.Flyweight
 
 //   class UniqueLetter
 //   {
-//     public string FromAlphabet { get; private set; } = "latin";
-//     public string Type { get; private set; } = "Alphabetic";
-//     public int CharCode { get; private set; }
-//     public string DisplayName { get; private set; }
+//     public string FromAlphabet { get; } = "latin";
+//     public string Type { get; } = "Alphabetic";
+//     public int CharCode { get; }
+//     public string DisplayName { get; }
 
 //     public UniqueLetter(char character)
 //     {
