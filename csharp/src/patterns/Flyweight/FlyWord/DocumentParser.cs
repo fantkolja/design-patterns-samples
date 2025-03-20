@@ -2,7 +2,7 @@ namespace DesignPatterns.Flyweight
 {
   class DocumentParser
   {
-    private List<Letter> _text = new List<Letter>();
+    private List<List<Letter>> _text = new List<List<Letter>>();
     private void _readFile(string src)
     {
       using(StreamReader file = new StreamReader(src)) {
@@ -11,12 +11,14 @@ namespace DesignPatterns.Flyweight
 
         while((nextLine = file.ReadLine()) != null)
         {
-          lineNumber++;
-          ulong carretPosition = 0;
+          var nextLineList = new List<Letter>();
+          this._text.Insert((int) lineNumber, nextLineList);
+          ulong caretPosition = 0;
           nextLine.ToList().ForEach((char c) => {
-            this._text.Add(new Letter("Times New Roman", c, (lineNumber, carretPosition), "Little Women"));
-            carretPosition++;
+            nextLineList.Insert((int) caretPosition, new Letter("Times New Roman", c, (lineNumber, caretPosition), "Little Women"));
+            caretPosition++;
           });
+          lineNumber++;
         };
 
         file.Close();
@@ -28,8 +30,21 @@ namespace DesignPatterns.Flyweight
       Console.WriteLine("Checking memory BEFORE document load...");
       MemoryMonitor.CheckCurrentProcess();
       this._readFile("./tmp/little_women.txt");
+      Console.WriteLine($"Lines: {this._text.Count}");
       Console.WriteLine("Checking memory AFTER document load...");
       MemoryMonitor.CheckCurrentProcess();
+    }
+
+    public Letter? GetLetterAt(int row, int column)
+    {
+      try 
+      {
+        return this._text[row][column];
+      }
+      catch (Exception)
+      {
+        return null;
+      }
     }
   }
 }
@@ -37,4 +52,15 @@ namespace DesignPatterns.Flyweight
 
 // using DesignPatterns.Flyweight;
 
-// new DocumentParser();
+// var parser = new DocumentParser();
+
+// var letter = parser.GetLetterAt(49, 1);
+
+// if (letter is Letter)
+// {
+//   Console.WriteLine($"DisplayName: {letter.DisplayName}; CharCode: {letter.CharCode}");
+// }
+// else 
+// {
+//   Console.WriteLine("There is no such letter");
+// }

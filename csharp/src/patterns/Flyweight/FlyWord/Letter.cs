@@ -88,6 +88,22 @@ namespace DesignPatterns.Flyweight
 //       this.OriginalDocument = originalDocument;
 //       this._uniqueLetter = UniqueLetterFactory.GetUniqueLetter(character);
 //     }
+//     public string FromAlphabet
+//     {
+//       get { return _uniqueLetter.FromAlphabet; }
+//     }
+//     public string Type
+//     {
+//       get { return _uniqueLetter.Type; }
+//     }
+//     public int CharCode
+//     {
+//       get { return _uniqueLetter.CharCode; }
+//     }
+//     public string DisplayName
+//     {
+//       get { return _uniqueLetter.DisplayName; }
+//     }
 //   }
 
 //   class UniqueLetter

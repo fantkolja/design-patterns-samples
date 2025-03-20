@@ -1,14 +1,17 @@
-﻿using DesignPatterns.Composite;
+﻿using DesignPatterns.Flyweight;
 
-var gloveOfPower = new ArtefactWithArtefacts("Glove Of Power", 500, 1000);
-var sword = new Artefact("Sword", 50, 500);
-var pants = new Artefact("Pants", 10, 100);
+var parser = new DocumentParser();
 
-gloveOfPower.AddArtefact(sword);
-gloveOfPower.AddArtefact(pants);
+var letter = parser.GetLetterAt(49, 1);
 
-Console.WriteLine(gloveOfPower.GetWeight());
-Console.WriteLine(gloveOfPower.GetCount());
+if (letter is Letter)
+{
+  Console.WriteLine($"DisplayName: {letter.DisplayName}; CharCode: {letter.CharCode}");
+}
+else 
+{
+  Console.WriteLine("There is no such letter");
+}
 
 Console.WriteLine();
 Console.WriteLine("Press any key to exit...");
