@@ -11,16 +11,18 @@ namespace DesignPatterns.Mediator
     {
       this._component1 = component1;
       this._component2 = component2;
+      this._component1.SetMediator(this);
+      this._component2.SetMediator(this);
     }
 
     public void OnActionA(string ev)
     {
-      throw new NotImplementedException();
+      Console.WriteLine($"OnActionA: {ev}");
     }
 
     public void OnActionB(BaseComponent component)
     {
-      throw new NotImplementedException();
+      Console.WriteLine($"OnActionB: {component.Name}");
     }
   }
 }
@@ -28,23 +30,13 @@ namespace DesignPatterns.Mediator
 
 
 
-// using DesignPatterns.Mediator;
-
-// Component1 component1 = new Component1();
-// Component2 component2 = new Component2();
-// new Mediator(component1, component2);
-
-// component1.MethodA();
-
-// component2.MethodD();
 
 
 
 
 
 
-
-// with "event-bus-like" implementation
+// with "events" implementation
 
 // namespace DesignPatterns.Mediator
 // {

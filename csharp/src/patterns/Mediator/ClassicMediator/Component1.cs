@@ -2,7 +2,7 @@ namespace DesignPatterns.Mediator
 {
   class Component1 : BaseComponent
   {
-    public Component1(IMediator mediator, string? name) : base(mediator, name) {}
+    public Component1(string? name) : base(name) {}
 
     public void MethodA()
     {
@@ -12,7 +12,7 @@ namespace DesignPatterns.Mediator
     public void MethodB()
     {
       Console.WriteLine("Component 1 does B.");
-      this._mediator.OnActionB(this);
+      this._mediator?.OnActionB(this);
     }
   }
 }

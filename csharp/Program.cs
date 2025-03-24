@@ -1,17 +1,9 @@
-﻿using DesignPatterns.Flyweight;
+﻿using DesignPatterns.Mediator;
 
-var parser = new DocumentParser();
+Component1 component1 = new Component1("Component 1");
+Component2 component2 = new Component2("Component 2");
 
-var letter = parser.GetLetterAt(49, 1);
-
-if (letter is Letter)
-{
-  Console.WriteLine($"DisplayName: {letter.DisplayName}; CharCode: {letter.CharCode}");
-}
-else 
-{
-  Console.WriteLine("There is no such letter");
-}
+new Mediator(component1, component2);
 
 Console.WriteLine();
 Console.WriteLine("Press any key to exit...");
