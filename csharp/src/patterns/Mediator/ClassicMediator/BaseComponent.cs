@@ -2,13 +2,15 @@ namespace DesignPatterns.Mediator
 {
   class BaseComponent
   {
-    public Mediator? Mediator { protected get; set; }
+    public string Name { get; set; } = "Unknown Component";
+    protected IMediator _mediator { get; set; }
 
-    protected void _notifyMediator(string ev)
+    public BaseComponent(IMediator mediator, string? name)
     {
-      if (this.Mediator != null)
+      _mediator = mediator;
+      if (name != null)
       {
-        this.Mediator.Notify(ev);
+        Name = name;
       }
     }
   }
