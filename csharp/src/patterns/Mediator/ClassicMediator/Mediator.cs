@@ -1,5 +1,6 @@
 namespace DesignPatterns.Mediator
 {
+  // 1:A => 2:C; 2:D => 1:B + 2:C
   class Mediator : IMediator
   {
     private Component1 _component1;
