@@ -9,38 +9,38 @@ namespace DesignPatterns.Composite
 
     public Hero(string name, int power)
     {
-    this.Name = name;
-    this._power = power;
+      this.Name = name;
+      this._power = power;
     }
 
     public void AddArtefact(Artefact artefact)
     {
-    this._artefacts.Add(artefact);
+      this._artefacts.Add(artefact);
     }
 
     public void RemoveArtefact(Artefact artefact)
     {
-    this._artefacts.Remove(artefact);
+      this._artefacts.Remove(artefact);
     }
 
     public void Strike()
     {
-    int totalPower = this._artefacts.Aggregate(this._power, (sum, next) => sum += next.GetPowerBuf());
-    Console.WriteLine($"{this.Name} hits with power {totalPower}");
+      int totalPower = this._artefacts.Aggregate(this._power, (sum, next) => sum += next.GetPowerBuf());
+      Console.WriteLine($"{this.Name} hits with power {totalPower}");
     }
 
     public void CalculateArtefactsWeight()
     {
-    int totalArtefactsWeight = this._artefacts.Aggregate(0, (sum, next) => sum += next.GetWeight());
-    Console.WriteLine($"Total artefacts weight: {totalArtefactsWeight}");
+      int totalArtefactsWeight = this._artefacts.Aggregate(0, (sum, next) => sum += next.GetWeight());
+      Console.WriteLine($"Total artefacts weight: {totalArtefactsWeight}");
     }
 
     public void CountArtefacts()
     {
-    int totalArtefactCount = this._artefacts.Count;
-    Console.WriteLine($"{this.Name} has {totalArtefactCount} artefacts");
+      int totalArtefactCount = this._artefacts.Count;
+      Console.WriteLine($"{this.Name} has {totalArtefactCount} artefacts");
     }
-    }
+  }
 }
 
 
