@@ -2,9 +2,8 @@ namespace DesignPatterns.Observer
 {
   class SubmitButton
   {
-    public void Click()
-    {
-      Console.WriteLine("Submit");
+    public void Click() {
+      // should trigger ValidateInputs() on the LoginForm && change Text on Tooltip
     }
   }
 }
@@ -13,33 +12,9 @@ namespace DesignPatterns.Observer
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Versions 1, 2: with Observer pattern
+// Versions 1: classic
 // namespace DesignPatterns.Observer
 // {
-//   interface Subscriber
-//   {
-//     public void Process();
-//   }
 
 //   class Publisher
 //   {
@@ -74,41 +49,61 @@ namespace DesignPatterns.Observer
 
 
 
-// Version 3: with lambdas
+
+
+// Version 2: with lambdas
 // namespace DesignPatterns.Observer
 // {
-//   class Publisher
+//   class ButtonSubject
 //   {
-
-//     private List<Action> _subscribers = new List<Action>();
-
-//     public void Subscribe(Action action)
+//     private List<ISubscriber> _subscribers = new List<ISubscriber>();
+//     public void AddSubscriber(ISubscriber subscriber)
 //     {
-//       this._subscribers.Add(action);
+//       _subscribers.Add(subscriber);
 //     }
-//     public void Unsubscribe(Action action)
+//     public void RemoveSubscriber(ISubscriber subscriber)
 //     {
-//       this._subscribers.Remove(action);
+//       _subscribers.Remove(subscriber);
 //     }
-//     protected void _notify()
+//     protected void _notifySubscribers()
 //     {
-//       this._subscribers.ForEach(subscriber => subscriber());
+//       _subscribers.ForEach(subscriber => subscriber.OnSubmit());
 //     }
 //   }
 
-//   class SubmitButton : Publisher
+//   class SubmitButton : ButtonSubject
 //   {
-//     public void Click()
-//     {
-//       Console.WriteLine("Submit");
-//       this._notify();
+//     public void Click() {
+//       _notifySubscribers();
 //     }
 //   }
 // }
 
 
+// using DesignPatterns.Observer;
 
-// Version 4: with built-in events 
+// var form = new LoginForm();
+// var tooltip = new Tooltip();
+// var button = new SubmitButton();
+
+// button.AddSubscriber(() => form.ValidateInputs());
+
+// button.Click();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Version 3: with built-in events
 // namespace DesignPatterns.Observer
 // {
 //   class SubmitButton

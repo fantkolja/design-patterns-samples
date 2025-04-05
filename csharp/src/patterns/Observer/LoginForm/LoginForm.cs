@@ -5,126 +5,92 @@ namespace DesignPatterns.Observer
     public List<Input> Inputs = new List<Input>();
     public SubmitButton Button = new SubmitButton();
 
-    public void OnSubmit()
-    {
-      
-    }
+    public void ValidateInputs() { }
   }
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-// Version 1: with inner initialization
-
-// namespace DesignPatterns.Observer
-// {
-//   class LoginForm : Subscriber
-//   {
-//     public List<Input> Inputs = new List<Input>();
-
-//     public SubmitButton Button;
-
-//     public LoginForm()
-//     {
-//       Button = new SubmitButton();
-//       Button.Subscribe(this);
-//     }
-
-//     public void OnSubmit()
-//     {
-//       Console.WriteLine("Form submitted");
-//     }
-
-//     public void Process()
-//     {
-//         this.OnSubmit();
-//     }
-//   }
-// }
-
-// using DesignPatterns.Observer;
-
-// var form = new LoginForm();
-
-// form.Button.Click();
-
-
-
-
-
-
-
-// Version 2: with outer initialization
-
-// namespace DesignPatterns.Observer
-// {
-//   class LoginForm : Subscriber
-//   {
-//     public List<Input> Inputs = new List<Input>();
-
-//     public void OnSubmit()
-//     {
-//       Console.WriteLine("Form submitted");
-//     }
-
-//     public void Process()
-//     {
-//         this.OnSubmit();
-//     }
-//   }
-// }
-
-// using DesignPatterns.Observer;
-
-// var form = new LoginForm();
+// var input1 = new Input();
+// var input2 = new Input();
 // var button = new SubmitButton();
+// var form = new LoginForm();
+// var tooltip = new Tooltip();
+//
+// form.Inputs.Add(input1);
+// form.Inputs.Add(input2);
+// form.Button = button;
+// tooltip.WrappedButton = button;
+//
+// button.Click(); // потрібно викликати form.ValidateInputs() і змінити tooltip.Text
 
-// button.Subscribe(form);
-
-// button.Click();
 
 
 
 
 
-// Version 3: with lambdas
+
+// Version 1: classic
+
+// namespace DesignPatterns.Observer
+// {
+//   interface ISubscriber
+//   {
+//     public void OnSubmit();
+//   }
+
+//   class LoginForm : ISubscriber
+//   {
+//     public List<Input> Inputs = new List<Input>();
+//     public SubmitButton Button = new SubmitButton();
+
+//     public void OnSubmit()
+//     {
+//       ValidateInputs();
+//     }
+
+//     public void ValidateInputs() { }
+//   }
+// }
+
+
+
+
+
+
+
+// Version 2: with lambdas
 
 // namespace DesignPatterns.Observer
 // {
 //   class LoginForm
 //   {
 //     public List<Input> Inputs = new List<Input>();
+//     public SubmitButton Button = new SubmitButton();
 
-//     public void OnSubmit()
-//     {
-//       Console.WriteLine("Form submitted");
-//     }
+//     public void ValidateInputs() { }
 //   }
 // }
 
 // using DesignPatterns.Observer;
 
 // var form = new LoginForm();
+// var tooltip = new Tooltip();
 // var button = new SubmitButton();
 
-// button.Subscribe(() => form.OnSubmit());
+// button.AddSubscriber(() => form.ValidateInputs());
 
 // button.Click();
 
 
 
 
-// Version 4: with built-in events
+
+
+
+
+
+// Version 3: with built-in events
 
 // namespace DesignPatterns.Observer
 // {
