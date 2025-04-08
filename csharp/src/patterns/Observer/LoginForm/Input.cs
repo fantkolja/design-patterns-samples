@@ -2,6 +2,6 @@ namespace DesignPatterns.Observer
 {
   class Input
   {
-    public bool Validate() {}
+    public bool Validate() { return true; }
   }
 }
