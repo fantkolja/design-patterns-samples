@@ -1,9 +1,9 @@
 namespace DesignPatterns.Visitor
 {
-  class Ware
+  abstract class Ware
   {
-    public string Name;
-    public int Price;
+    public string Name { get; set; }
+    public int Price  { get; set; }
     public Ware(string name, int price)
     {
       this.Name = name;
