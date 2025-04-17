@@ -13,7 +13,7 @@ namespace DesignPatterns.State
       else if (this.State == "open")
       {
 
-      } 
+      }
     }
 
     public void OnSubmit()
@@ -25,12 +25,12 @@ namespace DesignPatterns.State
       else if (this.State == "open")
       {
 
-      } 
+      }
     }
 
     public void OnDecline()
     {
-      
+
     }
   }
 }
@@ -42,16 +42,6 @@ namespace DesignPatterns.State
 
 
 
-/**
-* GymTerminal state matrix
-* 
-* | State   \   Event | BraceletIdentified          | BraceletRejected            | FaceIdentified          | FaceRejected           |
-* | :---------------: | :-------------------------: | :-------------------------: | :---------------------: | :--------------------: |
-* | EnterStandBy      | n/a                         | n/a                         | n/a                     | n/a                    |
-* | ExitStandBy       | n/a                         | n/a                         | n/a                     | n/a                    |
-* | CameraOn          | n/a                         | n/a                         | n/a                     | n/a                    |
-*
-*/
 
 
 
@@ -82,79 +72,78 @@ namespace DesignPatterns.State
 
 
 
+namespace DesignPatterns.State
+{
+  class PullRequest
+  {
+    public IGitBucketState State { get; set; } = new OpenGitBucketState();
 
-// namespace DesignPatterns.State
-// {
-//   class WrongPullRequest
-//   {
-//     public IGitBucketState State { get; set; } = new OpenGitBucketState();
+    public void OnCreated()
+    {
+      this.State.OnCreated();
+    }
 
-//     public void OnCreated()
-//     {
-//       this.State.OnCreated();
-//     }
+    public void OnSubmit()
+    {
+      this.State.OnSubmit();
+    }
 
-//     public void OnSubmit()
-//     {
-//       this.State.OnSubmit();
-//     }
+    public void OnDecline()
+    {
+      this.State.OnDecline();
+    }
+  }
 
-//     public void OnDecline()
-//     {
-//       this.State.OnDecline();
-//     }
-//   }
+  class OpenGitBucketState : IGitBucketState
+  {
+    public void OnCreated()
+    {
+      throw new NotImplementedException();
+    }
 
-//   class OpenGitBucketState : IGitBucketState
-//   {
-//     public void OnCreated()
-//     {
-//       throw new NotImplementedException();
-//     }
+    public void OnDecline()
+    {
+      throw new NotImplementedException();
+    }
 
-//     public void OnDecline()
-//     {
-//       throw new NotImplementedException();
-//     }
+    public void OnSubmit()
+    {
+      throw new NotImplementedException();
+    }
+  }
 
-//     public void OnSubmit()
-//     {
-//       throw new NotImplementedException();
-//     }
-//   }
+  class DraftGitBucketState : IGitBucketState
+  {
+    public void OnCreated()
+    {
+      throw new NotImplementedException();
+    }
 
-//   class DraftGitBucketState : IGitBucketState
-//   {
-//     public void OnCreated()
-//     {
-//       throw new NotImplementedException();
-//     }
+    public void OnDecline()
+    {
+      throw new NotImplementedException();
+    }
 
-//     public void OnDecline()
-//     {
-//       throw new NotImplementedException();
-//     }
+    public void OnSubmit()
+    {
+      throw new NotImplementedException();
+    }
+  }
+  class DeclineGitBucketState : IGitBucketState
+  {
+    public void OnCreated()
+    {
+      throw new NotImplementedException();
+    }
 
-//     public void OnSubmit()
-//     {
-//       throw new NotImplementedException();
-//     }
-//   }
-//   class DeclineGitBucketState : IGitBucketState
-//   {
-//     public void OnCreated()
-//     {
-//       throw new NotImplementedException();
-//     }
+    public void OnDecline()
+    {
+      // no-op
+    }
 
-//     public void OnDecline()
-//     {
-//       // no-op
-//     }
-
-//     public void OnSubmit()
-//     {
-//       throw new NotImplementedException();
-//     }
-//   }
-// }
+    public void OnSubmit()
+    {
+      throw new NotImplementedException();
+    }
+  }
+}
