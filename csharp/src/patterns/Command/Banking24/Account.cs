@@ -25,6 +25,22 @@ namespace DesignPatterns.Command
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Version #2 with withdraw validation
 // namespace DesignPatterns.Command
 // {

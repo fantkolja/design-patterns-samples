@@ -16,14 +16,26 @@ namespace DesignPatterns.Command
   }
 }
 
-// Account mykolasAccount = new(10);
 
-// BankingSession session = new(new List<IAccountCommand>(){
+
+
+
+
+
+
+
+
+
+// var mykolasAccount = new Account(10);
+
+
+// var operations = new List<IAccountCommand>(){
 //   new DepositCommand(mykolasAccount, 50),
 //   new WithdrawCommand(mykolasAccount, 60),
 //   new DepositCommand(mykolasAccount, 50),
 //   new WithdrawCommand(mykolasAccount, 50),
-// });
+// };
+// var session = new BankingSession(operations);
 
 // session.RunTransaction();
 
@@ -51,10 +63,8 @@ namespace DesignPatterns.Command
 // {
 //   class BankingSession
 //   {
-//     private List<IAccountCommand> _operations = new List<IAccountCommand>();
-//     Account mykolasAccount = new(10);
-
-//     public BankingSession(List<IAccountCommand> operations)
+//     private Queue<IAccountCommand> _operations = new Queue<IAccountCommand>();
+//     public BankingSession(Queue<IAccountCommand> operations)
 //     {
 //       this._operations = operations;
 //     }
@@ -63,12 +73,13 @@ namespace DesignPatterns.Command
 //     {
 //       Stack<IAccountCommand> succeededCommands = new();
 //       try {
-//         this._operations.ForEach(cmd => {
-//           cmd.Call();
-//           succeededCommands.Push(cmd);
-//       });
+//         while (this._operations.Count > 0) {
+//           var operation = this._operations.Dequeue();
+//           operation.Call();
+//           succeededCommands.Push(operation);
+//         }
 //       } catch(ArgumentException err) {
-//         Console.WriteLine($"{err.Message}. Reverting transaction");
+//         Console.WriteLine($"{err.Message} => Reverting transaction");
 //         this.RevertTransaction(succeededCommands);
 //       }
 
@@ -77,11 +88,30 @@ namespace DesignPatterns.Command
 
 //     public bool RevertTransaction( Stack<IAccountCommand> commands)
 //     {
-//       Console.WriteLine(commands.Count);
-//       commands.ToList().ForEach(cmd => {
+//       Console.WriteLine($"Transactions count to revert: {commands.Count}");
+//       while (commands.Count > 0) {
+//         var cmd = commands.Pop();
 //         cmd.Undo();
-//       });
+//       }
 //       return true;
 //     }
 //   }
 // }
+
+
+
+
+
+// using DesignPatterns.Command;
+
+// var mykolasAccount = new Account(10);
+
+
+// var operations = new Queue<IAccountCommand>();
+// operations.Enqueue(new DepositCommand(mykolasAccount, 50));
+// operations.Enqueue(new WithdrawCommand(mykolasAccount, 60));
+// operations.Enqueue(new DepositCommand(mykolasAccount, 70));
+// operations.Enqueue(new WithdrawCommand(mykolasAccount, 80));
+// var session = new BankingSession(operations);
+
+// session.RunTransaction();
