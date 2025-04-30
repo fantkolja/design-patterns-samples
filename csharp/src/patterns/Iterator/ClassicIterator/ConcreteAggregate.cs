@@ -24,11 +24,13 @@ namespace DesignPatterns.Iterator
 // using DesignPatterns.Iterator;
 
 // var aggregate = new ConcreteAggregate();
-// var iterator = aggregate.GetIterator();
-// logEach(iterator);
+// logEach(aggregate);
 
-// static void logEach(IClassicIterator iterator)
+
+
+// static void logEach(IClassicAggregate aggregate)
 // {
+//   var iterator = aggregate.GetIterator();
 //   while(!iterator.IsDone())
 //   {
 //     Console.WriteLine(iterator.Next());
