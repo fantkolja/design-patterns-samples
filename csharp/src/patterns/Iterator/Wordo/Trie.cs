@@ -32,10 +32,6 @@ namespace DesignPatterns.Iterator
         return nextTrie != null && nextTrie.Contains(rest);
       }
     }
-    public Trie? GetTrieByChar(char key)
-    {
-      return this._links.GetValueOrDefault(key);
-    }
     public void Add(string word)
     {
       // handle end of the word
@@ -72,38 +68,38 @@ namespace DesignPatterns.Iterator
 
 
 
-// using DesignPatterns.Iterator;
+    // using DesignPatterns.Iterator;
 
-// SortedDictionary<string, string> wordDictionary = TextParser.GetWordDictionary("./tmp/little_women.txt");
-// // should be true, true, false
-// var controlWords = new List<string>(){ "absurd", "absurdities", "absurditiessdfcfasdc" };
+    // SortedDictionary<string, string> wordDictionary = TextParser.GetWordDictionary("./tmp/little_women.txt");
+    // // should be true, true, false
+    // var controlWords = new List<string>(){ "absurd", "absurdities", "absurditiessdfcfasdc" };
 
-// Console.WriteLine("");
-// Console.WriteLine("*******************");
-// Console.WriteLine("======Checking Words=========");
+    // Console.WriteLine("");
+    // Console.WriteLine("*******************");
+    // Console.WriteLine("======Checking Words=========");
 
-// controlWords.ForEach((word) => Console.WriteLine(wordDictionary.GetValueOrDefault(word) != null));
+    // controlWords.ForEach((word) => Console.WriteLine(wordDictionary.GetValueOrDefault(word) != null));
 
-// Console.WriteLine($"Dictionary size: {wordDictionary.Count}");
-// Console.WriteLine("*******************");
-// Console.WriteLine("");
+    // Console.WriteLine($"Dictionary size: {wordDictionary.Count}");
+    // Console.WriteLine("*******************");
+    // Console.WriteLine("");
 
-// await DictionaryWriter.WriteToFileAsync(wordDictionary.Values, "./tmp/little_women.dict.txt");
+    // await DictionaryWriter.WriteToFileAsync(wordDictionary.Values, "./tmp/little_women.dict.txt");
 
-// Trie wordTrie = TextParser.GetWordTrie("./tmp/little_women.txt");
+    // Trie wordTrie = TextParser.GetWordTrie("./tmp/little_women.txt");
 
-// Console.WriteLine("");
-// Console.WriteLine("*******************");
-// Console.WriteLine("======Checking Words=========");
+    // Console.WriteLine("");
+    // Console.WriteLine("*******************");
+    // Console.WriteLine("======Checking Words=========");
 
-// controlWords.ForEach((word) => Console.WriteLine(wordTrie.Contains(word)));
+    // controlWords.ForEach((word) => Console.WriteLine(wordTrie.Contains(word)));
 
-// Console.WriteLine("*******************");
-// // Console.WriteLine($"WordTrie size: {wordTrie.Count}");
-// Console.WriteLine("*******************");
-// Console.WriteLine("");
+    // Console.WriteLine("*******************");
+    // // Console.WriteLine($"WordTrie size: {wordTrie.Count}");
+    // Console.WriteLine("*******************");
+    // Console.WriteLine("");
 
-// // await DictionaryWriter.WriteToFileAsync(wordTrie.ToWordList(), "./tmp/little_women.trie.txt");
+    // // await DictionaryWriter.WriteToFileAsync(wordTrie.ToWordList(), "./tmp/little_women.trie.txt");
 
 
 

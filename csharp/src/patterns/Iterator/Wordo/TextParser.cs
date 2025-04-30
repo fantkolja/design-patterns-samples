@@ -24,7 +24,6 @@ namespace DesignPatterns.Iterator
         file.Close();
       }
     }
-    // @TODO: return IEnumerator
     public static SortedDictionary<string, string> GetWordDictionary(string src)
     {
       SortedDictionary<string, string> dictionary = new SortedDictionary<string, string>();
