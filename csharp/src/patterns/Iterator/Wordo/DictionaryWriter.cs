@@ -1,5 +1,3 @@
-using System.Text.RegularExpressions;
-
 namespace DesignPatterns.Iterator
 {
   static class DictionaryWriter
