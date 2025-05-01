@@ -37,12 +37,9 @@ namespace DesignPatterns.Iterator
     }
     public static Trie GetWordTrie(string src)
     {
-      Trie dictionary = new Trie('\n');
+      Trie dictionary = new Trie();
       TextParser.Parse(src, (normalizedWord) => {
-        if (!dictionary.Contains(normalizedWord))
-        {
-          dictionary.Add(normalizedWord);
-        }
+        dictionary.Insert(normalizedWord);
       });
       return dictionary;
     }
