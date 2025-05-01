@@ -9,7 +9,7 @@ static void logEach(IClassicAggregate<string> aggregate)
   while(iterator.MoveNext())
   {
     Console.WriteLine(iterator.Current);
-  }
+  };
   iterator.Reset();
 }
 

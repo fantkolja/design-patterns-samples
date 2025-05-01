@@ -25,11 +25,6 @@ namespace DesignPatterns.Iterator
     }
     public string? Current => (string?)_aggregateProperties[_cursor].GetValue(_aggregate);
 
-    public bool IsDone()
-    {
-      return this._cursor + 1 == this._aggregateProperties.Count;
-    }
-
     public bool MoveNext()
     {
       _cursor++;
