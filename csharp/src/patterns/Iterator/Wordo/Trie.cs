@@ -122,17 +122,17 @@ public class Trie
 
 //   public IEnumerable<string> GetWords()
 //   {
-//     return Traverse(_root, "");
+//     return _traverse(_root, "");
 //   }
 
-//   private IEnumerable<string> Traverse(TrieNode node, string prefix)
+//   private IEnumerable<string> _traverse(TrieNode node, string prefix)
 //   {
 //     if (node.IsWord)
 //       yield return prefix;
 
 //     foreach (var key in node.Children.Keys)
 //     {
-//       foreach (var word in Traverse(node.Children[key], prefix + key))
+//       foreach (var word in _traverse(node.Children[key], prefix + key))
 //       {
 //         yield return word;
 //       }
