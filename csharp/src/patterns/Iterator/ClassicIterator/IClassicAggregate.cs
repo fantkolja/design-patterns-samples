@@ -1,7 +1,7 @@
 namespace DesignPatterns.Iterator
 {
-  interface IClassicAggregate
+  interface IClassicAggregate<T>
   {
-    public IClassicIterator GetIterator();
+    public IClassicIterator<T> GetIterator();
   }
 }

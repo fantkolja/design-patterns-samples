@@ -1,6 +1,6 @@
 namespace DesignPatterns.Iterator
 {
-  class ConcreteAggregate : IClassicAggregate
+  class ConcreteAggregate : IClassicAggregate<string>
   {
     public string X { get; set; } = "x";
     public string Fak { get; set; } = "fak";
@@ -9,7 +9,7 @@ namespace DesignPatterns.Iterator
     public string B { get; set; } = "b";
     public string C { get; set; } = "c";
 
-    public IClassicIterator GetIterator()
+    public IClassicIterator<string> GetIterator()
     {
       return new AlphabeticalIterator(this);
     }
@@ -26,15 +26,14 @@ namespace DesignPatterns.Iterator
 // var aggregate = new ConcreteAggregate();
 // logEach(aggregate);
 
-
-
-// static void logEach(IClassicAggregate aggregate)
+// static void logEach(IClassicAggregate<string> aggregate)
 // {
 //   var iterator = aggregate.GetIterator();
-//   while(!iterator.IsDone())
+//   while(iterator.MoveNext())
 //   {
-//     Console.WriteLine(iterator.Next());
-//   };
+//     Console.WriteLine(iterator.Current);
+//   }
+//   iterator.Reset();
 // }
 
 

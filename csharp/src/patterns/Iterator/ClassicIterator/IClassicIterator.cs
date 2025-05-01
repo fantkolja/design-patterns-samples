@@ -1,10 +1,9 @@
 namespace DesignPatterns.Iterator
 {
-  interface IClassicIterator
+  interface IClassicIterator<T>
   {
-    public object? Next();
-    public object? Current();
-    public bool IsDone();
-    public void Reset();
+    bool MoveNext();
+    T? Current { get; }
+    void Reset();
   }
 }
