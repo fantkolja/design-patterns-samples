@@ -1,4 +1,6 @@
-﻿
+﻿using ProgrammingPrinciples.SOLID;
+
+OCPDemo.show();
 
 
 Console.WriteLine();
