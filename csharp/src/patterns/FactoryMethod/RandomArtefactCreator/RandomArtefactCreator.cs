@@ -3,6 +3,14 @@ namespace DesignPatterns.FactoryMethod
 
   // Feature request 1: create artefacts based on hero type
 
+
+
+
+
+
+
+
+
   class ArtefactCreator
   {
     public IArtefact CreateArtefact(HeroType heroType)
