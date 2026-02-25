@@ -1,5 +1,8 @@
 namespace DesignPatterns.FactoryMethod
 {
+
+  // Feature request 1: create artefacts based on hero type
+
   class ArtefactCreator
   {
     public IArtefact CreateArtefact(HeroType heroType)
@@ -19,7 +22,8 @@ namespace DesignPatterns.FactoryMethod
   }
 }
 
-// new request randomly distribute artefacts
+// Feature request 2: use different logic to create artefacts for different game modes,
+//                    e.g. randomly create artefacts regardless of hero type
 
 
 
