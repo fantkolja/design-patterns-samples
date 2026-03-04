@@ -42,6 +42,5 @@ namespace DesignPatterns.Builder
       this._product.SetFeature3("val3");
       return this;
     }
-
   }
 }
