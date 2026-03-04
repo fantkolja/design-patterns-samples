@@ -29,7 +29,7 @@ namespace DesignPatterns.Prototype
 
 // namespace DesignPatterns.Prototype
 // {
-//   public class Photo : ICloneable
+//   public class Photo : IPrototype<Photo>
 //   {
 //     public string Url { get; private set; }
 
@@ -38,7 +38,7 @@ namespace DesignPatterns.Prototype
 //       this.Url = url;
 //     }
 
-//     public object Clone()
+//     public Photo DeepClone()
 //     {
 //       return this.MemberwiseClone();
 //     }

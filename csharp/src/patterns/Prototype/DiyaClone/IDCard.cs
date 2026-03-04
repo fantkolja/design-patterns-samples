@@ -31,7 +31,7 @@ namespace DesignPatterns.Prototype
 // Version 2:
 // namespace DesignPatterns.Prototype
 // {
-//   public class IDCard : ICloneable
+//   public class IDCard : IPrototype<IDCard>
 //   {
 //     public Guid ID { get; private set; }
 //     public Photo Photo { get; private set; }
@@ -41,10 +41,10 @@ namespace DesignPatterns.Prototype
 //       this.Photo = photo;
 //     }
 
-//     public object Clone()
+//     public IDCard DeepClone()
 //     {
 //       IDCard other = (IDCard) this.MemberwiseClone();
-//       other.Photo = (Photo) this.Photo.Clone();
+//       other.Photo = (Photo) this.Photo.DeepClone();
 //       return other;
 //     }
 //   }

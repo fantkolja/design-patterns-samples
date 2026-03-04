@@ -1,25 +1,25 @@
 // ********************
 // VERSION 1: Bare class
 
-namespace DesignPatterns.Prototype
-{
-  class Person
-  {
-    public string[] Names { get; private set; }
-    public IDCard IDCard { get; private set; }
+// namespace DesignPatterns.Prototype
+// {
+//   class Person
+//   {
+//     public string[] Names { get; private set; }
+//     public IDCard IDCard { get; private set; }
 
-    public Person(string[] names, IDCard idCard)
-    {
-      this.Names = names;
-      this.IDCard = idCard;
-    }
+//     public Person(string[] names, IDCard idCard)
+//     {
+//       this.Names = names;
+//       this.IDCard = idCard;
+//     }
 
-    public override string ToString()
-    {
-      return $"Names: {String.Join(", ", Names)};\nID: {this.IDCard.ID};\nPhoto: {this.IDCard.Photo.Url}\n";
-    }
-  }
-}
+//     public override string ToString()
+//     {
+//       return $"Names: {String.Join(", ", Names)};\nID: {this.IDCard.ID};\nPhoto: {this.IDCard.Photo.Url}\n";
+//     }
+//   }
+// }
 
 // New Requirement: add possibility to clone the Person
 
@@ -138,11 +138,15 @@ namespace DesignPatterns.Prototype
 
 
 
-
-// Version 4: Deep step-wise clone
+// Version 4: Generic interface
 // namespace DesignPatterns.Prototype
 // {
-//   class Person : ICloneable
+//   interface IPrototype<T>
+//   {
+//     T Clone();
+//   }
+
+//   class Person : IPrototype<Person>
 //   {
 //     public string[] Names { get; private set; }
 //     public IDCard IDCard { get; private set; }
@@ -158,13 +162,44 @@ namespace DesignPatterns.Prototype
 //       return $"Names: {String.Join(", ", Names)};\nID: {this.IDCard.ID};\nPhoto: {this.IDCard.Photo.Url}\n";
 //     }
 
-//     public object Clone()
+//     public Person Clone()
+//     {
+//       return (Person) this.MemberwiseClone();
+//     }
+//   }
+// }
+
+
+// Version 5: Deep step-wise clone
+// namespace DesignPatterns.Prototype
+// {
+//   interface IPrototype<T>
+//   {
+//     T DeepClone();
+//   }
+
+//   class Person : IPrototype<Person>
+//   {
+//     public string[] Names { get; private set; }
+//     public IDCard IDCard { get; private set; }
+
+//     public Person(string[] names, IDCard idCard)
+//     {
+//       this.Names = names;
+//       this.IDCard = idCard;
+//     }
+
+//     public override string ToString()
+//     {
+//       return $"Names: {String.Join(", ", Names)};\nID: {this.IDCard.ID};\nPhoto: {this.IDCard.Photo.Url}\n";
+//     }
+
+//     public Person DeepClone()
 //     {
 //       Person other = (Person) this.MemberwiseClone();
-//       other.IDCard = (IDCard) this.IDCard.Clone();
+//       other.IDCard = (IDCard) this.IDCard.DeepClone();
 //       other.Names = (string[]) this.Names.Clone();
 //       return other;
 //     }
 //   }
-// }
- 
+// } 
