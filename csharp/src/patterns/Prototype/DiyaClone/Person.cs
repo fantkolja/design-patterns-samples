@@ -3,7 +3,7 @@
 
 namespace DesignPatterns.Prototype
 {
-  class Person : IClassicPrototype
+  class Person
   {
     public string[] Names { get; private set; }
     public IDCard IDCard { get; private set; }
@@ -14,20 +14,9 @@ namespace DesignPatterns.Prototype
       this.IDCard = idCard;
     }
 
-    public Person(Person prototype)
-    {
-      this.Names = prototype.Names;
-      this.IDCard = prototype.IDCard;
-    }
-
     public override string ToString()
     {
       return $"Names: {String.Join(", ", Names)};\nID: {this.IDCard.ID};\nPhoto: {this.IDCard.Photo.Url}\n";
-    }
-
-    public IClassicPrototype Clone()
-    {
-      return new Person(this);
     }
   }
 }
