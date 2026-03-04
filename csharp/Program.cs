@@ -1,4 +1,9 @@
-﻿
+﻿using DesignPatterns.Builder;
+
+var builder = new CarBuilder();
+builder
+    .WithEngine("1.6L")
+    .WithTransmission("ZF");
 
 
 Console.WriteLine();

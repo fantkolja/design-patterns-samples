@@ -1,53 +1,53 @@
 namespace DesignPatterns.Builder
 {
-  interface ICarBuilder
-  {
-    ICarBuilder WithEngine(string engine);
-    ICarBuilder WithTransmission(string transmission);
-    ICarBuilder HavingWheelSize(short size);
-    ICarBuilder InColor(string color);
-    Car Build();
-  }
+  // interface ICarBuilder
+  // {
+  //   ICarBuilder WithEngine(string engine);
+  //   ICarBuilder WithTransmission(string transmission);
+  //   ICarBuilder HavingWheelSize(short size);
+  //   ICarBuilder InColor(string color);
+  //   Car Build();
+  // }
 
-  class CarBuilder : ICarBuilder
-  {
-    private Car _car = new Car();
+  // class CarBuilder : ICarBuilder
+  // {
+  //   private Car _car = new Car();
 
-    private void _reset()
-    {
-      this._car = new Car();
-    }
-    public ICarBuilder HavingWheelSize(short size)
-    {
-      this._car.WheelSize = size;
-      return this;
-    }
+  //   private void _reset()
+  //   {
+  //     this._car = new Car();
+  //   }
+  //   public ICarBuilder HavingWheelSize(short size)
+  //   {
+  //     this._car.WheelSize = size;
+  //     return this;
+  //   }
 
-    public ICarBuilder InColor(string color)
-    {
-      this._car.Color = color;
-      return this;
-    }
+  //   public ICarBuilder InColor(string color)
+  //   {
+  //     this._car.Color = color;
+  //     return this;
+  //   }
 
-    public ICarBuilder WithEngine(string engine)
-    {
-      this._car.Engine = engine;
-      return this;
-    }
+  //   public ICarBuilder WithEngine(string engine)
+  //   {
+  //     this._car.Engine = engine;
+  //     return this;
+  //   }
 
-    public ICarBuilder WithTransmission(string transmission)
-    {
-      this._car.Transmission = transmission;
-      return this;
-    }
+  //   public ICarBuilder WithTransmission(string transmission)
+  //   {
+  //     this._car.Transmission = transmission;
+  //     return this;
+  //   }
 
-    public Car Build()
-    {
-      Car car = this._car;
-      this._reset();
-      return car;
-    }
-  }
+  //   public Car Build()
+  //   {
+  //     Car car = this._car;
+  //     this._reset();
+  //     return car;
+  //   }
+  // }
 }
 
 
@@ -84,78 +84,78 @@ namespace DesignPatterns.Builder
 
 
 
-// namespace DesignPatterns.Builder
-// {
-//   #1 Program to interface
-//
-//   interface IEngineBuilder
-//   {
-//     ICarWithEngineBuilder WithEngine(string engine);
-//   }
+namespace DesignPatterns.Builder
+{
+  // #1 Program to interface
 
-//   interface ICarWithEngineBuilder
-//   {
-//     ICarWithEngineBuilder WithTransmission(string transmission);
-//     ICarWithEngineBuilder HavingWheelSize(short size);
-//     ICarWithEngineBuilder InColor(string color);
-//     Car Build();
-//   }
+  interface IEngineBuilder
+  {
+    ICarWithEngineBuilder WithEngine(string engine);
+  }
+
+  interface ICarWithEngineBuilder
+  {
+    ICarWithEngineBuilder WithTransmission(string transmission);
+    ICarWithEngineBuilder HavingWheelSize(short size);
+    ICarWithEngineBuilder InColor(string color);
+    Car Build();
+  }
   
-//   class CarBuilder
-//   {
-//     #2 Element of Singleton
-//
-//     private CarBuilder(){}
-//
-//     public static IEngineBuilder Create()
-//     {
-//       return new Impl();
-//     }
-//
-//     ISP
-//     private class Impl : IEngineBuilder, ICarWithEngineBuilder
-//     {
-//       private Car _car = new Car();
+  class CarBuilder
+  {
+    // #2 Element of Singleton
 
-//       private void _reset()
-//       {
-//         this._car = new Car();
-//       }
+    private CarBuilder(){}
 
-//       public Impl()
-//       {
-//         this._reset();
-//       }
-//       public ICarWithEngineBuilder HavingWheelSize(short size)
-//       {
-//         this._car.WheelSize = size;
-//         return this;
-//       }
+    public static IEngineBuilder Create()
+    {
+      return new Impl();
+    }
 
-//       public ICarWithEngineBuilder InColor(string color)
-//       {
-//         this._car.Color = color;
-//         return this;
-//       }
+    // ISP
+    private class Impl : IEngineBuilder, ICarWithEngineBuilder
+    {
+      private Car _car = new Car();
 
-//       public ICarWithEngineBuilder WithEngine(string engine)
-//       {
-//         this._car.Engine = engine;
-//         return this;
-//       }
+      private void _reset()
+      {
+        this._car = new Car();
+      }
 
-//       public ICarWithEngineBuilder WithTransmission(string transmission)
-//       {
-//         this._car.Transmission = transmission;
-//         return this;
-//       }
+      public Impl()
+      {
+        this._reset();
+      }
+      public ICarWithEngineBuilder HavingWheelSize(short size)
+      {
+        this._car.WheelSize = size;
+        return this;
+      }
 
-//       public Car Build()
-//       {
-//         Car car = this._car;
-//         this._reset();
-//         return car;
-//       }
-//     }
-//   }
-// }
+      public ICarWithEngineBuilder InColor(string color)
+      {
+        this._car.Color = color;
+        return this;
+      }
+
+      public ICarWithEngineBuilder WithEngine(string engine)
+      {
+        this._car.Engine = engine;
+        return this;
+      }
+
+      public ICarWithEngineBuilder WithTransmission(string transmission)
+      {
+        this._car.Transmission = transmission;
+        return this;
+      }
+
+      public Car Build()
+      {
+        Car car = this._car;
+        this._reset();
+        return car;
+      }
+    }
+  }
+}

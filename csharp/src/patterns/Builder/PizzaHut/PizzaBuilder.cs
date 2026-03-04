@@ -13,16 +13,22 @@ namespace DesignPatterns.Builder
 
   class HousePizzaBuilder : IPizzaBuilder
   {
-    private Pizza _pizza = new Pizza();
+    private Pizza _pizza;
+
+    private Pizza _createDefaultPizza()
+    {
+      Pizza pizza = new Pizza();
+      pizza.SetThickness(5);
+      return pizza;
+    }
     private void _reset()
     {
-      this._pizza = new Pizza();
-      this._pizza.SetThickness(5);
+      this._pizza = this._createDefaultPizza();
     }
 
     public HousePizzaBuilder()
     {
-      this._reset();
+      this._pizza = this._createDefaultPizza();
     }
 
     public IPizzaBuilder AddCheese(string cheese)
