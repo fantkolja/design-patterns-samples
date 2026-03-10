@@ -1,3 +1,5 @@
+// https://miro.com/app/board/uXjVNuNyX3s=/
+
 namespace DesignPatterns.Bridge
 {
   class HeroTransport : Transport
