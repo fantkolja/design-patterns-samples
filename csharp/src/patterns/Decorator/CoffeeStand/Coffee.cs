@@ -1,39 +1,32 @@
-namespace DesignPatterns.Decorator
+namespace DesignPatterns.Decorator;
+
+abstract class Coffee
 {
-  abstract class Coffee
+  public abstract int Amount { get; }
+  public abstract int Price { get; }
+
+  public abstract double CaloriesPerUnit { get; }
+
+  public virtual double GetCalories()
   {
-    public virtual int Amount { get; set; }
-    public virtual int Price { get; set; }
-    abstract public double GetCalories();
+    return Amount * CaloriesPerUnit;
   }
+}
 
-  class Americano : Coffee
-  {
-    public Americano() : base()
-    {
-      this.Amount = 100;
-      this.Price = 25;
-    }
+class Americano : Coffee
+{
+    public override int Amount => 100;
+    public override int Price => 25;
 
-    public override double GetCalories()
-    {
-      return this.Amount * 0.01;
-    }
-  }
+    public override double CaloriesPerUnit => 0.01;
+}
 
-  class Espresso : Coffee
-  {
-    public Espresso() : base()
-    {
-      this.Amount = 50;
-      this.Price = 20;
-    }
+class Espresso : Coffee
+{
+  public override int Amount => 50;
+  public override int Price => 20;
 
-    public override double GetCalories()
-    {
-      return this.Amount * 0.03;
-    }
-  }
+  public override double CaloriesPerUnit => 0.03;
 }
 
 
@@ -92,73 +85,55 @@ namespace DesignPatterns.Decorator
 
 
 
-  namespace DesignPatterns.Decorator
+abstract class CoffeeExtra : Coffee
+{
+  protected Coffee _coffee;
+
+  protected CoffeeExtra(Coffee coffee)
   {
-    abstract class CoffeeExtra : Coffee
-    {
-      private Coffee _coffee;
-      public override int Amount
-      {
-        get { return this._coffee.Amount; }
-        set { this._coffee.Amount = value; }
-      }
-      public override int Price
-      {
-        get { return this._coffee.Price; }
-        set { this._coffee.Price = value; }
-      }
-      public CoffeeExtra(Coffee coffee) : base()
-      {
-        this._coffee = coffee;
-      }
-
-      public override double GetCalories()
-      {
-        return this._coffee.GetCalories();
-      }
-    }
-
-  class WithMilk : CoffeeExtra
-  {
-    public WithMilk(Coffee coffee) : base(coffee)
-    {
-      base.Amount += 3;
-      base.Price += 5;
-    }
-
-    public override double GetCalories()
-    {
-      return base.GetCalories() * 100;
-    }
+    _coffee = coffee;
   }
 
-  class Doubled : CoffeeExtra
-  {
-    public Doubled(Coffee coffee) : base(coffee)
-    {
-      base.Amount *= 2;
-      base.Price += 10;
-    }
+  public override int Amount => _coffee.Amount;
+  public override int Price => _coffee.Price;
 
-    public override double GetCalories()
-    {
-      return base.GetCalories() * 2;
-    }
+  public override double CaloriesPerUnit => _coffee.CaloriesPerUnit;
+}
+
+class WithMilk : CoffeeExtra
+{
+  public WithMilk(Coffee coffee) : base(coffee) {}
+
+  public override int Amount => base.Amount + 3;
+  public override int Price => base.Price + 5;
+
+  public override double CaloriesPerUnit => base.CaloriesPerUnit + 0.02;
+}
+
+class Doubled : CoffeeExtra
+{
+  public Doubled(Coffee coffee) : base(coffee) {}
+
+  public override int Amount => base.Amount * 2;
+  public override int Price => base.Price + 10;
+}
+
+class WithSugar : CoffeeExtra
+{
+  private int _sticksCount;
+
+  public WithSugar(Coffee coffee, int sticksCount) : base(coffee)
+  {
+    _sticksCount = sticksCount;
   }
 
-  class WithSugar : CoffeeExtra
-  {
-    private int _sticksCount;
-    public WithSugar(Coffee coffee, int sticksCount) : base(coffee)
-    {
-      this._sticksCount = sticksCount;
-      base.Amount += sticksCount * 1;
-    }
+  public override int Amount => base.Amount + _sticksCount;
 
-    public override double GetCalories()
-    {
-      return base.GetCalories() + this._sticksCount * 100;
-    }
+  public override int Price => base.Price;
+
+  public override double GetCalories()
+  {
+    return base.GetCalories() + _sticksCount * 100;
   }
 }
 
