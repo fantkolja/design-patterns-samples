@@ -9,7 +9,7 @@ namespace DesignPatterns.Observer
 
 
 
-// Version 1: classsic
+// Version 1: classic
 // namespace DesignPatterns.Observer
 // {
 //   class Tooltip : ISubscriber
@@ -17,7 +17,7 @@ namespace DesignPatterns.Observer
 //     public SubmitButton WrappedButton { set; get; }
 //     public string Text { set; get; }
 
-//     public void OnSubmit()
+//     public void Process()
 //     {
 //       Text = "Submitting form";
 //     }

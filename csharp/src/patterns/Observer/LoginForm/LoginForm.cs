@@ -36,7 +36,7 @@ namespace DesignPatterns.Observer
 // {
 //   interface ISubscriber
 //   {
-//     public void OnSubmit();
+//     public void Process();
 //   }
 
 //   class LoginForm : ISubscriber
@@ -44,7 +44,7 @@ namespace DesignPatterns.Observer
 //     public List<Input> Inputs = new List<Input>();
 //     public SubmitButton Button = new SubmitButton();
 
-//     public void OnSubmit()
+//     public void Process()
 //     {
 //       ValidateInputs();
 //     }
@@ -68,7 +68,7 @@ namespace DesignPatterns.Observer
 //     public List<Input> Inputs = new List<Input>();
 //     public SubmitButton Button = new SubmitButton();
 
-//     public void ValidateInputs() { }
+//     public void ValidateInputs() {}
 //   }
 // }
 
@@ -78,7 +78,7 @@ namespace DesignPatterns.Observer
 // var tooltip = new Tooltip();
 // var button = new SubmitButton();
 
-// button.AddSubscriber(() => form.ValidateInputs());
+// button.AddSubscription(() => form.ValidateInputs());
 
 // button.Click();
 

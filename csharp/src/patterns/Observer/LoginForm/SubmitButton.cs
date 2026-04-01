@@ -19,13 +19,13 @@ namespace DesignPatterns.Observer
 //   class Publisher
 //   {
 
-//     private List<Subscriber> _subscribers = new List<Subscriber>();
+//     private List<ISubscriber> _subscribers = new List<ISubscriber>();
 
-//     public void Subscribe(Subscriber subscriber)
+//     public void Subscribe(ISubscriber subscriber)
 //     {
 //       this._subscribers.Add(subscriber);
 //     }
-//     public void Unsubscribe(Subscriber subscriber)
+//     public void Unsubscribe(ISubscriber subscriber)
 //     {
 //       this._subscribers.Remove(subscriber);
 //     }
@@ -56,18 +56,18 @@ namespace DesignPatterns.Observer
 // {
 //   class ButtonSubject
 //   {
-//     private List<ISubscriber> _subscribers = new List<ISubscriber>();
-//     public void AddSubscriber(ISubscriber subscriber)
+//     private List<Action> _subscriptions = new List<Action>();
+//     public void AddSubscription(Action subscriber)
 //     {
-//       _subscribers.Add(subscriber);
+//       _subscriptions.Add(subscriber);
 //     }
-//     public void RemoveSubscriber(ISubscriber subscriber)
+//     public void RemoveSubscription(Action subscriber)
 //     {
-//       _subscribers.Remove(subscriber);
+//       _subscriptions.Remove(subscriber);
 //     }
 //     protected void _notifySubscribers()
 //     {
-//       _subscribers.ForEach(subscriber => subscriber.OnSubmit());
+//       _subscriptions.ForEach(subscriber => subscriber());
 //     }
 //   }
 
@@ -86,7 +86,7 @@ namespace DesignPatterns.Observer
 // var tooltip = new Tooltip();
 // var button = new SubmitButton();
 
-// button.AddSubscriber(() => form.ValidateInputs());
+// button.AddSubscription(() => form.ValidateInputs());
 
 // button.Click();
 
