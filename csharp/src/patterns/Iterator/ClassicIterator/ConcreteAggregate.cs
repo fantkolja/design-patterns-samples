@@ -1,5 +1,6 @@
 namespace DesignPatterns.Iterator;
-class ConcreteAggregate : IClassicAggregate<string>
+
+class ConcreteAggregate
 {
   public string X { get; set; } = "x";
   public string Fak { get; set; } = "fak";
@@ -7,12 +8,39 @@ class ConcreteAggregate : IClassicAggregate<string>
   public string A { get; set; } = "a";
   public string B { get; set; } = "b";
   public string C { get; set; } = "c";
-
-  public IClassicIterator<string> GetIterator()
-  {
-    return new AlphabeticalIterator(this);
-  }
 }
+
+
+
+// @TODO: print keys in alphabetical order
+// Console.WriteLine(o.A);
+// Console.WriteLine(o.B);
+// Console.WriteLine(o.C);
+// Console.WriteLine(o.F);
+// Console.WriteLine(o.Fak);
+// Console.WriteLine(o.X);
+
+
+
+
+
+// classic
+
+// namespace DesignPatterns.Iterator;
+// class ConcreteAggregate : IClassicAggregate<string>
+// {
+//   public string X { get; set; } = "x";
+//   public string Fak { get; set; } = "fak";
+//   public string F { get; set; } = "f";
+//   public string A { get; set; } = "a";
+//   public string B { get; set; } = "b";
+//   public string C { get; set; } = "c";
+
+//   public IClassicIterator<string> GetIterator()
+//   {
+//     return new AlphabeticalIterator(this);
+//   }
+// }
 
 
 
@@ -47,7 +75,41 @@ class ConcreteAggregate : IClassicAggregate<string>
 
 
 
+// with IEnumerable
 
+
+// using System.Collections;
+
+// namespace DesignPatterns.Iterator;
+// class ConcreteAggregate : IEnumerable<string>
+// {
+//   public string X { get; set; } = "x";
+//   public string Fak { get; set; } = "fak";
+//   public string F { get; set; } = "f";
+//   public string A { get; set; } = "a";
+//   public string B { get; set; } = "b";
+//   public string C { get; set; } = "c";
+
+//     public IEnumerator<string> GetEnumerator()
+//     {
+//         return new AlphabeticalIterator(this);
+//     }
+
+//     IEnumerator IEnumerable.GetEnumerator()
+//     {
+//         return GetEnumerator();
+//     }
+// }
+
+
+
+// using DesignPatterns.Iterator;
+
+// var aggregate = new ConcreteAggregate();
+// foreach (var item in aggregate)
+// {
+//   Console.WriteLine(item);
+// }
 
 
 

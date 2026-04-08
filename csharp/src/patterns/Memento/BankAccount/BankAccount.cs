@@ -24,7 +24,6 @@ namespace DesignPatterns.Memento
       } else {
         Console.WriteLine($"Withdrew {amountChange * -1}{this._currency}; balance is now {this._amount}{this._currency}");
       }
-      SaveToHistory();
       return this._amount;
     }
 
@@ -33,7 +32,6 @@ namespace DesignPatterns.Memento
       double changeCourse = new Random().NextDouble();
       this._currency = to;
       this._amount = Math.Round(this._amount * changeCourse, 2);
-      SaveToHistory();
     }
 
     public override string ToString()
